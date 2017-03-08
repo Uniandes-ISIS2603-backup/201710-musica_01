@@ -5,10 +5,6 @@
  */
 package co.edu.uniandes.csw.musica.entities;
 
-/**
- *
- * @author pa.alvarado10
- */
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,22 +15,35 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
-public class FestivalEntity implements Serializable {   
+/**
+ *
+ * @author la.herrera11
+ */
+@Entity 
+public class FuncionEntity implements Serializable  {
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private Long id;
- private String nombre;
  @Temporal(TemporalType.DATE) 
  private Date fechaInicio;
  @Temporal(TemporalType.DATE) 
  private Date fechafin;
- private ArrayList<GeneroEntity> generos;
- //private ArrayList<CiudadEntity> ciudades;
- private ArrayList<FuncionEntity> funciones;
- public FestivalEntity(){
+ private boolean aprobada;
+ private Double calificacion; 
+ //private Lugar lugar;
+ private ArrayList<BoletaEntity> boletas;
+
+public FuncionEntity(){
 	 
  }
+
+public Long getId() {
+        return id;
+}
+
+public void setId(Long id) {
+        this.id = id;
+}
  public void setFechafin(Date fechafin) {
 	this.fechafin = fechafin;
 }
@@ -47,28 +56,26 @@ public class FestivalEntity implements Serializable {
  public Date getFechaInicio() {
 	return fechaInicio;
 }
- public void setId(Long id) {
-	this.id = id;
+ public boolean getAprobada() {
+	return aprobada;
 }
- public Long getId() {
-	return id;
+ public void setAprobada(boolean aprobada) {
+	this.aprobada = aprobada;
 }
- public void setNombre(String nombre) {
-	this.nombre = nombre;
+  public Double getCalificacion() {
+	return calificacion;
 }
- public String getNombre() {
-	return nombre;
+ public void setCalificacion(Double calificacion) {
+	this.calificacion = calificacion;
 }
-// public ArrayList<CiudadEntity> getCiudades() {
-//	return ciudades;
+
+//public Lugar getLugar(){
+//    return lugar;
+// }
+//public void setLugar(Lugar lugar) {    
+//      this.lugar=lugar;
 //}
- public ArrayList<FuncionEntity> getFunciones() {
-	return funciones;
+ public ArrayList<BoletaEntity> getBoletas() {
+	return boletas;
 }
- public ArrayList<GeneroEntity> getGeneros() {
-	return generos;
-}
- //public void setCiudades(ArrayList<CiudadEntity> ciudades) {
-//	this.ciudades = ciudades;
-//}
 }
