@@ -31,7 +31,7 @@ public class FestivalEntity implements Serializable {
  private Date fechafin;
  private ArrayList<GeneroEntity> generos;
  //private ArrayList<CiudadEntity> ciudades;
- //private ArrayList<FuncionEntity> funciones;
+ private ArrayList<FuncionEntity> funciones;
  public FestivalEntity(){
 	 
  }
@@ -62,9 +62,9 @@ public class FestivalEntity implements Serializable {
 // public ArrayList<CiudadEntity> getCiudades() {
 //	return ciudades;
 //}
- //public ArrayList<FuncionEntity> getFunciones() {
-//	return funciones;
-//}
+ public ArrayList<FuncionEntity> getFunciones() {
+	return funciones;
+}
  public ArrayList<GeneroEntity> getGeneros() {
 	return generos;
 }
