@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.musica.dtos;
 import co.edu.uniandes.csw.musica.entities.GeneroEntity;
 import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import java.io.Serializable;
-import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -18,9 +17,7 @@ public class MusicoDTO implements Serializable
 
     private Long id;    
     private String nombre;
-    private String trayectoria;
-    private int requerimientoSonido;
-    private int requerimientoCapacidad;
+
     private GeneroEntity generoMusico;
     
     public MusicoDTO(MusicoEntity musico)
@@ -29,9 +26,7 @@ public class MusicoDTO implements Serializable
         {
             this.id = musico.getId();
             this.nombre = musico.getNombre();
-            this.trayectoria = musico.getTrayectoria();
-            this.requerimientoCapacidad = musico.getRequerimientoCapacidad();
-            this.requerimientoSonido = musico.getRequerimientoSonido();
+           
             this.generoMusico = musico.getGenero();
         }
     }
@@ -41,9 +36,7 @@ public class MusicoDTO implements Serializable
         MusicoEntity musico = new MusicoEntity();
         musico.setId(id);
         musico.setNombre(nombre);
-        musico.setTrayectoria(trayectoria);
-        musico.setRequerimientoCapacidad(requerimientoCapacidad);
-        musico.setRequerimientoSonido(requerimientoSonido);
+
         musico.setGenero(generoMusico);
         return musico;
     }
@@ -67,29 +60,6 @@ public class MusicoDTO implements Serializable
         this.nombre = nombre;
     }
 
-    public String getTrayectoria() {
-        return trayectoria;
-    }
-
-    public void setTrayectoria(String trayectoria) {
-        this.trayectoria = trayectoria;
-    }
-
-    public int getRequerimientoSonido() {
-        return requerimientoSonido;
-    }
-
-    public void setRequerimientoSonido(int requerimientoSonido) {
-        this.requerimientoSonido = requerimientoSonido;
-    }
-
-    public int getRequerimientoCapacidad() {
-        return requerimientoCapacidad;
-    }
-
-    public void setRequerimientoCapacidad(int requerimientoCapacidad) {
-        this.requerimientoCapacidad = requerimientoCapacidad;
-    }
 
     public GeneroEntity getGenero() {
         return generoMusico;

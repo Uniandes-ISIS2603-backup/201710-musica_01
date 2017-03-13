@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -30,6 +31,9 @@ public class GeneroEntity implements Serializable{
     
     @ManyToMany(mappedBy = "generosFestival", cascade = CascadeType.ALL)
     private List<FestivalEntity> festivalesGenero;
+    
+    @OneToMany(mappedBy = "generoMusico", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MusicoEntity> musicosGenero;
 
     public GeneroEntity() {
     }
@@ -56,6 +60,14 @@ public class GeneroEntity implements Serializable{
 
     public void setFestivalesGenero(List<FestivalEntity> festivalesGenero) {
         this.festivalesGenero = festivalesGenero;
+    }
+
+    public List<MusicoEntity> getMusicosGenero() {
+        return musicosGenero;
+    }
+
+    public void setMusicosGenero(List<MusicoEntity> musicosGenero) {
+        this.musicosGenero = musicosGenero;
     }
     
     

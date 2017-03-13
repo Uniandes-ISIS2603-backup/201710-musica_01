@@ -5,26 +5,39 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
+import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.entities.GeneroEntity;
+import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class GeneroDetailDTO extends GeneroDTO
 {
-    
-    @OneToMany(mappedBy = "generoMusico", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MusicoDTO> musicosGenero;
+    private List<FestivalEntity> festivalesGenero;
+    private List<MusicoEntity> musicosGenero;
     
     public GeneroDetailDTO(GeneroEntity genero) {
         super(genero);
+        
+        if(genero != null)
+        {
+            this.musicosGenero = genero.getMusicosGenero();
+            this.festivalesGenero = genero.getFestivalesGenero();
+        }
     }
 
     public GeneroDetailDTO() 
     {
         super();
+    }
+
+    public List<MusicoEntity> getMusicosGenero() {
+        return musicosGenero;
+    }
+
+    public void setMusicosGenero(List<MusicoEntity> musicosGenero) {
+        this.musicosGenero = musicosGenero;
     }
  
     /**
@@ -36,6 +49,8 @@ public class GeneroDetailDTO extends GeneroDTO
     public GeneroEntity toEntity()
     {
         GeneroEntity entity = super.toEntity();
+        entity.setMusicosGenero(musicosGenero);
+        entity.setFestivalesGenero(festivalesGenero);
         return entity;
     }
     

@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
-import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.entities.GeneroEntity;
 import java.io.Serializable;
-import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -18,7 +16,6 @@ public class GeneroDTO implements Serializable
 
     private Long id;
     private String nombre;
-    private List<FestivalEntity> festivalesGenero;
     
     public GeneroDTO(GeneroEntity genero)
     {
@@ -26,7 +23,6 @@ public class GeneroDTO implements Serializable
         {
             this.id = genero.getId();
             this.nombre = genero.getNombre();
-            this.festivalesGenero = genero.getFestivalesGenero();
         }
     }
     
@@ -35,7 +31,6 @@ public class GeneroDTO implements Serializable
         GeneroEntity genero = new GeneroEntity();
         genero.setId(id);
         genero.setNombre(nombre);
-        genero.setFestivalesGenero(festivalesGenero);
         return genero;
     }
     
@@ -57,15 +52,5 @@ public class GeneroDTO implements Serializable
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public List<FestivalEntity> getFestivalesGenero() {
-        return festivalesGenero;
-    }
-
-    public void setFestivalesGenero(List<FestivalEntity> festivalesGenero) {
-        this.festivalesGenero = festivalesGenero;
-    }
-    
-    
     
 }

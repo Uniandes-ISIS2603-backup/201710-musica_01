@@ -6,11 +6,14 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
@@ -32,6 +35,9 @@ public class MusicoEntity implements Serializable{
     
     @ManyToOne
     private GeneroEntity generoMusico;
+    
+    @ManyToMany(mappedBy = "musicosFunciones", cascade = CascadeType.ALL)
+    private List<FuncionEntity> funcionesMusico;
 
     public MusicoEntity() {
     }
@@ -82,6 +88,22 @@ public class MusicoEntity implements Serializable{
 
     public void setGenero(GeneroEntity genero) {
         this.generoMusico = genero;
+    }
+
+    public GeneroEntity getGeneroMusico() {
+        return generoMusico;
+    }
+
+    public void setGeneroMusico(GeneroEntity generoMusico) {
+        this.generoMusico = generoMusico;
+    }
+
+    public List<FuncionEntity> getFuncionesMusico() {
+        return funcionesMusico;
+    }
+
+    public void setFuncionesMusico(List<FuncionEntity> funcionesMusico) {
+        this.funcionesMusico = funcionesMusico;
     }
     
     
