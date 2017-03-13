@@ -6,11 +6,14 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,17 +21,18 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class AdministradorEntity implements Serializable{
+public class UsuarioEntity implements Serializable{
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 private String nombre;
 private String clave;
-public ArrayList<FestivalEntity> festivales;
-//private ArrayList<CiudadEntity> ciudades;
-private ArrayList<GeneroEntity> generos;
-private ArrayList<MusicoEntity> musicos;
-public AdministradorEntity(){
+private boolean esAdmin;
+@ManyToMany(mappedBy = "festivalesAdmin", cascade = CascadeType.ALL)
+public List<FestivalEntity> festivales;
+@OneToMany(mappedBy = "boletasUsuario", cascade = CascadeType.ALL)
+private List<BoletaEntity> boletas;
+public UsuarioEntity(){
 	
 }
 public void setClave(String clave) {
@@ -49,22 +53,22 @@ public void setNombre(String nombre) {
 public String getNombre() {
 	return nombre;
 }
-public void setFestivales(ArrayList<FestivalEntity> festivales) {
+public void setFestivales(List<FestivalEntity> festivales) {
 	this.festivales = festivales;
 }
-public ArrayList<FestivalEntity> getFestivales() {
+public List<FestivalEntity> getFestivales() {
 	return festivales;
 }
-//public ArrayList<CiudadEntity> getCiudades() {
-//	return ciudades;
-//}
-//public void setCiudades(ArrayList<CiudadEntity> ciudades) {
-//	this.ciudades = ciudades;
-//}
-public ArrayList<GeneroEntity> getGeneros() {
-	return generos;
+public List<BoletaEntity> getBoletas() {
+	return boletas;
 }
-public void setGeneros(ArrayList<GeneroEntity> generos) {
-	this.generos = generos;
+public void setBoletas(List<BoletaEntity> b) {
+	this.boletas = b;
+}
+    public void setEsAdmin(boolean esAdmin) {
+        this.esAdmin = esAdmin;
+    }
+public boolean getEsAdmin(){
+return esAdmin;
 }
 }

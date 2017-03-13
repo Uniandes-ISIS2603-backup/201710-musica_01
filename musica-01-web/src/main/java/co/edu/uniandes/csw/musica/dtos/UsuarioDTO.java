@@ -5,15 +5,15 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
-import co.edu.uniandes.csw.musica.entities.AdministradorEntity;
+import co.edu.uniandes.csw.musica.entities.UsuarioEntity;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class AdministradorDTO {
+public class UsuarioDTO implements Serializable {
 private Long id;
 private String nombre;
-private String clave;
-public AdministradorDTO(AdministradorEntity administrador)
+public UsuarioDTO(UsuarioEntity administrador)
 {
     if(administrador != null)
     {
@@ -22,15 +22,15 @@ public AdministradorDTO(AdministradorEntity administrador)
     }
 }
 
-public AdministradorEntity toEntity()
+public UsuarioEntity toEntity()
 {
-	AdministradorEntity admon = new AdministradorEntity();
+	UsuarioEntity admon = new UsuarioEntity();
 	admon.setId(id);
 	admon.setNombre(nombre);
     return admon;
 }
 
-public AdministradorDTO() {
+public UsuarioDTO() {
 }
 
 public Long getId() {
