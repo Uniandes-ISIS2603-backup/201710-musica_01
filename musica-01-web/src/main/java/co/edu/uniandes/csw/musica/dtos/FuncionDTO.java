@@ -23,7 +23,7 @@ public class FuncionDTO implements Serializable {
    
     private Long id;    
     private Date fechaInicio;
-    private Date fechafin;
+    private Date fechaFin;
     private boolean aprobada;
     private Double calificacion; 
     private LugarEntity lugar;
@@ -36,7 +36,7 @@ public class FuncionDTO implements Serializable {
         {
             this.id = funcion.getId();
             this.fechaInicio= funcion.getFechaInicio();
-            this.fechafin=funcion.getFechafin();
+            this.fechaFin=funcion.getFechafin();
             this.aprobada=funcion.getAprobada();
             this.calificacion=funcion.getCalificacion();
             this.lugar=funcion.getLugar();
@@ -51,8 +51,7 @@ public class FuncionDTO implements Serializable {
         FuncionEntity funcion = new FuncionEntity();
         funcion.setId(id);
         funcion.setFechaInicio((java.sql.Date) fechaInicio);
-        funcion.setFechafin((java.sql.Date) fechafin);
-        funcion.setAprobada(aprobada);
+        funcion.setFechafin((java.sql.Date) fechaFin);
         funcion.setAprobada(aprobada);
         funcion.setCalificacion(calificacion);
         funcion.setLugar(lugar);
@@ -67,7 +66,6 @@ public class FuncionDTO implements Serializable {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -75,10 +73,49 @@ public class FuncionDTO implements Serializable {
     public Date getFechaInicio(Date fechaInicio) {
         return fechaInicio;
     }
-
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio= fechaInicio;
     }
 
-   //falta falta
+    public Date getFechaFin(Date fechaFin) {
+        return fechaFin;
+    }
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin= fechaFin;
+    }
+    
+    public boolean getAprobada() {
+        return aprobada;
+    }
+    public void setAprobada(boolean aprobada ) {
+        this.aprobada = aprobada;
+    }
+    
+    public Double getCalificacion() {
+        return calificacion;
+    }
+    public void setCalificacion(Double calificacion) {
+        this.calificacion = calificacion;
+    }
+    
+    public LugarEntity getLugar(){
+    return lugar;
+    }
+    public void setLugar(LugarEntity lugar){
+    this.lugar= lugar;
+    }
+    
+    public List<BoletaEntity> getBoletas(){
+    return boletas;
+    }
+    public void setBoletas(List<BoletaEntity> boletas){
+    this.boletas=  boletas;
+    }
+    
+    public List<MusicoEntity> getMusicos(){
+    return musicos;
+    }
+    public void setMusicos(List<MusicoEntity> musicos){
+    this.musicos=  musicos;
+    }
 }
