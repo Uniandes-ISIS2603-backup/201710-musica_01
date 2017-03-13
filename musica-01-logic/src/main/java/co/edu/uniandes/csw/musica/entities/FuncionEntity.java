@@ -7,11 +7,15 @@ package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -30,8 +34,12 @@ public class FuncionEntity implements Serializable  {
  private Date fechafin;
  private boolean aprobada;
  private Double calificacion; 
- //private Lugar lugar;
- private ArrayList<BoletaEntity> boletas;
+    @OneToOne(mappedBy = "lugar", cascade = CascadeType.ALL)
+ private LugarEntity lugar;
+    @OneToMany(mappedBy = "boletas", cascade = CascadeType.ALL)
+ private List<BoletaEntity> boletas;
+    @ManyToMany(mappedBy = "musicos", cascade = CascadeType.ALL)
+ private List<MusicoEntity> musicos;
 
 public FuncionEntity(){
 	 
@@ -40,28 +48,31 @@ public FuncionEntity(){
 public Long getId() {
         return id;
 }
-
 public void setId(Long id) {
         this.id = id;
 }
- public void setFechafin(Date fechafin) {
-	this.fechafin = fechafin;
-}
- public Date getFechafin() {
-	return fechafin;
-}
+
  public void setFechaInicio(Date fechaInicio) {
 	this.fechaInicio = fechaInicio;
 }
  public Date getFechaInicio() {
 	return fechaInicio;
 }
+
+ public void setFechafin(Date fechafin) {
+	this.fechafin = fechafin;
+}
+ public Date getFechafin() {
+	return fechafin;
+}
+
  public boolean getAprobada() {
 	return aprobada;
 }
  public void setAprobada(boolean aprobada) {
 	this.aprobada = aprobada;
 }
+ 
   public Double getCalificacion() {
 	return calificacion;
 }
@@ -69,13 +80,26 @@ public void setId(Long id) {
 	this.calificacion = calificacion;
 }
 
-//public Lugar getLugar(){
-//    return lugar;
-// }
-//public void setLugar(Lugar lugar) {    
-//      this.lugar=lugar;
-//}
- public ArrayList<BoletaEntity> getBoletas() {
+public LugarEntity getLugar(){
+    return lugar;
+ }
+public void setLugar(LugarEntity lugar) {    
+      this.lugar=lugar;
+}
+
+ public List<BoletaEntity> getBoletas() {
 	return boletas;
 }
+ public void setBoletas(List<BoletaEntity> Boletas) {
+	this.boletas= Boletas;
+}
+ 
+ 
+ public List<MusicoEntity> getMusicos() {
+	return musicos;
+}
+ public void setMusicos(List<MusicoEntity> musicos) {
+	this.musicos= musicos;
+}
+ 
 }
