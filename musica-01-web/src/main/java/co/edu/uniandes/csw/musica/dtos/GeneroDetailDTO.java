@@ -6,12 +6,18 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.GeneroEntity;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class GeneroDetailDTO extends GeneroDTO
 {
-
+    
+    @OneToMany(mappedBy = "generoMusico", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MusicoDTO> musicosGenero;
+    
     public GeneroDetailDTO(GeneroEntity genero) {
         super(genero);
     }

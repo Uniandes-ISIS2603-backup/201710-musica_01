@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -28,6 +29,9 @@ public class MusicoEntity implements Serializable{
     private String trayectoria;
     private int requerimientoSonido;
     private int requerimientoCapacidad;
+    
+    @ManyToOne
+    private GeneroEntity generoMusico;
 
     public MusicoEntity() {
     }
@@ -71,6 +75,16 @@ public class MusicoEntity implements Serializable{
     public void setRequerimientoCapacidad(int requerimientoCapacidad) {
         this.requerimientoCapacidad = requerimientoCapacidad;
     }
+
+    public GeneroEntity getGenero() {
+        return generoMusico;
+    }
+
+    public void setGenero(GeneroEntity genero) {
+        this.generoMusico = genero;
+    }
+    
+    
 
     @Override
     public int hashCode() {

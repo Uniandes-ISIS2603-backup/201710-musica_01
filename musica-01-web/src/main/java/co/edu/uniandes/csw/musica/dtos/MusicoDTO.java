@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
+import co.edu.uniandes.csw.musica.entities.GeneroEntity;
 import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import java.io.Serializable;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -19,6 +21,7 @@ public class MusicoDTO implements Serializable
     private String trayectoria;
     private int requerimientoSonido;
     private int requerimientoCapacidad;
+    private GeneroEntity generoMusico;
     
     public MusicoDTO(MusicoEntity musico)
     {
@@ -29,6 +32,7 @@ public class MusicoDTO implements Serializable
             this.trayectoria = musico.getTrayectoria();
             this.requerimientoCapacidad = musico.getRequerimientoCapacidad();
             this.requerimientoSonido = musico.getRequerimientoSonido();
+            this.generoMusico = musico.getGenero();
         }
     }
     
@@ -40,6 +44,7 @@ public class MusicoDTO implements Serializable
         musico.setTrayectoria(trayectoria);
         musico.setRequerimientoCapacidad(requerimientoCapacidad);
         musico.setRequerimientoSonido(requerimientoSonido);
+        musico.setGenero(generoMusico);
         return musico;
     }
     
@@ -85,7 +90,13 @@ public class MusicoDTO implements Serializable
     public void setRequerimientoCapacidad(int requerimientoCapacidad) {
         this.requerimientoCapacidad = requerimientoCapacidad;
     }
-    
-    
+
+    public GeneroEntity getGenero() {
+        return generoMusico;
+    }
+
+    public void setGenero(GeneroEntity genero) {
+        this.generoMusico = genero;
+    }
     
 }
