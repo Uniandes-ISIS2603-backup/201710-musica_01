@@ -32,7 +32,7 @@ public class GeneroEntity implements Serializable{
     @ManyToMany(mappedBy = "generosFestival", cascade = CascadeType.ALL)
     private List<FestivalEntity> festivalesGenero;
     
-    @OneToMany(mappedBy = "generoMusico", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "generoMusico", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<MusicoEntity> musicosGenero;
 
     public GeneroEntity() {

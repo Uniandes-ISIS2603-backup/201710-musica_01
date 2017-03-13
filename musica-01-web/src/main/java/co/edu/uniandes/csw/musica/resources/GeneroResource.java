@@ -7,7 +7,10 @@ package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.ejbs.GeneroLogic;
 import co.edu.uniandes.csw.musica.dtos.GeneroDTO;
+import co.edu.uniandes.csw.musica.dtos.MusicoDTO;
+import co.edu.uniandes.csw.musica.ejbs.MusicoLogic;
 import co.edu.uniandes.csw.musica.entities.GeneroEntity;
+import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ public class GeneroResource
 {
     
     @Inject private GeneroLogic generoLogic;
+    @Inject private MusicoLogic musicoLogic;
 
      /**
      * Obtiene la lista de los registros de Genero
@@ -68,6 +72,21 @@ public class GeneroResource
         GeneroEntity genero = generoDTO.toEntity();
         GeneroEntity storedGenero = generoLogic.createGenero(genero);
         return new GeneroDTO(storedGenero);
+       
+    }
+    
+    /*
+    * Crea un nuevo músico asociado a un género.
+    */
+    @POST
+    @Path("{id: \\d+}/musicos")
+    public MusicoDTO addMusico(@PathParam("id") Long id, MusicoDTO musicoDTO)throws BusinessLogicException
+    {
+        MusicoEntity musico = musicoDTO.toEntity();
+        GeneroEntity genero = new GeneroDTO(generoLogic.getGenero(id)).toEntity();
+        MusicoEntity storedMusico = musicoLogic.createMusico(musico);
+        genero.getMusicosGenero().add(musico);
+        return new MusicoDTO(storedMusico);
        
     }
     
