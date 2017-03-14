@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,6 +23,11 @@ public class BoletaEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer precio;
+        @ManyToOne
+    private ClienteEntity cliente;
+        @ManyToOne
+    private FuncionEntity funcion;
+    
 
     public BoletaEntity() {
     }
@@ -29,7 +35,6 @@ public class BoletaEntity implements Serializable{
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -37,8 +42,21 @@ public class BoletaEntity implements Serializable{
     public Integer getPrecio() {
         return precio;
     }
-
     public void setPrecio(Integer precio) {
         this.precio = precio;
+    }
+    
+    public ClienteEntity getCliente(){
+    return cliente;
+    }
+    public void setCliente(ClienteEntity cliente){
+    this.cliente= cliente;
+    }
+    
+    public FuncionEntity getFuncion(){
+    return funcion;
+    }
+    public void setFuncion(FuncionEntity funcion){
+    this.funcion= funcion;
     }
 }
