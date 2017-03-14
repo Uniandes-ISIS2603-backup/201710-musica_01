@@ -29,9 +29,11 @@ public class FestivalEntity implements Serializable {
  private Date fechaInicio;
  @Temporal(TemporalType.DATE) 
  private Date fechafin;
+ private ArrayList<UsuarioEntity> admins;
  private ArrayList<GeneroEntity> generos;
  //private ArrayList<CiudadEntity> ciudades;
  private ArrayList<FuncionEntity> funciones;
+ private ArrayList<CiudadEntity> ciudades;
  public FestivalEntity(){
 	 
  }
@@ -62,13 +64,40 @@ public class FestivalEntity implements Serializable {
 // public ArrayList<CiudadEntity> getCiudades() {
 //	return ciudades;
 //}
+
+    public void setFunciones(ArrayList<FuncionEntity> funciones) {
+        this.funciones = funciones;
+    }
+
+    public void setGeneros(ArrayList<GeneroEntity> generos) {
+        this.generos = generos;
+    }
+ 
  public ArrayList<FuncionEntity> getFunciones() {
 	return funciones;
 }
  public ArrayList<GeneroEntity> getGeneros() {
 	return generos;
 }
+
+    public void setCiudades(ArrayList<CiudadEntity> ciudades) {
+        this.ciudades = ciudades;
+    }
+ 
  //public void setCiudades(ArrayList<CiudadEntity> ciudades) {
 //	this.ciudades = ciudades;
 //}
+
+    public ArrayList<CiudadEntity> getCiudades() {
+        return ciudades;
+    }
+
+    public ArrayList<UsuarioEntity> getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(ArrayList<UsuarioEntity> admins) {
+        this.admins = admins;
+    }
+    
 }

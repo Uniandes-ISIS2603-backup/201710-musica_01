@@ -40,7 +40,7 @@ public class UsuarioResource {
 public List <UsuarioDTO> getUsuarios()
 {
  List <UsuarioDTO> usuariosDTO = new ArrayList<>();
- List <UsuarioEntity> usuarios = new ArrayList<>();
+ List <UsuarioEntity> usuarios = usuarioLogic.getUsuarios();
  for(UsuarioEntity usuario : usuarios){
      UsuarioDTO dto= new UsuarioDTO(usuario);
      usuariosDTO.add(dto);
