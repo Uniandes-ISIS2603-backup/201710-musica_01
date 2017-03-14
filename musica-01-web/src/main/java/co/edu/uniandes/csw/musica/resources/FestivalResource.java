@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.FestivalDTO;
+import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
 import co.edu.uniandes.csw.musica.dtos.GeneroDTO;
 import co.edu.uniandes.csw.musica.dtos.UsuarioDTO;
 import co.edu.uniandes.csw.musica.ejbs.FestivalLogic;
@@ -13,6 +14,7 @@ import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.ejbs.GeneroLogic;
 import co.edu.uniandes.csw.musica.ejbs.UsuarioLogic;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.GeneroEntity;
 import co.edu.uniandes.csw.musica.entities.UsuarioEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
@@ -67,7 +69,23 @@ public FestivalDTO getFestival(@PathParam("id") Long id)
 {
 return new FestivalDTO(festivalLogic.getFestival(id));
 }
-
+/**
+ * Retorna la colección de funciones relacionadas a un festival.
+ * @param id, id del festival, del cual se desea consultar el listado de funciones
+ * @return Lista dtos, lista de los dtos de las funciones que tiene el festival
+ */
+@GET
+@Path("{id:\\d+}/funciones")
+public List <FuncionDTO> getFuncionesFestival(@PathParam("id") Long id)
+{
+FestivalEntity entity= new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
+ArrayList<FuncionEntity> funciones=entity.getFunciones();
+ArrayList<FuncionDTO> dtos= new ArrayList<>();
+for(FuncionEntity funcion:funciones){
+dtos.add(new FuncionDTO(funcion));
+}
+return dtos;
+}
 /**
  * 
  * @param dto cuerpo del festival que se desea agregar
