@@ -6,10 +6,15 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 
 /**
  *
@@ -24,6 +29,14 @@ public class CiudadEntity implements Serializable {
     private Long id;
     
     private String nombre;
+    
+    @OneToMany(mappedBy = "lugares", cascade = CascadeType.ALL)
+    private List<LugarEntity> lugares;
+    
+    @ManyToMany(mappedBy = "festivales", cascade = CascadeType.ALL)
+    private List<FestivalEntity> festivales;
+    
+    
     
     public CiudadEntity() {
         

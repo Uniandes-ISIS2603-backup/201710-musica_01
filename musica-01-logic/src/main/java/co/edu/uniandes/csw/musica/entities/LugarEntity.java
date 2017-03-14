@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -33,6 +37,12 @@ public class LugarEntity implements Serializable {
     private Integer costoPreferencial;
     
     private Integer costoEconomico;
+     
+    @OneToMany(mappedBy = "funciones", cascade = CascadeType.ALL)
+    private List<FuncionEntity> funciones;
+    
+    
+    
     
     public LugarEntity() {
         

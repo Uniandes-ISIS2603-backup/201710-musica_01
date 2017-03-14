@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.CiudadEntity;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -13,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author c.potdevin10
  */
 @XmlRootElement
-public class CiudadDTO {
+public class CiudadDTO implements Serializable{
     
     private Long id;
     private String nombre;
