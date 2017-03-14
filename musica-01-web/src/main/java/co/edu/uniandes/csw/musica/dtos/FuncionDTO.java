@@ -5,13 +5,11 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
-import co.edu.uniandes.csw.musica.entities.BoletaEntity;
+
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.LugarEntity;
-import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -27,8 +25,7 @@ public class FuncionDTO implements Serializable {
     private boolean aprobada;
     private Double calificacion; 
     private LugarEntity lugar;
-    private List<BoletaEntity> boletas;
-    private List<MusicoEntity> musicos;
+    
     
      public FuncionDTO(FuncionEntity funcion)
     {
@@ -40,9 +37,6 @@ public class FuncionDTO implements Serializable {
             this.aprobada=funcion.getAprobada();
             this.calificacion=funcion.getCalificacion();
             this.lugar=funcion.getLugar();
-            this.boletas=funcion.getBoletas();
-            this.boletas=funcion.getBoletas();
-            this.musicos= funcion.getMusicos();
         }
     }
     
@@ -55,8 +49,6 @@ public class FuncionDTO implements Serializable {
         funcion.setAprobada(aprobada);
         funcion.setCalificacion(calificacion);
         funcion.setLugar(lugar);
-        funcion.setBoletas(boletas);
-        funcion.setMusicos(musicos);
         return funcion;
     }
     
@@ -103,19 +95,5 @@ public class FuncionDTO implements Serializable {
     }
     public void setLugar(LugarEntity lugar){
     this.lugar= lugar;
-    }
-    
-    public List<BoletaEntity> getBoletas(){
-    return boletas;
-    }
-    public void setBoletas(List<BoletaEntity> boletas){
-    this.boletas=  boletas;
-    }
-    
-    public List<MusicoEntity> getMusicos(){
-    return musicos;
-    }
-    public void setMusicos(List<MusicoEntity> musicos){
-    this.musicos=  musicos;
     }
 }
