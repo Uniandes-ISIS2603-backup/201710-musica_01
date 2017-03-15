@@ -35,7 +35,7 @@ public class FuncionEntity implements Serializable  {
  private boolean aprobada;
  private Double calificacion; 
     @OneToOne(mappedBy = "lugar", cascade = CascadeType.ALL)
- private LugarEntity lugar;
+ private LugarEntity lugarFuncion;
     @OneToMany(mappedBy = "boletas", cascade = CascadeType.ALL)
  private List<BoletaEntity> boletas;
     @ManyToMany(mappedBy = "musicos", cascade = CascadeType.ALL)
@@ -81,10 +81,10 @@ public void setId(Long id) {
 }
 
 public LugarEntity getLugar(){
-    return lugar;
+    return lugarFuncion;
  }
 public void setLugar(LugarEntity lugar) {    
-      this.lugar=lugar;
+      this.lugarFuncion=lugar;
 }
 
  public List<BoletaEntity> getBoletas() {
