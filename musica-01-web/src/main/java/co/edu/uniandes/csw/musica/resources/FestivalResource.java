@@ -5,14 +5,17 @@
  */
 package co.edu.uniandes.csw.musica.resources;
 
+import co.edu.uniandes.csw.musica.dtos.CiudadDTO;
 import co.edu.uniandes.csw.musica.dtos.FestivalDTO;
 import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
 import co.edu.uniandes.csw.musica.dtos.GeneroDTO;
 import co.edu.uniandes.csw.musica.dtos.UsuarioDTO;
+import co.edu.uniandes.csw.musica.ejbs.CiudadLogic;
 import co.edu.uniandes.csw.musica.ejbs.FestivalLogic;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.ejbs.GeneroLogic;
 import co.edu.uniandes.csw.musica.ejbs.UsuarioLogic;
+import co.edu.uniandes.csw.musica.entities.CiudadEntity;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.GeneroEntity;
@@ -20,6 +23,7 @@ import co.edu.uniandes.csw.musica.entities.UsuarioEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -44,6 +48,7 @@ public class FestivalResource
 @Inject private GeneroLogic generoLogic;
 @Inject private FuncionLogic funcionLogic;
 @Inject private UsuarioLogic usuarioLogic;
+@Inject private CiudadLogic ciudadLogic;
 /**
  * Obtiene la lista de los registros de Festival
  * 
@@ -107,11 +112,12 @@ return new FestivalDTO(stored);
  */
 @POST
 @Path("{id :\\d+}/generos")
-public GeneroDTO addGenero(@PathParam("id") Long id, GeneroDTO dto)throws BusinessLogicException{
+public GeneroDTO addGeneroFestival(@PathParam("id") Long id, GeneroDTO dto)throws BusinessLogicException{
     GeneroEntity entity = dto.toEntity();
     FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
     GeneroEntity stored = generoLogic.createGenero(entity);
     festival.getGeneros().add(stored);
+    festivalLogic.updateFestival(festival);
     return new GeneroDTO(stored);
 }
 /**
@@ -123,13 +129,14 @@ public GeneroDTO addGenero(@PathParam("id") Long id, GeneroDTO dto)throws Busine
  */
 @POST
 @Path("{id :\\d+}/generos/{idGenero:\\d+}")
-public GeneroDTO addGenero(@PathParam("id") Long id,@PathParam("idGenero") Long idGenero)throws BusinessLogicException{
+public GeneroDTO addGeneroFestival(@PathParam("id") Long id,@PathParam("idGenero") Long idGenero)throws BusinessLogicException{
    
     GeneroEntity entity = new GeneroDTO(generoLogic.getGenero(idGenero)).toEntity();
     FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
-    GeneroEntity stored = generoLogic.createGenero(entity);
-    festival.getGeneros().add(stored);
-    return new GeneroDTO(stored);
+   // GeneroEntity stored = generoLogic.createGenero(entity);
+    festival.getGeneros().add(entity);
+    festivalLogic.updateFestival(festival);
+    return new GeneroDTO(entity);
 }
 /**
  * Metodo que crea un usuario y lo agrega a la lista de administradores de un festival
@@ -145,6 +152,7 @@ UsuarioEntity uEntity = dto.toEntity();
 FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
 UsuarioEntity stored = usuarioLogic.createUsuario(uEntity);
 festival.getAdmins().add(stored);
+festivalLogic.updateFestival(festival);
 return new UsuarioDTO(stored);
 }
 /**
@@ -159,9 +167,29 @@ return new UsuarioDTO(stored);
 public UsuarioDTO addUsuario(@PathParam("id") Long id,@PathParam("idUsuario") Long idUsuario)throws BusinessLogicException{
 UsuarioEntity uEntity = new UsuarioDTO(usuarioLogic.getUsuario(idUsuario)).toEntity();
 FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
-UsuarioEntity stored = usuarioLogic.createUsuario(uEntity);
-festival.getAdmins().add(stored);
-return new UsuarioDTO(stored);
+//UsuarioEntity stored = usuarioLogic.createUsuario(uEntity);
+//festival.getAdmins().add(stored);
+festival.getAdmins().add(uEntity);
+festivalLogic.updateFestival(festival);
+return new UsuarioDTO(uEntity);
+//return new UsuarioDTO(stored);
+}
+
+/**
+ * Metodo que agrega una ciudad dado su id, a la lista de ciudades de un festival dado
+ * @param id, id festival
+ * @param idCiudad, id de la ciudad
+ * @return dto de la ciudad agregada a la lista de ciuadades
+ * @throws BusinessLogicException 
+ */
+@POST
+@Path("{id :\\d+}/ciudades/{idCiudad}")
+public CiudadDTO addCiudadFestival(@PathParam("id") Long id, @PathParam("idCiudad") Long idCiudad)throws BusinessLogicException{
+FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
+CiudadEntity ciudad = new CiudadDTO(ciudadLogic.getCiudad(idCiudad)).toEntity();
+festival.getCiudades().add(ciudad);
+festivalLogic.updateFestival(festival);
+return new CiudadDTO(ciudad);
 }
     /*
     * Actualiza el festival con el id dado por parámetro
@@ -173,9 +201,53 @@ public FestivalDTO updateFestival(@PathParam("id") Long id, FestivalDTO dto){
     entity.setId(id);
     return new FestivalDTO(festivalLogic.updateFestival(entity));
 }
+/**
+ * 
+ * @param id 
+ */
 @DELETE
 @Path("{id:\\d+}")
 public void deleteFestival(@PathParam("id") Long id){
  festivalLogic.deleteFestival(id);
 }
+@DELETE
+@Path("{id: \\d+}/ciudades/{idCiudad}")
+public void deleteCiudadFestival(@PathParam("id") Long id, @PathParam("idCiudad") Long idCiudad){
+FestivalEntity festival = new FestivalDTO (festivalLogic.getFestival(id)).toEntity();
+for(CiudadEntity ciudad :festival.getCiudades()){
+if(ciudad.getId()==idCiudad){
+festival.getCiudades().remove(ciudad);
+break;
 }
+}
+festivalLogic.updateFestival(festival);
+}
+//DELETE /festivales/{idFestival}/ciudades/{idCiudad}
+@DELETE
+@Path("{id: \\d+}/generos/{idGenero}")
+public void deleteGeneroFestival(@PathParam("id") Long id, @PathParam("idGenero") Long idGenero){
+   FestivalEntity festival = new FestivalDTO (festivalLogic.getFestival(id)).toEntity(); 
+   for(GeneroEntity genero :festival.getGeneros()){
+if(Objects.equals(genero.getId(), idGenero)){
+festival.getGeneros().remove(genero);
+break;
+}
+}
+festivalLogic.updateFestival(festival);
+}
+//DELETE /festivales/{idFestival}/generos/{idGenero}
+@DELETE
+@Path("{id: \\d+}/usuarios/{idUsuario}")
+public void deleteUsuarioFestival(@PathParam("id") Long id, @PathParam("idUsuario") Long idUsuario){
+FestivalEntity festival = new FestivalDTO (festivalLogic.getFestival(id)).toEntity();
+for(UsuarioEntity usuario :festival.getAdmins() ){
+if(usuario.getId()==idUsuario){
+festival.getAdmins().remove(usuario);
+break;
+}
+}
+festivalLogic.updateFestival(festival);
+}
+}
+//DELETE /festivales/{idFestival}/usuarios/{idUsuario}
+
