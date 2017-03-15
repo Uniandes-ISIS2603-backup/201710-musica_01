@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class UsuarioPersistence {
     
-    @PersistenceContext(unitName="employeePU") 
+    @PersistenceContext(unitName="musicaPU") 
     protected EntityManager em;
     
     public UsuarioEntity find(Long id)    {

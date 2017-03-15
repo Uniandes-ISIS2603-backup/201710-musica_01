@@ -19,7 +19,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class LugarPersistence {
     
-    @PersistenceContext(unitName = "employeePU")
+    @PersistenceContext(unitName = "musicaPU")
     protected EntityManager em;
     
     public LugarEntity find(Long id) {

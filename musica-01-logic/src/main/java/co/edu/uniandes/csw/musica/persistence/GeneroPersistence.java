@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class GeneroPersistence {
     
-    @PersistenceContext(unitName="employeePU") 
+    @PersistenceContext(unitName="musicaPU") 
     protected EntityManager em;
     
     public GeneroEntity find(Long id)    {

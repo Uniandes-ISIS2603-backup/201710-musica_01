@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.BoletaEntity;
-import co.edu.uniandes.csw.musica.entities.ClienteEntity;
+import co.edu.uniandes.csw.musica.entities.UsuarioEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class BoletaDetailDTO extends BoletaDTO {
     
-    private ClienteEntity cliente;
+    private UsuarioEntity cliente;
     private FuncionEntity funcion;
     
     public BoletaDetailDTO(BoletaEntity boleta) {
@@ -35,10 +35,10 @@ public class BoletaDetailDTO extends BoletaDTO {
         super();
     }
 
-    public ClienteEntity getCliente() {
+    public UsuarioEntity getCliente() {
         return cliente;
     }
-    public void setcliente(ClienteEntity cliente) {
+    public void setcliente(UsuarioEntity cliente) {
         this.cliente = cliente;
     }
     

@@ -24,7 +24,7 @@ public class BoletaEntity implements Serializable{
     private Long id;
     private Integer precio;
         @ManyToOne
-    private ClienteEntity cliente;
+    private UsuarioEntity cliente;
         @ManyToOne
     private FuncionEntity funcion;
     
@@ -46,10 +46,10 @@ public class BoletaEntity implements Serializable{
         this.precio = precio;
     }
     
-    public ClienteEntity getCliente(){
+    public UsuarioEntity getCliente(){
     return cliente;
     }
-    public void setCliente(ClienteEntity cliente){
+    public void setCliente(UsuarioEntity cliente){
     this.cliente= cliente;
     }
     

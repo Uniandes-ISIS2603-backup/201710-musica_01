@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class MusicoPersistence {
 
-    @PersistenceContext(unitName="employeePU") 
+    @PersistenceContext(unitName="musicaPU") 
     protected EntityManager em;
     
     public MusicoEntity find(Long id)    {
