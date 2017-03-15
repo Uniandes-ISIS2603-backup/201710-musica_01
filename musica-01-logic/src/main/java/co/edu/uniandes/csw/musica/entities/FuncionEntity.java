@@ -14,8 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,13 +34,16 @@ public class FuncionEntity implements Serializable  {
  private Date fechafin;
  private boolean aprobada;
  private Double calificacion; 
-    @OneToOne(mappedBy = "lugar", cascade = CascadeType.ALL)
+    
+    @ManyToOne
  private LugarEntity lugarFuncion;
-    @OneToMany(mappedBy = "boletas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL)
  private List<BoletaEntity> boletas;
-    @ManyToMany(mappedBy = "musicos", cascade = CascadeType.ALL)
+    @ManyToMany
  private List<MusicoEntity> musicos;
-
+    @ManyToOne
+ private FestivalEntity festival;
+ 
 public FuncionEntity(){
 	 
  }

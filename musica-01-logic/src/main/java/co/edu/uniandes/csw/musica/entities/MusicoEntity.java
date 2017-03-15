@@ -36,7 +36,7 @@ public class MusicoEntity implements Serializable{
     @ManyToOne
     private GeneroEntity generoMusico;
     
-    @ManyToMany(mappedBy = "musicosFunciones", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "musicos", cascade = CascadeType.ALL)
     private List<FuncionEntity> funcionesMusico;
 
     public MusicoEntity() {

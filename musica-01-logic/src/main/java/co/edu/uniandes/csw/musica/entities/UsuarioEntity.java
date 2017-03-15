@@ -28,9 +28,9 @@ private Long id;
 private String nombre;
 private String clave;
 private boolean esAdmin;
-@ManyToMany(mappedBy = "festivalesUsuarios", cascade = CascadeType.ALL)
+@ManyToMany
 public List<FestivalEntity> festivalesUsuario;
-@OneToMany(mappedBy = "boletasUsuario", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 private List<BoletaEntity> boletas;
 public UsuarioEntity(){
 	

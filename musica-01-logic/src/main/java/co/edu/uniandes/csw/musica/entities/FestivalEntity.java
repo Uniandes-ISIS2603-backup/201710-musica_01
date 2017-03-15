@@ -46,7 +46,7 @@ public class FestivalEntity implements Serializable {
     @ManyToMany(mappedBy = "festivalesCiudad", cascade = CascadeType.ALL)
     private ArrayList<CiudadEntity> ciudades;
 
-    @OneToMany(mappedBy = "festivalFuncion", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "festival", cascade = CascadeType.ALL, orphanRemoval = false)
     private ArrayList<FuncionEntity> funciones;
 
     public FestivalEntity(){

@@ -29,7 +29,7 @@ public class GeneroEntity implements Serializable{
     private Long id;
     private String nombre;
     
-    @ManyToMany(mappedBy = "generosFestival", cascade = CascadeType.ALL)
+    @ManyToMany
     private List<FestivalEntity> festivalesGenero;
     
     @OneToMany(mappedBy = "generoMusico", cascade = CascadeType.ALL, orphanRemoval = false)

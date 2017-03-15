@@ -33,7 +33,7 @@ public class CiudadEntity implements Serializable {
     @OneToMany(mappedBy = "ciudadLugar", cascade = CascadeType.ALL)
     private List<LugarEntity> lugaresCiudad;
     
-    @ManyToMany(mappedBy = "ciudadesFestival", cascade = CascadeType.ALL)
+    @ManyToMany
     private List<FestivalEntity> festivalesCiudad;
     
     
