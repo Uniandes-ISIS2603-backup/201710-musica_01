@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.musica.resources;
 import co.edu.uniandes.csw.musica.dtos.CiudadDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.CiudadLogic;
 import co.edu.uniandes.csw.musica.entities.CiudadEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -38,7 +39,7 @@ public class CiudadResource {
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
     
-     private List<CiudadDetailDTO> listEntity2DTO(List<CiudadEntity> entityList){
+    private List<CiudadDetailDTO> listEntity2DTO(List<CiudadEntity> entityList){
         List<CiudadDetailDTO> list = new ArrayList<>();
         for (CiudadEntity entity : entityList) {
             list.add(new CiudadDetailDTO(entity));
@@ -46,7 +47,7 @@ public class CiudadResource {
         return list;
     }
      
-     @GET
+    @GET
     public List<CiudadDetailDTO> getCiudades() {
         
         return listEntity2DTO(ciudadLogic.getCiudades());
@@ -61,7 +62,7 @@ public class CiudadResource {
     
     
     @POST
-    public CiudadDetailDTO createCiudad(CiudadDetailDTO dto) {
+    public CiudadDetailDTO createCiudad(CiudadDetailDTO dto) throws BusinessLogicException {
         return new CiudadDetailDTO(ciudadLogic.createCiudad(dto.toEntity()));
     }
     

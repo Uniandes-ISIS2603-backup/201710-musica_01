@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.musica.resources;
 import co.edu.uniandes.csw.musica.dtos.LugarDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.LugarLogic;
 import co.edu.uniandes.csw.musica.entities.LugarEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -60,7 +61,7 @@ public class LugarResource {
     }
     
     @POST
-    public LugarDetailDTO createEmployee(LugarDetailDTO dto) {
+    public LugarDetailDTO createEmployee(LugarDetailDTO dto) throws BusinessLogicException{
         return new LugarDetailDTO(lugarLogic.createLugar(dto.toEntity()));
     }
     

@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -41,7 +42,8 @@ public class LugarEntity implements Serializable {
     @OneToMany(mappedBy = "funciones", cascade = CascadeType.ALL)
     private List<FuncionEntity> funciones;
     
-    
+    @ManyToOne
+    private CiudadEntity ciudadEntity;
     
     
     public LugarEntity() {
@@ -103,4 +105,19 @@ public class LugarEntity implements Serializable {
     public void setCostoEconomico(Integer costoEconomico) {
         this.costoEconomico = costoEconomico;
     }
+    
+   
+    public CiudadEntity getCiudad(){
+        return ciudadEntity;
+    }
+    public void serCiudad(CiudadEntity ciudad){
+        this.ciudadEntity = ciudad;
+    }
+    public List<FuncionEntity> getFunciones(){
+        return funciones;
+    }
+    public void setFunciones(List<FuncionEntity> funciones){
+        this.funciones = funciones;
+    }
+    
 }

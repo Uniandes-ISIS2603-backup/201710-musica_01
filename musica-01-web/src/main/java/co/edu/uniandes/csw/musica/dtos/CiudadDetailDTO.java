@@ -9,9 +9,6 @@ import co.edu.uniandes.csw.musica.entities.CiudadEntity;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.entities.LugarEntity;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
@@ -22,12 +19,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class CiudadDetailDTO extends CiudadDTO {
     
-    @ManyToMany(mappedBy = "ciudadesFestivales", cascade = CascadeType.ALL)
-    private List<FestivalEntity> festivalesCiudad;
-    
-    
-    @OneToMany(mappedBy = "ciudadLugar", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<LugarEntity> lugaresCiudad;
+   private List<LugarEntity> lugares;
+   private List<FestivalEntity> festivales;
     
     public CiudadDetailDTO(){
         super();
@@ -35,11 +28,30 @@ public class CiudadDetailDTO extends CiudadDTO {
 
     public CiudadDetailDTO(CiudadEntity entity){
        super(entity);
+       if(entity != null)
+       {
+           this.festivales = entity.getFestivales();
+           this.lugares = entity.getLugares();
+       }
+    }
+    public List<LugarEntity> getLugaresCiudad(){
+        return lugares;
+    }
+    public void setLugaresCiudad(List<LugarEntity> lugaresCiudad){
+        this.lugares=lugaresCiudad;
+    }
+    public List<FestivalEntity> getFestivalesCiudad(){
+        return festivales;
+    }
+    public void setFestivalesCiudad(List<FestivalEntity> festivalesCiudad){
+        this.festivales=festivalesCiudad;
     }
     
     @Override
     public CiudadEntity toEntity(){
         CiudadEntity entity = super.toEntity();
+        entity.setFestivales(festivales);
+        entity.setLugares(lugares);
         return entity;
     }
 }

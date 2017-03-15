@@ -57,4 +57,16 @@ public class CiudadEntity implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public List<LugarEntity> getLugares(){
+        return lugares;
+    }
+    public void setLugares(List<LugarEntity> lugares){
+        this.lugares = lugares;
+    }
+    public List<FestivalEntity> getFestivales(){
+        return festivales;
+    }
+    public void setFestivales(List<FestivalEntity> festivales){
+        this.festivales= festivales;
+    }
 }

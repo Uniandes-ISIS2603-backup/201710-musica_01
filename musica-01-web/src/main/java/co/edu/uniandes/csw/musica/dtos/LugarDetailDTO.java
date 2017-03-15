@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
+import co.edu.uniandes.csw.musica.entities.CiudadEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.LugarEntity;
 import java.util.List;
@@ -19,10 +20,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class LugarDetailDTO extends LugarDTO {
     
-    @OneToMany(mappedBy = "funcionesLugar", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FuncionEntity> funcionesLugar;
-    
-    
+    private CiudadEntity ciudadEntity;
     
     public LugarDetailDTO(){
         super();
@@ -30,6 +29,26 @@ public class LugarDetailDTO extends LugarDTO {
     
     public LugarDetailDTO(LugarEntity entity){
         super(entity);
+        
+        if(entity != null){
+            
+            this.ciudadEntity = entity.getCiudad();
+            this.funcionesLugar = entity.getFunciones();
+        }
+    }
+    
+    public List<FuncionEntity> getFuncionesLugar(){
+        return funcionesLugar;
+    }
+    public void setFuncionesLugar(List<FuncionEntity> funcionesLugar){
+        this.funcionesLugar=funcionesLugar;
+    }
+    
+    public CiudadEntity getCiudad(){
+        return ciudadEntity;
+    }
+    public void setCiudad(CiudadEntity ciudad){
+        this.ciudadEntity = ciudad;
     }
     
     @Override
