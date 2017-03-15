@@ -136,8 +136,9 @@ public GeneroDTO addGeneroFestival(@PathParam("id") Long id,@PathParam("idGenero
    // GeneroEntity stored = generoLogic.createGenero(entity);
     festival.getGeneros().add(entity);
     festivalLogic.updateFestival(festival);
-    return new GeneroDTO(entity);
+    return new GeneroDTO(entity); 
 }
+
 /**
  * Metodo que crea un usuario y lo agrega a la lista de administradores de un festival
  * @param id, id del festival al que se le desea agregar el administrador

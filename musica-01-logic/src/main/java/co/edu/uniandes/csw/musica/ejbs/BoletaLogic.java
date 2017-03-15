@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.ejbs;
 
 import co.edu.uniandes.csw.musica.entities.BoletaEntity;
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.BoletaPersistence;
 import java.util.List;
@@ -21,7 +22,7 @@ public class BoletaLogic {
     @Inject
     private BoletaPersistence persistence;
     
-    public BoletaEntity createFuncion(BoletaEntity boleta)throws BusinessLogicException
+    public BoletaEntity createBoleta(BoletaEntity boleta)throws BusinessLogicException
     {
         if (boleta.getId() == null)
             throw new BusinessLogicException ("La boleta debe tener id");
@@ -47,4 +48,6 @@ public class BoletaLogic {
     {
         persistence.delete(id);
     }
+
+    
 }
