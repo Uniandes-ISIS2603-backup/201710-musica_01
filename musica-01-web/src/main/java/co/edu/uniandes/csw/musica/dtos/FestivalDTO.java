@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class FestivalDTO implements Serializable {
     private Long id;
     private String nombre;
-    private java.sql.Date fechaInicio;
-    private java.sql.Date fechaFin;
+    private Date fechaInicio;
+    private Date fechaFin;
     private List <FuncionEntity> funciones;
     private List <CiudadEntity> ciudades;
     private List <GeneroEntity> generos;

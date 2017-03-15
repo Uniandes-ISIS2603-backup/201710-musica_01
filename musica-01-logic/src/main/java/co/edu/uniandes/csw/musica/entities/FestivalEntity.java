@@ -10,8 +10,8 @@ package co.edu.uniandes.csw.musica.entities;
  * @author pa.alvarado10
  */
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
