@@ -74,6 +74,7 @@ public List <UsuarioDTO> getUsuarios()
       BoletaEntity boleta = new BoletaDTO(boletaLogic.getBoleta(nueva)).toEntity();
       //BoletaEntity stored = boletaLogic
       entity.getBoletas().add(boleta);
+      usuarioLogic.updateUsuario(entity);
       return new BoletaDTO(boleta);
   }
   /**
@@ -128,6 +129,6 @@ public List <UsuarioDTO> getUsuarios()
       if(!encontro){
       throw new BusinessLogicException("El usuario no tiene registro de la boleta que se desea eliminar de la lista de boletas");
       }
-  UsuarioEntity nuevo = usuarioLogic.updateUsuario(uEntity);
+  usuarioLogic.updateUsuario(uEntity);
   }
 }
