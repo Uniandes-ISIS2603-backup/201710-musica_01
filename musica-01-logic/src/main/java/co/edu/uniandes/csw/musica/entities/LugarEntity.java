@@ -39,11 +39,11 @@ public class LugarEntity implements Serializable {
     
     private Integer costoEconomico;
      
-    @OneToMany(mappedBy = "funciones", cascade = CascadeType.ALL)
-    private List<FuncionEntity> funciones;
+    @OneToMany(mappedBy = "lugarFuncion", cascade = CascadeType.ALL)
+    private List<FuncionEntity> funcionesLugar;
     
     @ManyToOne
-    private CiudadEntity ciudadEntity;
+    private CiudadEntity ciudadLugar;
     
     
     public LugarEntity() {
@@ -105,19 +105,21 @@ public class LugarEntity implements Serializable {
     public void setCostoEconomico(Integer costoEconomico) {
         this.costoEconomico = costoEconomico;
     }
-    
-   
-    public CiudadEntity getCiudad(){
-        return ciudadEntity;
+
+    public List<FuncionEntity> getFuncionesLugar() {
+        return funcionesLugar;
     }
-    public void serCiudad(CiudadEntity ciudad){
-        this.ciudadEntity = ciudad;
+
+    public void setFuncionesLugar(List<FuncionEntity> funcionesLugar) {
+        this.funcionesLugar = funcionesLugar;
     }
-    public List<FuncionEntity> getFunciones(){
-        return funciones;
+
+    public CiudadEntity getCiudadLugar() {
+        return ciudadLugar;
     }
-    public void setFunciones(List<FuncionEntity> funciones){
-        this.funciones = funciones;
+
+    public void setCiudadLugar(CiudadEntity ciudadLugar) {
+        this.ciudadLugar = ciudadLugar;
     }
     
 }

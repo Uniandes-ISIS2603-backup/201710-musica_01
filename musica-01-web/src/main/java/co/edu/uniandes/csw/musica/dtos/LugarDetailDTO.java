@@ -20,8 +20,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class LugarDetailDTO extends LugarDTO {
     
+    private Boolean abierto;
+    private Integer capacidad;
+    private Integer capacidadSonido;
     private List<FuncionEntity> funcionesLugar;
-    private CiudadEntity ciudadEntity;
     
     public LugarDetailDTO(){
         super();
@@ -31,9 +33,10 @@ public class LugarDetailDTO extends LugarDTO {
         super(entity);
         
         if(entity != null){
-            
-            this.ciudadEntity = entity.getCiudad();
-            this.funcionesLugar = entity.getFunciones();
+            this.abierto = entity.getAbierto();
+            this.capacidad = entity.getCapacidad();
+            this.capacidadSonido = entity.getCapacidadSonido();
+            this.funcionesLugar = entity.getFuncionesLugar();
         }
     }
     
@@ -43,17 +46,38 @@ public class LugarDetailDTO extends LugarDTO {
     public void setFuncionesLugar(List<FuncionEntity> funcionesLugar){
         this.funcionesLugar=funcionesLugar;
     }
-    
-    public CiudadEntity getCiudad(){
-        return ciudadEntity;
+
+    public Integer getCapacidad() {
+        return capacidad;
     }
-    public void setCiudad(CiudadEntity ciudad){
-        this.ciudadEntity = ciudad;
+
+    public void setCapacidad(Integer capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public Integer getCapacidadSonido() {
+        return capacidadSonido;
+    }
+
+    public void setCapacidadSonido(Integer capacidadSonido) {
+        this.capacidadSonido = capacidadSonido;
+    }
+
+    public Boolean getAbierto() {
+        return abierto;
+    }
+
+    public void setAbierto(Boolean abierto) {
+        this.abierto = abierto;
     }
     
     @Override
     public LugarEntity toEntity(){
         LugarEntity entity = super.toEntity();
+        entity.setAbierto(abierto);
+        entity.setCapacidad(capacidad);
+        entity.setCapacidadSonido(capacidadSonido);
+        entity.setFuncionesLugar(funcionesLugar);
         return entity;
     }
     

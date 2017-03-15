@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.musica.ejbs;
 
 
 import co.edu.uniandes.csw.musica.entities.CiudadEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.CiudadPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -30,9 +31,11 @@ public class CiudadLogic {
         return persistence.find(id);
     }
    
-    public CiudadEntity createCiudad(CiudadEntity entity){
-        persistence.create(entity);
-        return entity;
+    public CiudadEntity createCiudad(CiudadEntity entity) throws BusinessLogicException
+    {
+        if (entity.getNombre() == null)
+        throw new BusinessLogicException ("La ciudad debe tener nombre.");    
+        return persistence.create(entity);
     }
     
     public CiudadEntity updateCiudad(CiudadEntity entity){

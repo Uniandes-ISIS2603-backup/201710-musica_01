@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.ejbs;
 
 import co.edu.uniandes.csw.musica.entities.LugarEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.LugarPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -29,9 +30,10 @@ public class LugarLogic {
         return persistence.find(id);
     }
     
-    public LugarEntity createLugar(LugarEntity entity){
-        persistence.create(entity);
-        return entity;
+    public LugarEntity createLugar(LugarEntity entity) throws BusinessLogicException{
+        if (entity.getNombre() == null)
+            throw new BusinessLogicException ("El lugar debe tener nombre.");
+        return persistence.create(entity);
     }
     
     public LugarEntity updateLugar(LugarEntity entity){

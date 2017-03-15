@@ -30,11 +30,11 @@ public class CiudadEntity implements Serializable {
     
     private String nombre;
     
-    @OneToMany(mappedBy = "lugares", cascade = CascadeType.ALL)
-    private List<LugarEntity> lugares;
+    @OneToMany(mappedBy = "ciudadLugar", cascade = CascadeType.ALL)
+    private List<LugarEntity> lugaresCiudad;
     
-    @ManyToMany(mappedBy = "festivales", cascade = CascadeType.ALL)
-    private List<FestivalEntity> festivales;
+    @ManyToMany(mappedBy = "ciudadesFestival", cascade = CascadeType.ALL)
+    private List<FestivalEntity> festivalesCiudad;
     
     
     
@@ -57,16 +57,23 @@ public class CiudadEntity implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public List<LugarEntity> getLugares(){
-        return lugares;
+
+    public List<LugarEntity> getLugaresCiudad() {
+        return lugaresCiudad;
     }
-    public void setLugares(List<LugarEntity> lugares){
-        this.lugares = lugares;
+
+    public void setLugaresCiudad(List<LugarEntity> lugaresCiudad) {
+        this.lugaresCiudad = lugaresCiudad;
     }
-    public List<FestivalEntity> getFestivales(){
-        return festivales;
+
+    public List<FestivalEntity> getFestivalesCiudad() {
+        return festivalesCiudad;
     }
-    public void setFestivales(List<FestivalEntity> festivales){
-        this.festivales= festivales;
+
+    public void setFestivalesCiudad(List<FestivalEntity> festivalesCiudad) {
+        this.festivalesCiudad = festivalesCiudad;
     }
+   
+    
+    
 }
