@@ -40,7 +40,7 @@ public class UsuarioLogic {
         return persistence.find(id);
     }
     
-    public UsuarioEntity updateMusico(UsuarioEntity entity) 
+    public UsuarioEntity updateUsuario(UsuarioEntity entity) 
     {
         return persistence.update(entity);
     }
