@@ -28,8 +28,8 @@ private Long id;
 private String nombre;
 private String clave;
 private boolean esAdmin;
-@ManyToMany(mappedBy = "festivalesAdmin", cascade = CascadeType.ALL)
-public List<FestivalEntity> festivales;
+@ManyToMany(mappedBy = "festivalesUsuarios", cascade = CascadeType.ALL)
+public List<FestivalEntity> festivalesUsuario;
 @OneToMany(mappedBy = "boletasUsuario", cascade = CascadeType.ALL)
 private List<BoletaEntity> boletas;
 public UsuarioEntity(){
@@ -54,10 +54,10 @@ public String getNombre() {
 	return nombre;
 }
 public void setFestivales(List<FestivalEntity> festivales) {
-	this.festivales = festivales;
+	this.festivalesUsuario = festivales;
 }
 public List<FestivalEntity> getFestivales() {
-	return festivales;
+	return festivalesUsuario;
 }
 public List<BoletaEntity> getBoletas() {
 	return boletas;

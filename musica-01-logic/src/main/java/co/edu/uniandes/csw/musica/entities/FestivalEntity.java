@@ -38,7 +38,7 @@ public class FestivalEntity implements Serializable {
     private Date fechafin;
 
     @ManyToMany(mappedBy = "festivalesUsuario", cascade = CascadeType.ALL)
-    private ArrayList<UsuarioEntity> admins;
+    private ArrayList<UsuarioEntity> adminsFestival;
 
     @ManyToMany(mappedBy = "festivalesGenero", cascade = CascadeType.ALL)
     private ArrayList<GeneroEntity> generos;
@@ -86,11 +86,11 @@ public class FestivalEntity implements Serializable {
     }
 
     public ArrayList<UsuarioEntity> getAdmins() {
-        return admins;
+        return adminsFestival;
     }
 
     public void setAdmins(ArrayList<UsuarioEntity> admins) {
-        this.admins = admins;
+        this.adminsFestival = admins;
     }
 
     public ArrayList<GeneroEntity> getGeneros() {
