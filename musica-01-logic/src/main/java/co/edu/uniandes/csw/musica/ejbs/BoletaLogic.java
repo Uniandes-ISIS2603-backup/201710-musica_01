@@ -1,14 +1,7 @@
-// TODO: eliminar los comentarios por defecto
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.edu.uniandes.csw.musica.ejbs;
 
 import co.edu.uniandes.csw.musica.entities.BoletaEntity;
-// TODO: eliminar import que no se usan
-import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.BoletaPersistence;
 import java.util.List;
