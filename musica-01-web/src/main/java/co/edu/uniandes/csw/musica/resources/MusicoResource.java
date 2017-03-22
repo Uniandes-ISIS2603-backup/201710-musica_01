@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -52,6 +53,7 @@ public class MusicoResource
     */
     @GET
     @Path("{id: \\d+}")
+    // TODO: retornar una excepción / código 404 si no existe
     public MusicoDTO getMusico(@PathParam("id") Long id) 
     {
         return new MusicoDTO(musicoLogic.getMusico(id));

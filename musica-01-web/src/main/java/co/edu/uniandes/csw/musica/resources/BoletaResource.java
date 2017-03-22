@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+// TODO: eliminar los import que no se usan
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -59,6 +61,7 @@ public class BoletaResource {
     /**
     * Obtiene la boleta con el Id dado por ruta
     */
+    // TODO: retorar una excepción/error 404 si no existe
     @GET
     @Path("{id: \\d+}")
     public BoletaDTO getBoleta(@PathParam("id") Long id) 

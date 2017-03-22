@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,11 +37,13 @@ public class GeneroLogic
         return persistence.find(id);
     }
     
+    // TODO: revisar validaciones al momento de actualizar
     public GeneroEntity updateGenero(GeneroEntity entity) 
     {
         return persistence.update(entity);
     }
     
+    // TODO: revisar validaciones al momento de eliminar
     public void deleteGenero (Long id)
     {
         persistence.delete(id);

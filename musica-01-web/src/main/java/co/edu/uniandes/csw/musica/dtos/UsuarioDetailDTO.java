@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +10,7 @@ import co.edu.uniandes.csw.musica.entities.BoletaEntity;
 import co.edu.uniandes.csw.musica.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
+// TODO: eliminar los import que no son requeridos
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlRootElement;

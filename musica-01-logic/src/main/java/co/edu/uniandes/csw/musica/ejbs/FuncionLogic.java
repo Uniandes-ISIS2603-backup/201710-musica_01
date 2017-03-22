@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -25,6 +26,7 @@ public class FuncionLogic {
     
     public FuncionEntity createFuncion(FuncionEntity funcion)throws BusinessLogicException
     {
+        // TODO: revisar esta validación. el id es autogenerado en la entidad
         if (funcion.getId() == null)
             throw new BusinessLogicException ("La función debe tener id");
         return persistence.create(funcion);
@@ -40,11 +42,13 @@ public class FuncionLogic {
         return persistence.find(id);
     }
     
+    // TODO: revisar las validaciones al momento de actualizar
     public FuncionEntity updateFuncion(FuncionEntity entity) 
     {
         return persistence.update(entity);
     }
     
+    // TODO: revisar las validaciones al momento de borrar
     public void deleteFuncion (Long id)
     {
         persistence.delete(id);

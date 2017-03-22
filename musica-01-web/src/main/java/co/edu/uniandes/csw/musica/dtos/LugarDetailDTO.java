@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +6,7 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
+// TODO: eliminar los import que no son necesarios
 import co.edu.uniandes.csw.musica.entities.CiudadEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.LugarEntity;

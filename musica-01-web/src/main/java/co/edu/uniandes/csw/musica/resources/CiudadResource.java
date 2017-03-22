@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -54,6 +55,7 @@ public class CiudadResource {
     
     @GET
     @Path("{id: \\d+}")
+    // TODO: retornar una excepción / error 404 si no existe
     public CiudadDTO getCiudad(@PathParam("id") Long id) {
         return new CiudadDTO(ciudadLogic.getCiudad(id));
     }

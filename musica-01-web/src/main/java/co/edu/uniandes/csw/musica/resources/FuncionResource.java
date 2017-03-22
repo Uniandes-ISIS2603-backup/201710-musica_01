@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,6 +35,8 @@ import javax.ws.rs.core.MediaType;
 @Consumes (MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class FuncionResource {
+    
+    // TODO: indentar el código de la clase
     @Inject private FuncionLogic funcionLogic;
     @Inject private MusicoLogic musicoLogic;
     /**
@@ -58,6 +61,7 @@ return funcionesDTOs;
  */
 @GET
 @Path ("{id:\\d+}")
+// TODO: retornar una excepción / código 404 si no existe
 public FuncionDTO getFuncion(@PathParam("id") Long id)
 {
 return new FuncionDTO(funcionLogic.getFuncion(id));

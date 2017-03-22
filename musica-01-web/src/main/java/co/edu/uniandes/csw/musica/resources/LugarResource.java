@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +7,7 @@
 package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.LugarDTO;
+// TODO: eliminar los import que no se usan
 import co.edu.uniandes.csw.musica.dtos.LugarDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.ejbs.LugarLogic;
@@ -54,6 +56,7 @@ public class LugarResource {
     
     @GET
     @Path("{id: \\d+}")
+    // TODO: retornar una excepción / código 404 si no existe
     public LugarDTO getLugar(@PathParam("id") Long id) {
         return new LugarDTO(lugarLogic.getLugar(id));
     }

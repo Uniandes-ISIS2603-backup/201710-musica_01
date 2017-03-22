@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -44,6 +45,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class FestivalResource 
 {
+    // TODO: indentar el código de la clase
 @Inject private FestivalLogic festivalLogic;
 @Inject private GeneroLogic generoLogic;
 @Inject private FuncionLogic funcionLogic;
@@ -70,6 +72,7 @@ return festivalesDTOs;
  */
 @GET
 @Path ("{id:\\d+}")
+// TODO: retornar una excepción / error 404 si no existe
 public FestivalDTO getFestival(@PathParam("id") Long id)
 {
 return new FestivalDTO(festivalLogic.getFestival(id));

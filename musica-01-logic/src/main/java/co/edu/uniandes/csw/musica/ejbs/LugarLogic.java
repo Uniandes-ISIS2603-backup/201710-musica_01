@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,10 +37,12 @@ public class LugarLogic {
         return persistence.create(entity);
     }
     
+    // TODO: revisar validaciones al momento de actualizar
     public LugarEntity updateLugar(LugarEntity entity){
         return persistence.update(entity);
     }
     
+    // TODO: revisar validaciones al momento de eliminar
     public void deleteLugar(Long id){
         persistence.delete(id);
     }

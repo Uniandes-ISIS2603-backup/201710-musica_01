@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,11 +37,13 @@ public class MusicoLogic
         return persistence.find(id);
     }
     
+    // TODO: revisar validaciones al momento de actualizar
     public MusicoEntity updateMusico(MusicoEntity entity) 
     {
         return persistence.update(entity);
     }
     
+    // TODO: revisar validaciones al momebto de eliminar
     public void deleteMusico (Long id)
     {
         persistence.delete(id);

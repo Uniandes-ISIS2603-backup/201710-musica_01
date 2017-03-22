@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,6 +21,8 @@ import javax.inject.Inject;
 public class FestivalLogic {
     @Inject
     private FestivalPersistence persistence;
+    
+    // TODO: indentar el código de los métodos
     public FestivalEntity createFestival(FestivalEntity festival)throws BusinessLogicException{
     if(festival.getNombre()==null){
         throw new BusinessLogicException("El festival debe tener un nombre");
@@ -38,9 +41,13 @@ public class FestivalLogic {
     public FestivalEntity getFestival(Long id){
     return persistence.find(id);
     }
+    
+    // TODO: revisar las validaciones al momento de actualizar    
     public FestivalEntity updateFestival(FestivalEntity entity){
     return persistence.update(entity);
     }
+    
+    // TODO: revisar las validaciones al momento de eliminar    
     public void deleteFestival(Long id){
         persistence.delete(id);
     }

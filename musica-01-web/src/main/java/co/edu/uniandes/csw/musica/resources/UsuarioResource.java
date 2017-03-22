@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,6 +33,8 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class UsuarioResource {
+    
+    // TODO: indentar el código de la clase
     @Inject private UsuarioLogic usuarioLogic;
     @Inject private BoletaLogic boletaLogic;
     
@@ -56,6 +59,7 @@ public List <UsuarioDTO> getUsuarios()
   */
   @GET
   @Path("{id: \\d+}")
+  // TODO: retornar una excepción / código 404 si no existe
   public UsuarioDTO getUsuario(@PathParam("id") Long id)
   {
   return new UsuarioDTO(usuarioLogic.getUsuario(id));
