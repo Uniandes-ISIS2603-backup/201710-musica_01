@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.LugarDTO;
 // TODO: eliminar los import que no se usan
-import co.edu.uniandes.csw.musica.dtos.LugarDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.ejbs.LugarLogic;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
