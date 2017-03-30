@@ -1,9 +1,4 @@
-// TODO: eliminar los comentarios por defecto
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.ejbs.MusicoLogic;
@@ -15,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -53,10 +49,11 @@ public class MusicoResource
     */
     @GET
     @Path("{id: \\d+}")
-    // TODO: retornar una excepción / código 404 si no existe
     public MusicoDTO getMusico(@PathParam("id") Long id) 
     {
-        return new MusicoDTO(musicoLogic.getMusico(id));
+        MusicoDTO m = new MusicoDTO(musicoLogic.getMusico(id));
+        if(m == null) throw new NotFoundException();
+        return m;
     }
     
     /*

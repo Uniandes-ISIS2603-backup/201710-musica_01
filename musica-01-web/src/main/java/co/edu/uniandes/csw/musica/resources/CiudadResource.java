@@ -1,13 +1,7 @@
-// TODO: eliminar los comentarios por defecto
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.CiudadDTO;
-import co.edu.uniandes.csw.musica.dtos.CiudadDetailDTO;
 import co.edu.uniandes.csw.musica.dtos.LugarDTO;
 import co.edu.uniandes.csw.musica.ejbs.CiudadLogic;
 import co.edu.uniandes.csw.musica.ejbs.LugarLogic;
@@ -20,6 +14,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -27,10 +22,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author js.barbosa11
- */
 @Path("/ciudades")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -55,9 +46,11 @@ public class CiudadResource {
     
     @GET
     @Path("{id: \\d+}")
-    // TODO: retornar una excepción / error 404 si no existe
-    public CiudadDTO getCiudad(@PathParam("id") Long id) {
-        return new CiudadDTO(ciudadLogic.getCiudad(id));
+    public CiudadDTO getCiudad(@PathParam("id") Long id) 
+    {
+        CiudadDTO c = new CiudadDTO(ciudadLogic.getCiudad(id));
+        if(c == null) throw new NotFoundException();
+        return c;
     }
     
     @GET

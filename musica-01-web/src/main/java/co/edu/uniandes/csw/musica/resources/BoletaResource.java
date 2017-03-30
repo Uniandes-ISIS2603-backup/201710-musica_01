@@ -1,9 +1,4 @@
-// TODO: eliminar los comentarios por defecto
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.BoletaDTO;
@@ -16,17 +11,12 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-// TODO: eliminar los import que no se usan
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-/**
- *
- * @author la.herrera11
- */
 
 @Path("/boletas")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -60,12 +50,14 @@ public class BoletaResource {
     /**
     * Obtiene la boleta con el Id dado por ruta
     */
-    // TODO: retorar una excepción/error 404 si no existe
     @GET
     @Path("{id: \\d+}")
     public BoletaDTO getBoleta(@PathParam("id") Long id) 
     {
-        return new BoletaDTO(boletaLogic.getBoleta(id));
+        BoletaDTO ticket = new BoletaDTO(boletaLogic.getBoleta(id));
+        if(ticket == null) throw new NotFoundException();
+        return ticket;    
+        
     }
     
     /*
