@@ -17,7 +17,6 @@ public class FestivalLogic
     @Inject
     private FestivalPersistence persistence;
     
-    // TODO: indentar el código de los métodos
     public FestivalEntity createFestival(FestivalEntity festival)throws BusinessLogicException{
         if(festival.getNombre()==null)
         {

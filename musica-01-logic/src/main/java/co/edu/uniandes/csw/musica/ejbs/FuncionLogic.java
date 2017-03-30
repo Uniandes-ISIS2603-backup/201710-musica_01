@@ -7,10 +7,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-/**
- *
- * @author la.herrera11
- */
 
 @Stateless
 public class FuncionLogic {
@@ -20,9 +16,6 @@ public class FuncionLogic {
     
     public FuncionEntity createFuncion(FuncionEntity funcion)throws BusinessLogicException
     {
-        // TODO: revisar esta validación. el id es autogenerado en la entidad
-        if (funcion.getId() == null)
-            throw new BusinessLogicException ("La función debe tener id");
         return persistence.create(funcion);
     }
     

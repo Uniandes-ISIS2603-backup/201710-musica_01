@@ -1,18 +1,10 @@
-// TODO: eliminar los comentarios por defecto
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.edu.uniandes.csw.musica.dtos;
 
-// TODO: eliminar los import que no son necesarios
-import co.edu.uniandes.csw.musica.entities.CiudadEntity;
+
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.LugarEntity;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

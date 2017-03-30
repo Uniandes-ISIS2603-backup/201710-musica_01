@@ -8,10 +8,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-/**
- *
- * @author la.herrera11
- */
 @Stateless
 public class BoletaLogic {
     @Inject
@@ -20,9 +16,6 @@ public class BoletaLogic {
     // TODO: implementar validaciones de negocio. p.ej. revisar las relaciones
     public BoletaEntity createBoleta(BoletaEntity boleta)throws BusinessLogicException
     {
-        // TODO: revisar esta validación. Al parecer el ID es autogenerado en la entidad
-        if (boleta.getId() == null)
-            throw new BusinessLogicException ("La boleta debe tener id");
         return persistence.create(boleta);
     }
     
