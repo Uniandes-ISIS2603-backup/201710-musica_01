@@ -18,7 +18,7 @@ public class FestivalLogic
     private FestivalPersistence persistence;
     
     public FestivalEntity createFestival(FestivalEntity festival)throws BusinessLogicException{
-        if(festival.getNombre()==null)
+        if(festival.getNombre().equals(""))
         {
             throw new BusinessLogicException("El festival debe tener un nombre");
         }

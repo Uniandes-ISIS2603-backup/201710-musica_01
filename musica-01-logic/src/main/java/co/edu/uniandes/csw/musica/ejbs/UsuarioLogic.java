@@ -20,7 +20,7 @@ public class UsuarioLogic {
     
     public UsuarioEntity createUsuario(UsuarioEntity user)throws BusinessLogicException
     {
-        if (user.getNombre() == null)
+        if (user.getNombre().equals(""))
             throw new BusinessLogicException ("El usuario debe tener nombre.");
         return persistence.create(user);
     }
