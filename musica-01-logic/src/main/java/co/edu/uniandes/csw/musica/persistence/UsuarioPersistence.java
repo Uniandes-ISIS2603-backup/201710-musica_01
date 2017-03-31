@@ -19,7 +19,7 @@ public class UsuarioPersistence {
     }
     
     public List<UsuarioEntity> findAll()    {
-        TypedQuery<UsuarioEntity> q = em.createQuery("select u from AdministradorEntity u", UsuarioEntity.class);
+        TypedQuery<UsuarioEntity> q = em.createQuery("select u from UsuarioEntity u", UsuarioEntity.class);
         return q.getResultList();
     }
     
