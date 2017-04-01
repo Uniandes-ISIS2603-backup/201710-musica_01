@@ -5,6 +5,7 @@ import co.edu.uniandes.csw.musica.dtos.BoletaDTO;
 import co.edu.uniandes.csw.musica.ejbs.BoletaLogic;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.entities.BoletaEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -65,7 +66,7 @@ public class BoletaResource {
     */
     @PUT
     @Path("{id: \\d+}")
-    public BoletaDTO updateGenero(@PathParam("id") Long id, BoletaDTO dto)
+    public BoletaDTO updateGenero(@PathParam("id") Long id, BoletaDTO dto) throws BusinessLogicException
     {
         BoletaEntity entity = dto.toEntity();
         entity.setId(id);
@@ -78,7 +79,7 @@ public class BoletaResource {
     */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteGenero(@PathParam("id") Long id) 
+    public void deleteGenero(@PathParam("id") Long id) throws BusinessLogicException 
     {
         boletaLogic.deleteBoleta(id);
     }

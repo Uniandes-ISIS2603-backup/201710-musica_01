@@ -89,7 +89,7 @@ public class CiudadResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public CiudadDTO updateCiudad(@PathParam("id") Long id, CiudadDTO dto) {
+    public CiudadDTO updateCiudad(@PathParam("id") Long id, CiudadDTO dto) throws BusinessLogicException {
         CiudadEntity entity = dto.toEntity();
         entity.setId(id);
         return new CiudadDTO(ciudadLogic.updateCiudad(entity));
@@ -98,7 +98,7 @@ public class CiudadResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteCiudad(@PathParam("id") Long id) {
+    public void deleteCiudad(@PathParam("id") Long id) throws BusinessLogicException {
         ciudadLogic.deleteCiudad(id);
     }
    

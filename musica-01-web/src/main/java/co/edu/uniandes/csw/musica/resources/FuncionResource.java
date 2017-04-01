@@ -88,7 +88,7 @@ public class FuncionResource {
      */
     @PUT
     @Path("{id:\\d+}")
-    public FuncionDTO updateFuncion(@PathParam("id") Long id, FuncionDTO dto) {
+    public FuncionDTO updateFuncion(@PathParam("id") Long id, FuncionDTO dto) throws BusinessLogicException {
         FuncionEntity entity = dto.toEntity();
         entity.setId(id);
         return new FuncionDTO(funcionLogic.updateFuncion(entity));
@@ -99,7 +99,7 @@ public class FuncionResource {
      */
     @DELETE
     @Path("{id:\\d+}")
-    public void deleteFuncion(@PathParam("id") Long id) {
+    public void deleteFuncion(@PathParam("id") Long id) throws BusinessLogicException {
         funcionLogic.deleteFuncion(id);
     }
 }

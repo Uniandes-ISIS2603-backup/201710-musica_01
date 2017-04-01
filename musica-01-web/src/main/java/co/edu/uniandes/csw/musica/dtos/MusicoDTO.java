@@ -23,7 +23,7 @@ public class MusicoDTO implements Serializable
             this.id = musico.getId();
             this.nombre = musico.getNombre();
            
-            this.generoMusico = musico.getGenero();
+            this.generoMusico = musico.getGeneroMusico();
         }
     }
     
@@ -33,7 +33,7 @@ public class MusicoDTO implements Serializable
         musico.setId(id);
         musico.setNombre(nombre);
 
-        musico.setGenero(generoMusico);
+        musico.setGeneroMusico(generoMusico);
         return musico;
     }
     

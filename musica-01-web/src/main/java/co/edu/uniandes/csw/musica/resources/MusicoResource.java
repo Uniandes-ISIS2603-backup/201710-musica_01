@@ -4,6 +4,7 @@ package co.edu.uniandes.csw.musica.resources;
 import co.edu.uniandes.csw.musica.ejbs.MusicoLogic;
 import co.edu.uniandes.csw.musica.dtos.MusicoDTO;
 import co.edu.uniandes.csw.musica.entities.MusicoEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -61,7 +62,7 @@ public class MusicoResource
     */
     @PUT
     @Path("{id: \\d+}")
-    public MusicoDTO updateMusico(@PathParam("id") Long id, MusicoDTO dto)
+    public MusicoDTO updateMusico(@PathParam("id") Long id, MusicoDTO dto) throws BusinessLogicException
     {
         MusicoEntity entity = dto.toEntity();
         entity.setId(id);
@@ -74,7 +75,7 @@ public class MusicoResource
     */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteMusico(@PathParam("id") Long id) 
+    public void deleteMusico(@PathParam("id") Long id) throws BusinessLogicException 
     {
         musicoLogic.deleteMusico(id);
     }

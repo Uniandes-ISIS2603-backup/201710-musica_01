@@ -13,9 +13,9 @@ public class BoletaLogic {
     @Inject
     private BoletaPersistence persistence;
     
-    // TODO: implementar validaciones de negocio. p.ej. revisar las relaciones
     public BoletaEntity createBoleta(BoletaEntity boleta)throws BusinessLogicException
     {
+        validarBoleta(boleta);
         return persistence.create(boleta);
     }
     
@@ -29,17 +29,31 @@ public class BoletaLogic {
         return persistence.find(id);
     }
     
-    // TODO: revisar validaciones al momento de actualizar
-    public BoletaEntity updateBoleta(BoletaEntity entity) 
+    public BoletaEntity updateBoleta(BoletaEntity entity) throws BusinessLogicException 
     {
+        validarBoleta(entity);
         return persistence.update(entity);
     }
     
-    // TODO: revisar validaciones al momento de eliminar
-    public void deleteBoleta (Long id)
+    public void deleteBoleta (Long id) throws BusinessLogicException
     {
+        validarId(id);
         persistence.delete(id);
     }
-
     
+    public void validarId( Long id) throws BusinessLogicException
+    {
+        BoletaEntity entity = persistence.find(id);
+        if (entity == null)
+         throw new BusinessLogicException ("El id debe ser válido.");
+    }
+    
+    public void validarBoleta (BoletaEntity boleta) throws BusinessLogicException
+    {
+        if(boleta.getPrecio() <= 0)
+            throw new BusinessLogicException("El precio debe ser mayor a 0");
+        
+        if(boleta.getFuncion() == null)
+            throw new BusinessLogicException("La boleta debe estar asociada a una función");
+    }
 }

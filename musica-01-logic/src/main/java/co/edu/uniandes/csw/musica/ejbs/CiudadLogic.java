@@ -28,19 +28,30 @@ public class CiudadLogic {
    
     public CiudadEntity createCiudad(CiudadEntity entity) throws BusinessLogicException
     {
-        if (entity.getNombre() == null)
-        throw new BusinessLogicException ("La ciudad debe tener nombre.");    
+        validarCiudad(entity);
         return persistence.create(entity);
     }
     
-    // TODO: revisar validaciones al momento de actualizar
-    public CiudadEntity updateCiudad(CiudadEntity entity){
+    public CiudadEntity updateCiudad(CiudadEntity entity) throws BusinessLogicException{
+        validarCiudad(entity);
         return persistence.update(entity);
     }
     
-    // TODO: revisar validaciones al momento de borrar
-    public void deleteCiudad(Long id) {
+    public void deleteCiudad(Long id) throws BusinessLogicException {
+        validarId(id);
         persistence.delete(id);
     }
     
+    public void validarCiudad(CiudadEntity ciudad) throws BusinessLogicException
+    {
+        if(ciudad.getNombre() == null)
+            throw new BusinessLogicException ("La ciudad debe tener nombre."); 
+    }
+            
+    public void validarId( Long id) throws BusinessLogicException
+    {
+        CiudadEntity entity = persistence.find(id);
+        if (entity == null)
+         throw new BusinessLogicException ("El id debe ser válido.");
+    }         
 }

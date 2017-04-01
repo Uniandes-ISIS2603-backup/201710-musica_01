@@ -7,11 +7,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-/**
- *
- * @author Pablo Alavarado
- * 
- */
 @Stateless
 public class UsuarioLogic {
 
@@ -20,8 +15,7 @@ public class UsuarioLogic {
     
     public UsuarioEntity createUsuario(UsuarioEntity user)throws BusinessLogicException
     {
-        if (user.getNombre().equals(""))
-            throw new BusinessLogicException ("El usuario debe tener nombre.");
+        validarUsuario(user);
         return persistence.create(user);
     }
     
@@ -35,16 +29,29 @@ public class UsuarioLogic {
         return persistence.find(id);
     }
     
-    // TODO: revisar validaciones al momento de actualizar
-    public UsuarioEntity updateUsuario(UsuarioEntity entity) 
+    public UsuarioEntity updateUsuario(UsuarioEntity entity) throws BusinessLogicException 
     {
+        validarUsuario(entity);
         return persistence.update(entity);
     }
     
-    // TODO: revisar validaciones al momento de eliminar
-    public void deleteUsuario (Long id)
+    public void deleteUsuario (Long id) throws BusinessLogicException
     {
+        validarId(id);
         persistence.delete(id);
+    }
+    
+    public void validarId( Long id) throws BusinessLogicException
+    {
+        UsuarioEntity entity = persistence.find(id);
+        if (entity == null)
+         throw new BusinessLogicException ("El id debe ser válido.");
+    }
+    
+    public void validarUsuario (UsuarioEntity usuario) throws BusinessLogicException
+    {
+        if(usuario.getNombre() == null || usuario.getNombre().equals(""))
+            throw new BusinessLogicException("El usuario debe tener un nombre");
     }
     
 }

@@ -70,10 +70,11 @@ public class FestivalResource {
      */
     @GET
     @Path("{id:\\d+}")
-    public FestivalDTO getFestival(@PathParam("id") Long id) 
-    {
+    public FestivalDTO getFestival(@PathParam("id") Long id) {
         FestivalDTO f = new FestivalDTO(festivalLogic.getFestival(id));
-        if( f == null) throw new NotFoundException();
+        if (f == null) {
+            throw new NotFoundException();
+        }
         return f;
     }
 
@@ -215,7 +216,7 @@ public class FestivalResource {
      */
     @PUT
     @Path("{id:\\d+}")
-    public FestivalDTO updateFestival(@PathParam("id") Long id, FestivalDTO dto) {
+    public FestivalDTO updateFestival(@PathParam("id") Long id, FestivalDTO dto) throws BusinessLogicException {
         FestivalEntity entity = dto.toEntity();
         entity.setId(id);
         return new FestivalDTO(festivalLogic.updateFestival(entity));
@@ -227,13 +228,13 @@ public class FestivalResource {
      */
     @DELETE
     @Path("{id:\\d+}")
-    public void deleteFestival(@PathParam("id") Long id) {
+    public void deleteFestival(@PathParam("id") Long id) throws BusinessLogicException {
         festivalLogic.deleteFestival(id);
     }
 
     @DELETE
     @Path("{id: \\d+}/ciudades/{idCiudad}")
-    public void deleteCiudadFestival(@PathParam("id") Long id, @PathParam("idCiudad") Long idCiudad) {
+    public void deleteCiudadFestival(@PathParam("id") Long id, @PathParam("idCiudad") Long idCiudad) throws BusinessLogicException {
         FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
         for (CiudadEntity ciudad : festival.getCiudades()) {
             if (ciudad.getId() == idCiudad) {
@@ -247,7 +248,7 @@ public class FestivalResource {
     //DELETE /festivales/{idFestival}/ciudades/{idCiudad}
     @DELETE
     @Path("{id: \\d+}/generos/{idGenero}")
-    public void deleteGeneroFestival(@PathParam("id") Long id, @PathParam("idGenero") Long idGenero) {
+    public void deleteGeneroFestival(@PathParam("id") Long id, @PathParam("idGenero") Long idGenero) throws BusinessLogicException {
         FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
         for (GeneroEntity genero : festival.getGeneros()) {
             if (Objects.equals(genero.getId(), idGenero)) {
@@ -261,7 +262,7 @@ public class FestivalResource {
     //DELETE /festivales/{idFestival}/generos/{idGenero}
     @DELETE
     @Path("{id: \\d+}/usuarios/{idUsuario}")
-    public void deleteUsuarioFestival(@PathParam("id") Long id, @PathParam("idUsuario") Long idUsuario) {
+    public void deleteUsuarioFestival(@PathParam("id") Long id, @PathParam("idUsuario") Long idUsuario) throws BusinessLogicException {
         FestivalEntity festival = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
         for (UsuarioEntity usuario : festival.getAdmins()) {
             if (usuario.getId() == idUsuario) {

@@ -16,8 +16,7 @@ public class MusicoLogic
     
     public MusicoEntity createMusico(MusicoEntity musico)throws BusinessLogicException
     {
-        if (musico.getNombre() == null)
-            throw new BusinessLogicException ("El músico debe tener nombre.");
+        validarMusico(musico);
         return persistence.create(musico);
     }
     
@@ -31,16 +30,33 @@ public class MusicoLogic
         return persistence.find(id);
     }
     
-    // TODO: revisar validaciones al momento de actualizar
-    public MusicoEntity updateMusico(MusicoEntity entity) 
+    public MusicoEntity updateMusico(MusicoEntity entity) throws BusinessLogicException 
     {
+        validarMusico(entity);
         return persistence.update(entity);
     }
-    
-    // TODO: revisar validaciones al momebto de eliminar
-    public void deleteMusico (Long id)
+
+    public void deleteMusico (Long id) throws BusinessLogicException
     {
+        validarId(id);
         persistence.delete(id);
+    }
+    
+    public void validarMusico (MusicoEntity musico) throws BusinessLogicException
+    {
+         if (musico.getNombre() == null)
+            throw new BusinessLogicException ("El lugar debe tener nombre.");
+         
+         if(musico.getGeneroMusico() == null)
+            throw new BusinessLogicException ("EL músico debe tener un género asociado.");
+         
+    }
+    
+    public void validarId( Long id) throws BusinessLogicException
+    {
+        MusicoEntity entity = persistence.find(id);
+        if (entity == null)
+         throw new BusinessLogicException ("El id debe ser válido.");
     }
     
 }

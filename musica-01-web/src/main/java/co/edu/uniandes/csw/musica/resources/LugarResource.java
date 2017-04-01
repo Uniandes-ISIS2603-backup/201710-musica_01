@@ -21,10 +21,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author js.barbosa11
- */
 @Path("/lugares")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -76,7 +72,7 @@ public class LugarResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO dto) {
+    public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO dto) throws BusinessLogicException {
         LugarEntity entity = dto.toEntity();
         entity.setId(id);
         return new LugarDTO(lugarLogic.updateLugar(entity));
@@ -84,7 +80,7 @@ public class LugarResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteLugar(@PathParam("id") Long id) {
+    public void deleteLugar(@PathParam("id") Long id) throws BusinessLogicException {
         lugarLogic.deleteLugar(id);
     }
     

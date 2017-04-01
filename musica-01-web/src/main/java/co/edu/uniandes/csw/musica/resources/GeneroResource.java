@@ -94,7 +94,7 @@ public class GeneroResource
     */
     @PUT
     @Path("{id: \\d+}")
-    public GeneroDTO updateGenero(@PathParam("id") Long id, GeneroDTO dto)
+    public GeneroDTO updateGenero(@PathParam("id") Long id, GeneroDTO dto) throws BusinessLogicException
     {
         GeneroEntity entity = dto.toEntity();
         entity.setId(id);
@@ -107,7 +107,7 @@ public class GeneroResource
     */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteGenero(@PathParam("id") Long id) 
+    public void deleteGenero(@PathParam("id") Long id) throws BusinessLogicException 
     {
         generoLogic.deleteGenero(id);
     }

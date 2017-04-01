@@ -72,14 +72,6 @@ public class MusicoEntity implements Serializable{
         this.requerimientoCapacidad = requerimientoCapacidad;
     }
 
-    public GeneroEntity getGenero() {
-        return generoMusico;
-    }
-
-    public void setGenero(GeneroEntity genero) {
-        this.generoMusico = genero;
-    }
-
     public GeneroEntity getGeneroMusico() {
         return generoMusico;
     }
