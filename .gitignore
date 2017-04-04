@@ -2,3 +2,5 @@
 /musica-web/target/
 /musica-01-logic/target/
 /musica-01-web/target/
+/musica-01-web/src/main/webapp/bower_components/
+/musica-01-web/src/main/webapp/data/

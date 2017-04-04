@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Trayectoria</th>  
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="genero in generosRecords">
+                    <td id="{{$index}}-name">  {{genero.name}}</td>
+                    <td id="{{$index}}-description">{{genero.trayectoria}}</td>                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

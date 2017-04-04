@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Trayectoria</th>  
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="musico in musicosRecords">
+                    <td id="{{$index}}-name">  {{musico.nombre}}</td>
+                    <td id="{{$index}}-description">{{musico.trayectoria}}</td>                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
