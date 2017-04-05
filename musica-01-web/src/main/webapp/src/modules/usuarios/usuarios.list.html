@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="usuario in usuariosRecords">
+                    <td id="{{$index}}-name">{{usuario.nombre}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
