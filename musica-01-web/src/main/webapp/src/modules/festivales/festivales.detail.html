@@ -1,0 +1,30 @@
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div classs="col-md-3">
+            <div class="thumb">
+                <dl>
+                    <dt>{{currentFestival.name}}</dt>
+                    <ul ng-repeat="funcion in currentFestival.funciones">
+                    <a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.name}}</a>
+                    </ul> 
+                    <dt>{{currentFestival.name}}</dt>
+                    <ul ng-repeat="ciudad in currentFestival.ciudades">
+                    <a ui-sref="ciudadDetail({ciudadId: ciuadad.id})">{{ciudad.name}}</a>
+                    </ul>
+                    <dt>{{currentFestival.name}}</dt>
+                    <ul ng-repeat="genero in currentFestival.generos">
+                    <a ui-sref="generoDetail({generoId: genero.id})">{{genero.name}}</a>
+                    </ul>
+                    <hr>
+                    <dt>FechaInicio Date</dt>
+                    <dd>{{currentFestival.fechaInicio}}</dd>
+                    <hr>
+                    <dt>FechaFin Date</dt>
+                    <dd>{{currentFestival.fechaFin}}</dd>
+                </div>
+            
+            </div>
+        </div>
+    <div ui-view="childrenView"></div>
+

@@ -1,0 +1,25 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2" ng-repeat="festival in festivalesRecords">
+            <div class="thumbnail">
+                <a ui-sref="festivalDetail({festivalId: festival.id})">                    
+                    <img class="img-responsive" ng-src='{{book.image}}' alt="{{book.name}}" />                  
+                </a>
+                <div class="caption text-center">
+                    <p>{{festival.name}}</p>
+                    <p ng-repeat="funcion in festival.funciones">
+                        <a ui-sref="funcionDetail({funcionId: funcion.id})" class="thumb">{{funcion.name}}</a>
+                    </p>
+                    <p ng-repeat="ciudad in festival.ciudades">
+                        <a ui-sref="ciudadDetail({ciudadId: ciudad.id})" class="thumb">{{ciudad.name}}</a>
+                    </p>
+                    <p ng-repeat="lugar in festival.lugares">
+                        <a ui-sref="lugarDetail({lugarId: lugar.id})" class="thumb">{{lugar.name}}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
