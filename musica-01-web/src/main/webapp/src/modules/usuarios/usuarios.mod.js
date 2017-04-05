@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("usuarioModule", ['ui.router']);
-    mod.constant("ciudadesContext", "api/ciudades");
+    mod.constant("usuariosContext", "api/usuarios");
     mod.config(['$stateProvider'
                 , '$urlRouterProvider'
                 , function ($stateProvider, $urlRouterProvider) {
@@ -11,8 +11,11 @@
                         url: '/usuarios'
                         , abstract: true
                         , resolve: {
-                            ciudades: ['$http', function ($http) {
-                                    return $http.get('data/books.json');
+                            ciudades: ['$http'
+                                    , 'usuariosContext'
+                                    , '$stateParams'
+                                    , function ($http, usuariosContext) {
+                                        return $http.get('usuariosContext');
                             }]
                         }
                         , views: {
