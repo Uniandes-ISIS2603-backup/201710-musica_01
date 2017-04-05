@@ -3,15 +3,12 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Nombre</th>    
-                    <th>Trayectoria</th>  
-
+                    <th>Nombre</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="genero in generosRecords">
-                    <td id="{{$index}}-name">  {{genero.name}}</td>
-                    <td id="{{$index}}-description">{{genero.trayectoria}}</td>                   
+                    <td id="{{$index}}-name">  {{genero.name}}</td>                  
                 </tr>
             </tbody>
         </table>

@@ -9,8 +9,8 @@
                 url: '/ciudades',
                 abstract: true,
                 resolve: {
-                    ciudades: ['$http', function ($http) {
-                            return $http.get('data/books.json');
+                    ciudades: ['$http', 'ciudadesContext', function ($http, ciudadesContext) {
+                            return $http.get(ciudadesContext);
                         }]
                 },
                 views: {

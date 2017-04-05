@@ -9,14 +9,14 @@
                 url: '/festivales',
                 abstract: true,
                 resolve: {
-                    books: ['$http', function ($http) {
-                            return $http.get('data/festivales.json');
+                    festivales: ['$http', 'festivalesContext', function ($http, festivalesContext) {
+                            return $http.get(festivalesContext);
                         }]
                 },
                 views: {
-                    'mainView': {
+                     'mainView': {
                         templateUrl: basePath + 'festivales.html',
-                        controller: ['$scope', 'festivales', function ($scope, books) {
+                        controller: ['$scope', 'festivales', function ($scope, festivales) {
                                 $scope.festivalesRecords = festivales.data;
                             }]
                     }

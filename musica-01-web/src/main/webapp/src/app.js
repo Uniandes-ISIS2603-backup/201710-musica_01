@@ -6,6 +6,8 @@
         'generoModule',
         'ciudadModule',
         'lugarModule',
+        'usuarioModule',
+        'festivalModule',
         'musicoModule'
     ]);
     // Resuelve problemas de las promesas

@@ -9,8 +9,8 @@
                 url: '/generos',
                 abstract: true,
                 resolve: {
-                    generos: ['$http', function ($http) {
-                            return $http.get('data/books.json');
+                    generos: ['$http', 'generosContext', function ($http, generosContext) {
+                            return $http.get(generosContext);
                         }]
                 },
                 views: {

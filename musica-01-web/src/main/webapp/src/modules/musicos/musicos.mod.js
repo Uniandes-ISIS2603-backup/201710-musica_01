@@ -9,8 +9,8 @@
                 url: '/musicos',
                 abstract: true,
                 resolve: {
-                    musicos: ['$http', function ($http) {
-                            return $http.get('data/books.json');
+                    musicos: ['$http', 'musicosContext', function ($http, musicosContext) {
+                            return $http.get(musicosContext);
                         }]
                 },
                 views: {

@@ -9,8 +9,8 @@
                 url: '/lugares',
                 abstract: true,
                 resolve: {
-                    lugares: ['$http', function ($http) {
-                            return $http.get('data/books.json');
+                    lugares: ['$http', 'lugaresContext', function ($http, lugaresContext) {
+                            return $http.get(lugaresContext);
                         }]
                 },
                 views: {
