@@ -14,20 +14,6 @@
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-        <!-- Músicos -->
-        <script src="src/modules/musicos/musicos.mod.js" type="text/javascript"></script>
-        <!-- Géneros -->
-        <script src="src/modules/generos/generos.mod.js" type="text/javascript"></script>
-        <!-- Ciudades -->
-        <script src="src/modules/ciudades/ciudades.mod.js" type="text/javascript"></script>
-        <!-- Lugares-->
-        <script src="src/modules/lugares/lugares.mod.js" type="text/javascript"></script>
-        <!-- Usuarios-->
-        <script src="src/modules/usuarios/usuarios.mod.js" type="text/javascript"></script>
-        <!-- Festivales-->
-        <script src="src/modules/festivales/festivales.mod.js" type="text/javascript"></script>
-        <!-- Boletas-->
-        <script src="src/modules/boletas/boletas.mod.js" type="text/javascript"></script>
 
         <script src="src/app.js" type="text/javascript"></script>
 
@@ -35,9 +21,9 @@
 
     <body style="background-color:#ffffff">
         <div class = "navbar navbar-inverse navbar-static-top">
-            <div class = "container">
+            <div class = "container-fluid">
                 <div class ="navbar-header">
-                    <a href="https://" class = "navbar-brand" style="color:#ffb100">Tumboleta</a>
+                    <a href="index.html" class = "navbar-brand" style="color:#ffb100">TUMBOLETA</a>
                     <button class="navbar-toggle" data-toggle="collapse" data-target =".navHeaderCollapse">
                         <span class = "icon-bar"></span>
                         <span class = "icon-bar"></span>
@@ -48,27 +34,23 @@
 
                 <div class = "collapse navbar-collapse navHeaderCollapse">
                     <ul class = "nav navbar-nav navbar-right">
-                        <li class = "active"><a href ="https://">Home</a></li>
-                        <li><a href ="https://">Sign In</a></li>
+                        <li class = "active"><a href ="index.html">Home</a></li>
+                        <li><a href ="index.html">Sign In</a></li>
                         <li class="dropdown">
                              <a class="dropdown-toggle" data-toggle = "dropdown">Social Media<b class="caret"></b></a>
                              <ul class="dropdown-menu">
-                                 <li><a href="https://">Twitter</a></li>
-                                 <li><a href="https://">Facebook</a></li>
-                                 <li><a href="https://">Instagram</a></li>
+                                 <li><a href="https://twitter.com">Twitter</a></li>
+                                 <li><a href="https://facebook.com">Facebook</a></li>
+                                 <li><a href="https://instagram.com">Instagram</a></li>
                              </ul>
                          </li>
                     </ul>
                 </div>
             </div>
-
         </div>
 
-
-
-
-        <div class= "container">
-            <img class="featureImg" src="css/Tumboleta.png" width="100%">
+        <div class= "container-fluid">
+            <img class="featureImg" src="css/Tumboleta.png" width="100%";>
             <div class="jumbotron text text-center">
                 <h1>Bienvenido a Tumboleta!</h1>
                 <p>Tu mejor opcion para festivales de musica</p>
@@ -78,34 +60,34 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <h3><a ui-sref="festivalesList">Conciertos</a></h3>
+                    <h3><a href="explore.html">Conciertos</a></h3>
                     <p class="text text-justify">Los conciertos y eventos que siempre soñaste ver, ahora en tu ciudad. ¡Ingresa hoy y reserva tus boletas antes que se acaben!</p>
-                    <a ui-sref="festivalesList" class="btn btn-info">Ir ahora</a>
+                    <a href="explore.html" class="btn btn-info">Ir ahora</a>
                 </div>
 
                 <div class="col-md-4">
-                    <h3><a ui-sref="musicosList">Los mejores músicos, ¡en vivo!</a></h3>
+                    <h3><a href="explore.html">Los mejores músicos, ¡en vivo!</a></h3>
                     <p class="text text-justify">El artista de tu infancia, de ahora o de siempre; a tan solo un click de distancia. ¿Te lo vas a perder?</p>
-                    <a ui-sref="musicosList" class="btn btn-info">Ir ahora</a>
+                    <a href="explore.html" class="btn btn-info">Ir ahora</a>
                 </div>
 
                 <div class="col-md-4">
-                    <h3><a ui-sref="ciudadesList">Ciudades</a></h3>
+                    <h3><a href="explore.html">Ciudades</a></h3>
                     <p class="text text-justify">Consulta las ciudades en las que tenemos eventos disponibles. Seguro hay una cerca a ti.</p>
-                    <a ui-sref="ciudadesList" class="btn btn-info">Ir ahora</a>
+                    <a href="explore.html" class="btn btn-info">Ir ahora</a>
                 </div>
 
 
             </div>
         </div>
 
-        <div class = "navbar navbar-default navbar-fixed-bottom">
+        <div class = "navbar navbar-default navbar-bottom">
           <div class = "container">
             <p class = "navbar-text pull-left">TumBoleta - Los mejores eventos. 2017</p>
-            <a href="https://" class="navbar-btn btn-danger btn pull-right">Homepage</a>
+            <a href="index.html" class="navbar-btn btn-danger btn pull-right">Homepage</a>
           </div>
         </div>
     </body>
