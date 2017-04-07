@@ -8,7 +8,9 @@
         'lugarModule',
         'usuarioModule',
         'festivalModule',
-        'musicoModule'
+        'musicoModule',
+        'boletaModule',
+        'funcionModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
