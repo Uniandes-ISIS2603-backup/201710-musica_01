@@ -53,14 +53,16 @@ public class FestivalResource {
      * @return Coleccion de objetos FestivalDTO
      */
     @GET
-    public List<FestivalDTO> getFestivales() {
-        List<FestivalDTO> festivalesDTOs = new ArrayList<>();
-        List<FestivalEntity> entity = festivalLogic.getFestivales();
-        for (FestivalEntity festival : entity) {
+    public List<FestivalDTO> getFestivales()
+    {
+        List <FestivalDTO> festivalDTOs = new ArrayList<>();
+        List <FestivalEntity> festivales = festivalLogic.getFestivales();
+        for(FestivalEntity festival : festivales)
+        {
             FestivalDTO dto = new FestivalDTO(festival);
-            festivalesDTOs.add(dto);
+            festivalDTOs.add(dto);
         }
-        return festivalesDTOs;
+        return festivalDTOs;
     }
 
     /**

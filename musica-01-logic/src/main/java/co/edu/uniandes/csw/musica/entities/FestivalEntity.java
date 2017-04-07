@@ -15,17 +15,17 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class FestivalEntity implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
- 
+
     private String nombre;
- 
-    @Temporal(TemporalType.DATE) 
+
+    @Temporal(TemporalType.DATE)
     private Date fechaInicio;
 
-    @Temporal(TemporalType.DATE) 
+    @Temporal(TemporalType.DATE)
     private Date fechafin;
 
     @ManyToMany(mappedBy = "festivalesUsuario", cascade = CascadeType.ALL)

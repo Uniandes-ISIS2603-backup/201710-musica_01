@@ -4,8 +4,8 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/funciones/';
             $urlRouterProvider.otherwise("/funcionesList");
-
-            $stateProvider.state('funciones', {
+            self = this;
+             $stateProvider.state('funciones', {
                 url: '/funciones',
                 abstract: true,
                 resolve: {
@@ -14,7 +14,7 @@
                         }]
                 },
                 views: {
-                     'mainView': {
+                    'mainView': {
                         templateUrl: basePath + 'funciones.html',
                         controller: ['$scope', 'funciones', function ($scope, funciones) {
                                 $scope.funcionesRecords = funciones.data;
@@ -29,23 +29,6 @@
                         templateUrl: basePath + 'funciones.list.html'
                     }
                 }
-            }).state('funcionDetail', {
-                url: '/{funcionId:int}/detail',
-                parent: 'funciones',
-                param: {
-                    funcionId: null
-                },
-                views: {
-                   
-                    'detailView': {
-                        templateUrl: basePath + 'funciones.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentfuncion = $scope.funcionesRecords[$params.funcionId-1];
-                            }]
-                    }
-
-                }
-
             });
         }]);
 })(window.angular);

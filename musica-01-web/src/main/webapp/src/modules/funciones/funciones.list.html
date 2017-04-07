@@ -3,12 +3,14 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Nombre</th>
+                  <th>Fecha Inicio</th>
+                  <th>Fecha Fin</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="funcion in funcionesRecords">
-                    <td id="{{$index}}-name">  {{funcion.nombre}}</td>                
+                  <td id="{{$index}}-fI">  {{funcion.fechaInicio}}</td>
+                  <td id="{{$index}}-fF">  {{funcion.fechaFin}}</td>               
                 </tr>
             </tbody>
         </table>

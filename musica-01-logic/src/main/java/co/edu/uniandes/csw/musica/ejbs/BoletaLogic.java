@@ -12,48 +12,48 @@ import javax.inject.Inject;
 public class BoletaLogic {
     @Inject
     private BoletaPersistence persistence;
-    
+
     public BoletaEntity createBoleta(BoletaEntity boleta)throws BusinessLogicException
     {
         validarBoleta(boleta);
         return persistence.create(boleta);
     }
-    
+
     public List<BoletaEntity> getBoletas ()
     {
         return persistence.findAll();
     }
-    
+
     public BoletaEntity getBoleta (Long id)
     {
         return persistence.find(id);
     }
-    
-    public BoletaEntity updateBoleta(BoletaEntity entity) throws BusinessLogicException 
+
+    public BoletaEntity updateBoleta(BoletaEntity entity) throws BusinessLogicException
     {
         validarBoleta(entity);
         return persistence.update(entity);
     }
-    
+
     public void deleteBoleta (Long id) throws BusinessLogicException
     {
         validarId(id);
         persistence.delete(id);
     }
-    
+
     public void validarId( Long id) throws BusinessLogicException
     {
         BoletaEntity entity = persistence.find(id);
         if (entity == null)
          throw new BusinessLogicException ("El id debe ser válido.");
     }
-    
+
     public void validarBoleta (BoletaEntity boleta) throws BusinessLogicException
     {
         if(boleta.getPrecio() <= 0)
             throw new BusinessLogicException("El precio debe ser mayor a 0");
-        
-        if(boleta.getFuncion() == null)
-            throw new BusinessLogicException("La boleta debe estar asociada a una función");
+
+        //if(boleta.getFuncion() == null)
+        //    throw new BusinessLogicException("La boleta debe estar asociada a una función");
     }
 }

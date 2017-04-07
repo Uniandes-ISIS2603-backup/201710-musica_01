@@ -4,13 +4,11 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Costo</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="lugar in lugaresRecords">
                     <td id="{{$index}}-name">  {{lugar.nombre}}</td>
-                    <td id="{{$index}}-costo">  {{lugar.costoEconomico}}</td>
                 </tr>
             </tbody>
         </table>
