@@ -49,7 +49,7 @@ public class FuncionDTO implements Serializable {
         this.id = id;
     }
 
-    public Date getFechaInicio(Date fechaInicio) {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
@@ -57,7 +57,7 @@ public class FuncionDTO implements Serializable {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin(Date fechaFin) {
+    public Date getFechaFin() {
         return fechaFin;
     }
 

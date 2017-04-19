@@ -21,6 +21,10 @@ public class FestivalDTO implements Serializable {
     private List<CiudadEntity> ciudades;
     private List<GeneroEntity> generos;
 
+    public FestivalDTO() {
+        
+    }
+    
     public FestivalDTO(FestivalEntity festival) {
         if (festival != null) {
             this.id = festival.getId();
@@ -30,7 +34,6 @@ public class FestivalDTO implements Serializable {
             this.ciudades = festival.getCiudades();
             this.funciones = festival.getFunciones();
             this.generos = festival.getGeneros();
-
         }
     }
 
@@ -45,10 +48,6 @@ public class FestivalDTO implements Serializable {
         festival.setGeneros((ArrayList<GeneroEntity>) generos);
 
         return festival;
-    }
-
-    public FestivalDTO() {
-
     }
 
     public Long getId() {
@@ -67,20 +66,28 @@ public class FestivalDTO implements Serializable {
         this.nombre = nombre;
     }
 
-    public void setFechaInicio(Date inicio) {
-        this.fechaInicio = (java.sql.Date) inicio;
-    }
-
-    public void setFechaFin(Date fin) {
-        this.fechaFin = (java.sql.Date) fin;
-    }
-
     public Date getFechaInicio() {
-        return this.fechaInicio;
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
     public Date getFechaFin() {
-        return this.fechaFin;
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public List<FuncionEntity> getFunciones() {
+        return funciones;
+    }
+
+    public void setFunciones(List<FuncionEntity> funciones) {
+        this.funciones = funciones;
     }
 
     public List<CiudadEntity> getCiudades() {
@@ -98,13 +105,4 @@ public class FestivalDTO implements Serializable {
     public void setGeneros(List<GeneroEntity> generos) {
         this.generos = generos;
     }
-
-    public void setFunciones(List<FuncionEntity> funciones) {
-        this.funciones = funciones;
-    }
-
-    public List<FuncionEntity> getFunciones() {
-        return funciones;
-    }
-
 }

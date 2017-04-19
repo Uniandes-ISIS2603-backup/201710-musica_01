@@ -92,8 +92,8 @@ public class FestivalResource {
     @Path("{id:\\d+}/funciones")
     public List<FuncionDTO> getFuncionesFestival(@PathParam("id") Long id) {
         FestivalEntity entity = new FestivalDTO(festivalLogic.getFestival(id)).toEntity();
-        ArrayList<FuncionEntity> funciones = entity.getFunciones();
-        ArrayList<FuncionDTO> dtos = new ArrayList<>();
+        List<FuncionEntity> funciones = entity.getFunciones();
+        List<FuncionDTO> dtos = new ArrayList<>();
         for (FuncionEntity funcion : funciones) {
             dtos.add(new FuncionDTO(funcion));
         }

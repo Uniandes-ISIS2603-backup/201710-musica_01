@@ -26,7 +26,7 @@ public class FestivalDetailDTO extends FestivalDTO {
         }
     }
     public FestivalDetailDTO (){
-    super();
+        super();
     }
     public FestivalEntity toEntity(){
         FestivalEntity entity = super.toEntity();

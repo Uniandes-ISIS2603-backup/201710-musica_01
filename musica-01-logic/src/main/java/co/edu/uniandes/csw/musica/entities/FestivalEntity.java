@@ -1,8 +1,9 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,16 +30,16 @@ public class FestivalEntity implements Serializable {
     private Date fechafin;
 
     @ManyToMany(mappedBy = "festivalesUsuario", cascade = CascadeType.ALL)
-    private ArrayList<UsuarioEntity> adminsFestival;
+    private List<UsuarioEntity> adminsFestival;
 
     @ManyToMany(mappedBy = "festivalesGenero", cascade = CascadeType.ALL)
-    private ArrayList<GeneroEntity> generos;
+    private List<GeneroEntity> generos;
 
     @ManyToMany(mappedBy = "festivalesCiudad", cascade = CascadeType.ALL)
-    private ArrayList<CiudadEntity> ciudades;
+    private List<CiudadEntity> ciudades;
 
     @OneToMany(mappedBy = "festival", cascade = CascadeType.ALL, orphanRemoval = false)
-    private ArrayList<FuncionEntity> funciones;
+    private List<FuncionEntity> funciones;
 
     public FestivalEntity(){
 
@@ -76,35 +77,35 @@ public class FestivalEntity implements Serializable {
         this.fechafin = fechafin;
     }
 
-    public ArrayList<UsuarioEntity> getAdmins() {
+    public List<UsuarioEntity> getAdmins() {
         return adminsFestival;
     }
 
-    public void setAdmins(ArrayList<UsuarioEntity> admins) {
+    public void setAdmins(List<UsuarioEntity> admins) {
         this.adminsFestival = admins;
     }
 
-    public ArrayList<GeneroEntity> getGeneros() {
+    public List<GeneroEntity> getGeneros() {
         return generos;
     }
 
-    public void setGeneros(ArrayList<GeneroEntity> generos) {
+    public void setGeneros(List<GeneroEntity> generos) {
         this.generos = generos;
     }
 
-    public ArrayList<CiudadEntity> getCiudades() {
+    public List<CiudadEntity> getCiudades() {
         return ciudades;
     }
 
-    public void setCiudades(ArrayList<CiudadEntity> ciudades) {
+    public void setCiudades(List<CiudadEntity> ciudades) {
         this.ciudades = ciudades;
     }
 
-    public ArrayList<FuncionEntity> getFunciones() {
+    public List<FuncionEntity> getFunciones() {
         return funciones;
     }
 
-    public void setFunciones(ArrayList<FuncionEntity> funciones) {
+    public void setFunciones(List<FuncionEntity> funciones) {
         this.funciones = funciones;
     }
 }
