@@ -48,15 +48,21 @@ public class BoletaLogic {
     {
         BoletaEntity entity = persistence.find(id);
         if (entity == null)
+        {
          throw new BusinessLogicException ("El id debe ser válido.");
+        }
     }
 
     public void validarBoleta (BoletaEntity boleta) throws BusinessLogicException
     {
         if(boleta.getPrecio() <= 0)
+        {
             throw new BusinessLogicException("El precio debe ser mayor a 0");
+        }
 
-        //if(boleta.getFuncion() == null)
-        //    throw new BusinessLogicException("La boleta debe estar asociada a una función");
+        /*if(boleta.getFuncion() == null)
+        {
+            throw new BusinessLogicException("La boleta debe estar asociada a una función");
+        }*/
     }
 }

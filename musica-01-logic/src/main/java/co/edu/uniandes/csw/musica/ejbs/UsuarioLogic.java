@@ -49,13 +49,17 @@ public class UsuarioLogic {
     {
         UsuarioEntity entity = persistence.find(id);
         if (entity == null)
-         throw new BusinessLogicException ("El id debe ser válido.");
+        {
+            throw new BusinessLogicException ("El id debe ser válido.");
+        }
     }
     
     public void validarUsuario (UsuarioEntity usuario) throws BusinessLogicException
     {
         if(usuario.getNombre() == null || usuario.getNombre().equals(""))
+        {
             throw new BusinessLogicException("El usuario debe tener un nombre");
+        }
     }
     
 }

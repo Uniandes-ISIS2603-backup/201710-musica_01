@@ -48,15 +48,19 @@ public class GeneroLogic
 
     public void validarNombre (GeneroEntity genero) throws BusinessLogicException
     {
-         if (genero.getNombre() == null)
+         if (genero.getNombre() == null || genero.getNombre().equals(""))
+         {
          throw new BusinessLogicException ("El género debe tener nombre.");
+         }
     }
 
     public void validarId( Long id) throws BusinessLogicException
     {
         GeneroEntity entity = persistence.find(id);
         if (entity == null)
-         throw new BusinessLogicException ("El id debe ser válido.");
+        {
+            throw new BusinessLogicException ("El id debe ser válido.");
+        }
     }
 
 }

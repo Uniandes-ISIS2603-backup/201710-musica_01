@@ -48,11 +48,15 @@ public class MusicoLogic
 
     public void validarMusico (MusicoEntity musico) throws BusinessLogicException
     {
-         if (musico.getNombre() == null)
+         if (musico.getNombre() == null || musico.getNombre().equals(""))
+         {
             throw new BusinessLogicException ("El lugar debe tener nombre.");
+         }
 
          if(musico.getGeneroMusico() == null)
+         {
             throw new BusinessLogicException ("EL músico debe tener un género asociado.");
+         }
 
     }
 
@@ -60,7 +64,9 @@ public class MusicoLogic
     {
         MusicoEntity entity = persistence.find(id);
         if (entity == null)
-         throw new BusinessLogicException ("El id debe ser válido.");
+        {
+            throw new BusinessLogicException ("El id debe ser válido.");
+        }
     }
 
 }

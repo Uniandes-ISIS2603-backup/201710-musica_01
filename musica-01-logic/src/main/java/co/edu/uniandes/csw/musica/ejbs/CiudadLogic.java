@@ -48,14 +48,16 @@ public class CiudadLogic {
     
     public void validarCiudad(CiudadEntity ciudad) throws BusinessLogicException
     {
-        if(ciudad.getNombre() == null)
+        if(ciudad.getNombre() == null || ciudad.getNombre().equals(""))
+        {
             throw new BusinessLogicException ("La ciudad debe tener nombre."); 
+        }
     }
             
     public void validarId( Long id) throws BusinessLogicException
     {
         CiudadEntity entity = persistence.find(id);
-        if (entity == null)
-         throw new BusinessLogicException ("El id debe ser válido.");
+        if (entity == null){
+         throw new BusinessLogicException ("El id debe ser válido.");}
     }         
 }

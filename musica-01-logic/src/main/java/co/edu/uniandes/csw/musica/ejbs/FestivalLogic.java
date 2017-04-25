@@ -51,14 +51,20 @@ public class FestivalLogic
 
     public void validarFestival(FestivalEntity festival) throws BusinessLogicException
     {
-        if(festival.getNombre()==null)
+        if(festival.getNombre()==null || festival.getNombre().equals(""))
+        {
             throw new BusinessLogicException("El festival debe tener un nombre");
+        }
 
         if(festival.getFechaInicio().after(festival.getFechafin()))
+        {
             throw new BusinessLogicException("La fecha de inicio no puede ser despues de la de fin");
+        }
 
-        //if(festival.getGeneros().isEmpty())
-        //    throw new BusinessLogicException("El festival debe tener por lo menos un genero");
+        /*if(festival.getGeneros().isEmpty())
+        {
+            throw new BusinessLogicException("El festival debe tener por lo menos un genero");
+        }*/
 
     }
 
@@ -66,7 +72,9 @@ public class FestivalLogic
     {
         FestivalEntity entity = persistence.find(id);
         if (entity == null)
+        {
          throw new BusinessLogicException ("El id debe ser válido.");
+        }
     }
 
 }

@@ -50,18 +50,26 @@ public class FuncionLogic {
     {
         FuncionEntity entity = persistence.find(id);
         if (entity == null)
+        {
          throw new BusinessLogicException ("El id debe ser válido.");
+        }
     }
 
     public void validarFuncion (FuncionEntity funcion) throws BusinessLogicException
     {
         if(funcion.getFechaInicio().after(funcion.getFechafin()))
+        {
             throw new BusinessLogicException("La fecha de inicio debe ser antes de la fecha de fin.");
+        }
 
-        //if(funcion.getLugar() == null)
-        //    throw new BusinessLogicException("La función debe tener un lugar asociado.");
+        /*if(funcion.getLugar() == null)
+        {
+            throw new BusinessLogicException("La función debe tener un lugar asociado.");
+        }*/
 
         if(funcion.getFechaInicio() == null || funcion.getFechafin() == null)
+        {
             throw new BusinessLogicException("La función debe tener fechas definidas.");
+        }
     }
 }
