@@ -8,7 +8,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="usuario in usuariosRecords">
-                    <td id="{{$index}}-name">  {{usuario.nombre}}</td>                
+                    <td id="{{$index}}-name">  <a ui-sref="usuarioDetail({usuarioId: usuario.id})"> {{usuario.nombre}} </a></td>
                 </tr>
             </tbody>
         </table>

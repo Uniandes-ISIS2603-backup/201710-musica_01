@@ -1,3 +1,7 @@
+/* 
+ * Copyright (c) 2017 jc.bustamante143.
+ * Realizado por el grupo TumBoleta - Uniandes 2017.
+ */
 (function (ng) {
     var mod = ng.module("musicoModule", ['ui.router']);
     mod.constant("musicosContext", "api/musicos");
@@ -27,6 +31,20 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'musicos.list.html'
+                    }
+                }
+            }).state('musicoDetail', {
+                url: '/{musicoId:int}/detail',
+                parent: 'musicos',
+                param: {
+                    musicoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'musicos.detail.html',
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                $scope.currentMusico = $scope.musicosRecords[$params.musicoId - 1];
+                            }]
                     }
                 }
             });

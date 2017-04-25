@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html ng-app="mainApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,33 +7,28 @@
         <title>TumBoleta</title>
         <!-- stylesheet Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <!-- stylesheet Internas -->
         <link rel="stylesheet" href="css/app.css" />
         <!-- Dependencias Externas -->
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
-
-        <script src="src/app.js" type="text/javascript"></script>
-
     </head>
 
     <body style="background-color:#ffffff">
         <div class = "navbar navbar-inverse navbar-static-top">
             <div class = "container-fluid">
                 <div class ="navbar-header">
-                    <a href="index.html" class = "navbar-brand" style="color:#ffb100">TUMBOLETA</a>
+                    <a href="index.html" class = "navbar-brand mainHeader" style="color:#ffb100"></a>
                     <button class="navbar-toggle" data-toggle="collapse" data-target =".navHeaderCollapse">
                         <span class = "icon-bar"></span>
                         <span class = "icon-bar"></span>
                         <span class = "icon-bar"></span>
                     </button>
-
                 </div>
-
                 <div class = "collapse navbar-collapse navHeaderCollapse">
                     <ul class = "nav navbar-nav navbar-right">
-                        <li class = "active"><a href ="index.html">Home</a></li>
+                        <li ><a href ="index.html">Home</a></li>
                         <li><a href ="index.html">Sign In</a></li>
                         <li class="dropdown">
                              <a class="dropdown-toggle" data-toggle = "dropdown">Social Media<b class="caret"></b></a>
@@ -67,22 +61,20 @@
                     <p class="text text-justify">Los conciertos y eventos que siempre soñaste ver, ahora en tu ciudad. ¡Ingresa hoy y reserva tus boletas antes que se acaben!</p>
                     <a href="explore.html" class="btn btn-info">Ir ahora</a>
                 </div>
-
                 <div class="col-md-4">
                     <h3><a href="explore.html">Los mejores músicos, ¡en vivo!</a></h3>
                     <p class="text text-justify">El artista de tu infancia, de ahora o de siempre; a tan solo un click de distancia. ¿Te lo vas a perder?</p>
                     <a href="explore.html" class="btn btn-info">Ir ahora</a>
                 </div>
-
                 <div class="col-md-4">
                     <h3><a href="explore.html">Ciudades</a></h3>
                     <p class="text text-justify">Consulta las ciudades en las que tenemos eventos disponibles. Seguro hay una cerca a ti.</p>
                     <a href="explore.html" class="btn btn-info">Ir ahora</a>
                 </div>
-
-
             </div>
         </div>
+
+        <br><br><br>
 
         <div class = "navbar navbar-default navbar-bottom">
           <div class = "container">

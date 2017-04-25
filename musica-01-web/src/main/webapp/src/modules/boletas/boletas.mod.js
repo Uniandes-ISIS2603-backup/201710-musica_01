@@ -1,3 +1,7 @@
+/* 
+ * Copyright (c) 2017 jc.bustamante143.
+ * Realizado por el grupo TumBoleta - Uniandes 2017.
+ */
 (function (ng) {
     var mod = ng.module("boletaModule", ['ui.router']);
     mod.constant("boletasContext", "api/boletas");

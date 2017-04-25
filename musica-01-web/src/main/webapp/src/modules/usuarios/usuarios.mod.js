@@ -1,3 +1,7 @@
+/* 
+ * Copyright (c) 2017 jc.bustamante143.
+ * Realizado por el grupo TumBoleta - Uniandes 2017.
+ */
 (function (ng) {
     var mod = ng.module("usuarioModule", ['ui.router']);
     mod.constant("usuariosContext", "api/usuarios");
@@ -27,6 +31,20 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'usuarios.list.html'
+                    }
+                }
+            }).state('usuarioDetail', {
+                url: '/{usuarioId:int}/detail',
+                parent: 'usuarios',
+                param: {
+                    usuarioId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'usuarios.detail.html',
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                $scope.currentUsuario = $scope.usuariosRecords[$params.usuarioId - 1];
+                            }]
                     }
                 }
             });

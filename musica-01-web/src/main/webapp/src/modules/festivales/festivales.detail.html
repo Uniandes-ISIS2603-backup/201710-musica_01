@@ -1,30 +1,38 @@
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div classs="col-md-3">
+<div class="container-fluid">
+  <br><br><br>
+  {{currentFestival.nombre}}
+  <br><br><br>
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
             <div class="thumb">
-                <dl>
-                    <dt>{{currentFestival.name}}</dt>
-                    <ul ng-repeat="funcion in currentFestival.funciones">
-                    <a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.name}}</a>
-                    </ul> 
-                    <dt>{{currentFestival.name}}</dt>
-                    <ul ng-repeat="ciudad in currentFestival.ciudades">
-                    <a ui-sref="ciudadDetail({ciudadId: ciuadad.id})">{{ciudad.name}}</a>
-                    </ul>
-                    <dt>{{currentFestival.name}}</dt>
-                    <ul ng-repeat="genero in currentFestival.generos">
-                    <a ui-sref="generoDetail({generoId: genero.id})">{{genero.name}}</a>
-                    </ul>
-                    <hr>
-                    <dt>FechaInicio Date</dt>
-                    <dd>{{currentFestival.fechaInicio}}</dd>
-                    <hr>
-                    <dt>FechaFin Date</dt>
-                    <dd>{{currentFestival.fechaFin}}</dd>
-                </div>
-            
+                <!img class="img-responsive" ng-src="{{currentAuthor.image}}"/> Aquí va la imagen.
             </div>
         </div>
-    <div ui-view="childrenView"></div>
+        <div class="col-md-6">
+            <dl>
+                <dt>Descripción</dt>
+                <dd>Aqui va la descripcion</dd>
 
+                <hr>
+                <dt>Fecha Inicio</dt>
+                <dd>{{currentFestival.fechaInicio}}</dd>
+
+                <hr>
+                <dt>Fecha Fin</dt>
+                <dd>{{currentFestival.fechaFin}}</dd>
+
+                <hr>
+                <dt>Comprar Boletas</dt>
+                <dd>Boton boletas</dd>
+
+                <hr>
+                <dt>Volver</dt>
+                <dd>Boton volver</dd>
+
+            </dl>
+        </div>
+    </div>
+  </div>
+  <br><br><br>
+</div>

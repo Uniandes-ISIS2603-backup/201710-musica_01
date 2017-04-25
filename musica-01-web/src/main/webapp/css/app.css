@@ -1,6 +1,10 @@
 .mainHeader {
-    padding: 10px 21px;
+    /*padding: 10px 21px;*/
     background-image: url("Tumboleta.png");
+    background-repeat: no-repeat;
+    margin: 0 10px;
+    background-size: contain;
+    width: 112px;
 }
 
 .mainTitle {

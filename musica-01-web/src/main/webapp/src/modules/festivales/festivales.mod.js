@@ -1,3 +1,7 @@
+/* 
+ * Copyright (c) 2017 jc.bustamante143.
+ * Realizado por el grupo TumBoleta - Uniandes 2017.
+ */
 (function (ng) {
     var mod = ng.module("festivalModule", ['ui.router']);
     mod.constant("festivalesContext", "api/festivales");
@@ -27,6 +31,20 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'festivales.list.html'
+                    }
+                }
+            }).state('festivalDetail', {
+                url: '/{festivalId:int}/detail',
+                parent: 'festivales',
+                param: {
+                    festivalId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'festivales.detail.html',
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                $scope.currentFestival = $scope.festivalesRecords[$params.festivalId - 1];
+                            }]
                     }
                 }
             });

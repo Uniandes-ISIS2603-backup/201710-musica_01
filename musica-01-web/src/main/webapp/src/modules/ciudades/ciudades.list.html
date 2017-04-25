@@ -8,7 +8,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="ciudad in ciudadesRecords">
-                    <td id="{{$index}}-name">  {{ciudad.nombre}}</td>                
+                    <td id="{{$index}}-name">  <a ui-sref="ciudadDetail({ciudadId: ciudad.id})"> {{ciudad.nombre}}</td>                
                 </tr>
             </tbody>
         </table>
