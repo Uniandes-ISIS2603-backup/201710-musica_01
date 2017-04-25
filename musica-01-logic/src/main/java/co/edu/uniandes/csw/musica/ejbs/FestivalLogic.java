@@ -1,3 +1,7 @@
+/* 
+ * Copyright (c) 2017 jc.bustamante143.
+ * Realizado por el grupo TumBoleta - Uniandes 2017.
+ */
 package co.edu.uniandes.csw.musica.ejbs;
 
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
