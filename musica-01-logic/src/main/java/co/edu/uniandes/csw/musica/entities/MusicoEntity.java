@@ -10,12 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class MusicoEntity implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PodamExclude
     private Long id;
     
     private String nombre;
@@ -24,9 +26,11 @@ public class MusicoEntity implements Serializable{
     private int requerimientoCapacidad;
     
     @ManyToOne
+    @PodamExclude
     private GeneroEntity generoMusico;
     
     @ManyToMany(mappedBy = "musicos", cascade = CascadeType.ALL)
+    @PodamExclude
     private List<FuncionEntity> funcionesMusico;
 
     public MusicoEntity() {

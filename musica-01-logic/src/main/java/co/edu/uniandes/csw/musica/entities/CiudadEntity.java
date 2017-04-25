@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
@@ -21,14 +22,17 @@ public class CiudadEntity implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PodamExclude
     private Long id;
     
     private String nombre;
     
     @OneToMany(mappedBy = "ciudadLugar", cascade = CascadeType.ALL)
+    @PodamExclude
     private List<LugarEntity> lugaresCiudad;
     
     @ManyToMany
+    @PodamExclude
     private List<FestivalEntity> festivalesCiudad;
     
     

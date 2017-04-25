@@ -9,12 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class LugarEntity implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PodamExclude
     private Long id;
     
     private String nombre;
@@ -30,9 +32,11 @@ public class LugarEntity implements Serializable {
     private Integer costoEconomico;
      
     @OneToMany(mappedBy = "lugarFuncion", cascade = CascadeType.ALL)
+    @PodamExclude
     private List<FuncionEntity> funcionesLugar;
     
     @ManyToOne
+    @PodamExclude
     private CiudadEntity ciudadLugar;
     
     
