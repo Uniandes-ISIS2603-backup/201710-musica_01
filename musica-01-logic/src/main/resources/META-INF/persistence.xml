@@ -3,7 +3,14 @@
   <persistence-unit name="musicaPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/musica</jta-data-source>
-    <class>co.edu.uniandes.csw.musica.entities.Entity</class>
+    <class>co.edu.uniandes.csw.musica.entities.GeneroEntity</class>
+    <class>co.edu.uniandes.csw.musica.entities.BoletaEntity</class>
+    <class>co.edu.uniandes.csw.musica.entities.CiudadEntity</class>
+    <class>co.edu.uniandes.csw.musica.entities.FestivalEntity</class>
+    <class>co.edu.uniandes.csw.musica.entities.FuncionEntity</class>
+    <class>co.edu.uniandes.csw.musica.entities.LugarEntity</class>
+    <class>co.edu.uniandes.csw.musica.entities.MusicoEntity</class>
+    <class>co.edu.uniandes.csw.musica.entities.UsuarioEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

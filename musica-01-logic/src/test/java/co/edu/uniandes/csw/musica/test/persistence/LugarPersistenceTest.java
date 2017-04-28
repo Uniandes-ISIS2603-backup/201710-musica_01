@@ -23,11 +23,22 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @RunWith(Arquillian.class)
 public class LugarPersistenceTest {
 
-    public static final String DEPLOY = "Prueba";
+    /**
+     *
+     */
+    public static final String DEPLOY = "PruebaLugar";
 
+    /**
+     *
+     * @return
+     */
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
@@ -38,7 +49,7 @@ public class LugarPersistenceTest {
     }
 
     @Inject
-    private LugarPersistence bookPersistence;
+    private LugarPersistence lugarPersistence;
 
     @PersistenceContext
     private EntityManager em;
@@ -46,7 +57,7 @@ public class LugarPersistenceTest {
     @Inject
     UserTransaction utx;
 
-    /*
+    /**
      * Configuración inicial de la prueba.
      */
     @Before
@@ -66,7 +77,7 @@ public class LugarPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
@@ -75,7 +86,7 @@ public class LugarPersistenceTest {
 
     private List<LugarEntity> data = new ArrayList<LugarEntity>();
 
-    /*
+    /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
@@ -88,14 +99,14 @@ public class LugarPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para crear un Lugar.
      */
     @Test
     public void createLugarTest() {
         PodamFactory factory = new PodamFactoryImpl();
         LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
-        LugarEntity result = bookPersistence.create(newEntity);
+        LugarEntity result = lugarPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
@@ -109,12 +120,12 @@ public class LugarPersistenceTest {
         Assert.assertEquals(entity.getCostoPreferencial(), newEntity.getCostoPreferencial());
     }
 
-    /*
+    /**
      * Prueba para consultar la lista de Lugares.
      */
     @Test
     public void getLugaresTest() {
-        List<LugarEntity> list = bookPersistence.findAll();
+        List<LugarEntity> list = lugarPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (LugarEntity ent : list) {
             boolean found = false;
@@ -127,13 +138,13 @@ public class LugarPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para consultar un Lugar.
      */
     @Test
     public void getLugarTest() {
         LugarEntity entity = data.get(0);
-        LugarEntity newEntity = bookPersistence.find(entity.getId());
+        LugarEntity newEntity = lugarPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
         Assert.assertEquals(entity.getAbierto(), newEntity.getAbierto());
@@ -143,18 +154,18 @@ public class LugarPersistenceTest {
         Assert.assertEquals(entity.getCostoPreferencial(), newEntity.getCostoPreferencial());
     }
 
-    /*
+    /**
      * Prueba para eliminar un Lugar.
      */
     @Test
     public void deleteLugarTest() {
         LugarEntity entity = data.get(0);
-        bookPersistence.delete(entity.getId());
+        lugarPersistence.delete(entity.getId());
         LugarEntity deleted = em.find(LugarEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
-    /*
+    /**
      * Prueba para actualizar un Lugar.
      */
     @Test
@@ -164,7 +175,7 @@ public class LugarPersistenceTest {
         LugarEntity newEntity = factory.manufacturePojo(LugarEntity.class);
         newEntity.setId(entity.getId());
 
-        bookPersistence.update(newEntity);
+        lugarPersistence.update(newEntity);
 
         LugarEntity resp = em.find(LugarEntity.class, entity.getId());
 

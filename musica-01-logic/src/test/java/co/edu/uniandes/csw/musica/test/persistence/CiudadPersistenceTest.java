@@ -23,11 +23,22 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @RunWith(Arquillian.class)
 public class CiudadPersistenceTest {
 
-    public static final String DEPLOY = "Prueba";
+    /**
+     *
+     */
+    public static final String DEPLOY = "PruebaCiudad";
 
+    /**
+     *
+     * @return
+     */
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
@@ -38,7 +49,7 @@ public class CiudadPersistenceTest {
     }
 
     @Inject
-    private CiudadPersistence bookPersistence;
+    private CiudadPersistence ciudadPersistence;
 
     @PersistenceContext
     private EntityManager em;
@@ -46,7 +57,7 @@ public class CiudadPersistenceTest {
     @Inject
     UserTransaction utx;
 
-    /*
+    /**
      * Configuración inicial de la prueba.
      */
     @Before
@@ -66,7 +77,7 @@ public class CiudadPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
@@ -75,7 +86,7 @@ public class CiudadPersistenceTest {
 
     private List<CiudadEntity> data = new ArrayList<CiudadEntity>();
 
-    /*
+    /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
@@ -88,14 +99,14 @@ public class CiudadPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para crear un Ciudad.
      */
     @Test
     public void createCiudadTest() {
         PodamFactory factory = new PodamFactoryImpl();
         CiudadEntity newEntity = factory.manufacturePojo(CiudadEntity.class);
-        CiudadEntity result = bookPersistence.create(newEntity);
+        CiudadEntity result = ciudadPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
@@ -104,12 +115,12 @@ public class CiudadPersistenceTest {
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
-    /*
+    /**
      * Prueba para consultar la lista de Ciudades.
      */
     @Test
     public void getCiudadesTest() {
-        List<CiudadEntity> list = bookPersistence.findAll();
+        List<CiudadEntity> list = ciudadPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (CiudadEntity ent : list) {
             boolean found = false;
@@ -122,29 +133,29 @@ public class CiudadPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para consultar un Ciudad.
      */
     @Test
     public void getCiudadTest() {
         CiudadEntity entity = data.get(0);
-        CiudadEntity newEntity = bookPersistence.find(entity.getId());
+        CiudadEntity newEntity = ciudadPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
-    /*
+    /**
      * Prueba para eliminar un Ciudad.
      */
     @Test
     public void deleteCiudadTest() {
         CiudadEntity entity = data.get(0);
-        bookPersistence.delete(entity.getId());
+        ciudadPersistence.delete(entity.getId());
         CiudadEntity deleted = em.find(CiudadEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
-    /*
+    /**
      * Prueba para actualizar un Ciudad.
      */
     @Test
@@ -154,7 +165,7 @@ public class CiudadPersistenceTest {
         CiudadEntity newEntity = factory.manufacturePojo(CiudadEntity.class);
         newEntity.setId(entity.getId());
 
-        bookPersistence.update(newEntity);
+        ciudadPersistence.update(newEntity);
 
         CiudadEntity resp = em.find(CiudadEntity.class, entity.getId());
 

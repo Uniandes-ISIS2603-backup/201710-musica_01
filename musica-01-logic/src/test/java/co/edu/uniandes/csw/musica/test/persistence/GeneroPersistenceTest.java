@@ -23,11 +23,22 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @RunWith(Arquillian.class)
 public class GeneroPersistenceTest {
 
-    public static final String DEPLOY = "Prueba";
+    /**
+     *
+     */
+    public static final String DEPLOY = "PruebaGenero";
 
+    /**
+     *
+     * @return
+     */
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
@@ -38,15 +49,17 @@ public class GeneroPersistenceTest {
     }
 
     @Inject
-    private GeneroPersistence bookPersistence;
+    private GeneroPersistence generoPersistence;
 
-    @PersistenceContext
+    @PersistenceContext 
     private EntityManager em;
 
     @Inject
     UserTransaction utx;
+    
+    private List<GeneroEntity> data = new ArrayList<GeneroEntity>();
 
-    /*
+    /**
      * Configuración inicial de la prueba.
      */
     @Before
@@ -66,16 +79,16 @@ public class GeneroPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
         em.createQuery("delete from GeneroEntity").executeUpdate();
     }
 
-    private List<GeneroEntity> data = new ArrayList<GeneroEntity>();
+    
 
-    /*
+    /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
@@ -88,14 +101,14 @@ public class GeneroPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para crear un Genero.
      */
     @Test
     public void createGeneroTest() {
         PodamFactory factory = new PodamFactoryImpl();
         GeneroEntity newEntity = factory.manufacturePojo(GeneroEntity.class);
-        GeneroEntity result = bookPersistence.create(newEntity);
+        GeneroEntity result = generoPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
@@ -104,12 +117,12 @@ public class GeneroPersistenceTest {
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
-    /*
+    /**
      * Prueba para consultar la lista de Generos.
      */
     @Test
     public void getGenerosTest() {
-        List<GeneroEntity> list = bookPersistence.findAll();
+        List<GeneroEntity> list = generoPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (GeneroEntity ent : list) {
             boolean found = false;
@@ -122,29 +135,29 @@ public class GeneroPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para consultar un Genero.
      */
     @Test
     public void getGeneroTest() {
         GeneroEntity entity = data.get(0);
-        GeneroEntity newEntity = bookPersistence.find(entity.getId());
+        GeneroEntity newEntity = generoPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
-    /*
+    /**
      * Prueba para eliminar un Genero.
      */
     @Test
     public void deleteGeneroTest() {
         GeneroEntity entity = data.get(0);
-        bookPersistence.delete(entity.getId());
+        generoPersistence.delete(entity.getId());
         GeneroEntity deleted = em.find(GeneroEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
-    /*
+    /**
      * Prueba para actualizar un Genero.
      */
     @Test
@@ -154,7 +167,7 @@ public class GeneroPersistenceTest {
         GeneroEntity newEntity = factory.manufacturePojo(GeneroEntity.class);
         newEntity.setId(entity.getId());
 
-        bookPersistence.update(newEntity);
+        generoPersistence.update(newEntity);
 
         GeneroEntity resp = em.find(GeneroEntity.class, entity.getId());
 

@@ -23,11 +23,22 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @RunWith(Arquillian.class)
 public class MusicoPersistenceTest {
 
-    public static final String DEPLOY = "Prueba";
+    /**
+     *
+     */
+    public static final String DEPLOY = "PruebaMusico";
 
+    /**
+     *
+     * @return
+     */
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
@@ -38,7 +49,7 @@ public class MusicoPersistenceTest {
     }
 
     @Inject
-    private MusicoPersistence bookPersistence;
+    private MusicoPersistence musicoPersistence;
 
     @PersistenceContext
     private EntityManager em;
@@ -46,7 +57,7 @@ public class MusicoPersistenceTest {
     @Inject
     UserTransaction utx;
 
-    /*
+    /**
      * Configuración inicial de la prueba.
      */
     @Before
@@ -66,7 +77,7 @@ public class MusicoPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
@@ -75,7 +86,7 @@ public class MusicoPersistenceTest {
 
     private List<MusicoEntity> data = new ArrayList<MusicoEntity>();
 
-    /*
+    /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      */
@@ -88,14 +99,14 @@ public class MusicoPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para crear un Musico.
      */
     @Test
     public void createMusicoTest() {
         PodamFactory factory = new PodamFactoryImpl();
         MusicoEntity newEntity = factory.manufacturePojo(MusicoEntity.class);
-        MusicoEntity result = bookPersistence.create(newEntity);
+        MusicoEntity result = musicoPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
@@ -107,12 +118,12 @@ public class MusicoPersistenceTest {
         Assert.assertEquals(entity.getRequerimientoSonido(), newEntity.getRequerimientoSonido());
     }
 
-    /*
+    /**
      * Prueba para consultar la lista de Musicos.
      */
     @Test
     public void getMusicosTest() {
-        List<MusicoEntity> list = bookPersistence.findAll();
+        List<MusicoEntity> list = musicoPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (MusicoEntity ent : list) {
             boolean found = false;
@@ -125,13 +136,13 @@ public class MusicoPersistenceTest {
         }
     }
 
-    /*
+    /**
      * Prueba para consultar un Musico.
      */
     @Test
     public void getMusicoTest() {
         MusicoEntity entity = data.get(0);
-        MusicoEntity newEntity = bookPersistence.find(entity.getId());
+        MusicoEntity newEntity = musicoPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
         Assert.assertEquals(entity.getTrayectoria(), newEntity.getTrayectoria());
@@ -139,18 +150,18 @@ public class MusicoPersistenceTest {
         Assert.assertEquals(entity.getRequerimientoSonido(), newEntity.getRequerimientoSonido());
     }
 
-    /*
+    /**
      * Prueba para eliminar un Musico.
      */
     @Test
     public void deleteMusicoTest() {
         MusicoEntity entity = data.get(0);
-        bookPersistence.delete(entity.getId());
+        musicoPersistence.delete(entity.getId());
         MusicoEntity deleted = em.find(MusicoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
-    /*
+    /**
      * Prueba para actualizar un Musico.
      */
     @Test
@@ -160,7 +171,7 @@ public class MusicoPersistenceTest {
         MusicoEntity newEntity = factory.manufacturePojo(MusicoEntity.class);
         newEntity.setId(entity.getId());
 
-        bookPersistence.update(newEntity);
+        musicoPersistence.update(newEntity);
 
         MusicoEntity resp = em.find(MusicoEntity.class, entity.getId());
 
