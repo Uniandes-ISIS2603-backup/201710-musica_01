@@ -39,40 +39,73 @@ public class CiudadEntity implements Serializable {
     @PodamExclude
     private List<FestivalEntity> festivalesCiudad;
     
-    
-    
+    /**
+     *
+     */
     public CiudadEntity() {
         
     }
     
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<LugarEntity> getLugaresCiudad() {
         return lugaresCiudad;
     }
 
+    /**
+     *
+     * @param lugaresCiudad
+     */
     public void setLugaresCiudad(List<LugarEntity> lugaresCiudad) {
         this.lugaresCiudad = lugaresCiudad;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<FestivalEntity> getFestivalesCiudad() {
         return festivalesCiudad;
     }
 
+    /**
+     *
+     * @param festivalesCiudad
+     */
     public void setFestivalesCiudad(List<FestivalEntity> festivalesCiudad) {
         this.festivalesCiudad = festivalesCiudad;
     }

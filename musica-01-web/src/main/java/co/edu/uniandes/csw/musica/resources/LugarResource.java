@@ -24,6 +24,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @Path("/lugares")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -41,12 +45,21 @@ public class LugarResource {
         return list;
     }
     
+    /**
+     *
+     * @return
+     */
     @GET
     public List<LugarDTO> getLugares() {
         
         return listEntity2DTO(lugarLogic.getLugares());
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GET
     @Path("{id: \\d+}")
 
@@ -56,12 +69,24 @@ public class LugarResource {
         return l;
     }
     
+    /**
+     *
+     * @param dto
+     * @return
+     * @throws BusinessLogicException
+     */
     @POST
     public LugarDTO createLugar(LugarDTO dto) throws BusinessLogicException{
         return new LugarDTO(lugarLogic.createLugar(dto.toEntity()));
     }
     
-        
+    /**
+     *
+     * @param id
+     * @param lugarDTO
+     * @param id2
+     * @throws BusinessLogicException
+     */
     @POST
     @Path("{id: \\d+}/funciones/{id2: \\d+}")
     public void addLugarFestival(@PathParam("id") Long id, LugarDTO lugarDTO, @PathParam("id2") Long id2)throws BusinessLogicException
@@ -73,6 +98,13 @@ public class LugarResource {
        
     }
     
+    /**
+     *
+     * @param id
+     * @param dto
+     * @return
+     * @throws BusinessLogicException
+     */
     @PUT
     @Path("{id: \\d+}")
     public LugarDTO updateLugar(@PathParam("id") Long id, LugarDTO dto) throws BusinessLogicException {
@@ -81,6 +113,11 @@ public class LugarResource {
         return new LugarDTO(lugarLogic.updateLugar(entity));
     }
     
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteLugar(@PathParam("id") Long id) throws BusinessLogicException {

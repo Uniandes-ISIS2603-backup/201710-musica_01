@@ -25,6 +25,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @Path("/ciudades")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -33,6 +37,10 @@ public class CiudadResource {
     @Inject private CiudadLogic ciudadLogic;
     @Inject private LugarLogic lugarLogic;
     
+    /**
+     *
+     * @return
+     */
     @GET
     public List<CiudadDTO> getCiudades() 
     {
@@ -46,7 +54,11 @@ public class CiudadResource {
         return CiudadDTOs;
     }
     
-    
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GET
     @Path("{id: \\d+}")
     public CiudadDTO getCiudad(@PathParam("id") Long id) 
@@ -56,6 +68,11 @@ public class CiudadResource {
         return c;
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GET
     @Path("{id: \\d+}/lugares")
     public List<LugarDTO> getLugaresCiudad(@PathParam("id") Long id) {
@@ -71,12 +88,24 @@ public class CiudadResource {
         return LugarDTOs;
     }
     
+    /**
+     *
+     * @param dto
+     * @return
+     * @throws BusinessLogicException
+     */
     @POST
     public CiudadDTO createCiudad(CiudadDTO dto) throws BusinessLogicException {
         return new CiudadDTO(ciudadLogic.createCiudad(dto.toEntity()));
     }
     
-
+    /**
+     *
+     * @param id
+     * @param lugarDTO
+     * @return
+     * @throws BusinessLogicException
+     */
     @POST
     @Path("{id: \\d+}/lugares")
     public LugarDTO addLugar(@PathParam("id") Long id, LugarDTO lugarDTO)throws BusinessLogicException
@@ -89,7 +118,13 @@ public class CiudadResource {
        
     }
 
-    
+    /**
+     *
+     * @param id
+     * @param dto
+     * @return
+     * @throws BusinessLogicException
+     */
     @PUT
     @Path("{id: \\d+}")
     public CiudadDTO updateCiudad(@PathParam("id") Long id, CiudadDTO dto) throws BusinessLogicException {
@@ -98,7 +133,11 @@ public class CiudadResource {
         return new CiudadDTO(ciudadLogic.updateCiudad(entity));
     }
     
-    
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteCiudad(@PathParam("id") Long id) throws BusinessLogicException {

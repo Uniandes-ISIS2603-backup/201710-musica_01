@@ -22,10 +22,17 @@ public class LugarDetailDTO extends LugarDTO {
     private Integer capacidadSonido;
     private List<FuncionEntity> funcionesLugar;
     
+    /**
+     *
+     */
     public LugarDetailDTO(){
         super();
     }
     
+    /**
+     *
+     * @param entity
+     */
     public LugarDetailDTO(LugarEntity entity){
         super(entity);
         
@@ -37,37 +44,74 @@ public class LugarDetailDTO extends LugarDTO {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public List<FuncionEntity> getFuncionesLugar(){
         return funcionesLugar;
     }
+
+    /**
+     *
+     * @param funcionesLugar
+     */
     public void setFuncionesLugar(List<FuncionEntity> funcionesLugar){
         this.funcionesLugar=funcionesLugar;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getCapacidad() {
         return capacidad;
     }
 
+    /**
+     *
+     * @param capacidad
+     */
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getCapacidadSonido() {
         return capacidadSonido;
     }
 
+    /**
+     *
+     * @param capacidadSonido
+     */
     public void setCapacidadSonido(Integer capacidadSonido) {
         this.capacidadSonido = capacidadSonido;
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean getAbierto() {
         return abierto;
     }
 
+    /**
+     *
+     * @param abierto
+     */
     public void setAbierto(Boolean abierto) {
         this.abierto = abierto;
     }
     
+    /**
+     *
+     * @return
+     */
     @Override
     public LugarEntity toEntity(){
         LugarEntity entity = super.toEntity();

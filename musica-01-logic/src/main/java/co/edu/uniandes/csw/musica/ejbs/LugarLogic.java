@@ -20,30 +20,60 @@ public class LugarLogic {
 
     @Inject private LugarPersistence persistence;
 
-
+    /**
+     *
+     * @return
+     */
     public List<LugarEntity> getLugares(){
         return persistence.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public LugarEntity getLugar(Long id){
         return persistence.find(id);
     }
 
+    /**
+     *
+     * @param entity
+     * @return
+     * @throws BusinessLogicException
+     */
     public LugarEntity createLugar(LugarEntity entity) throws BusinessLogicException{
         validarLugar(entity);
         return persistence.create(entity);
     }
 
+    /**
+     *
+     * @param entity
+     * @return
+     * @throws BusinessLogicException
+     */
     public LugarEntity updateLugar(LugarEntity entity) throws BusinessLogicException{
         validarLugar(entity);
         return persistence.update(entity);
     }
 
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void deleteLugar(Long id) throws BusinessLogicException{
         validarId(id);
         persistence.delete(id);
     }
 
+    /**
+     *
+     * @param lugar
+     * @throws BusinessLogicException
+     */
     public void validarLugar (LugarEntity lugar) throws BusinessLogicException
     {
          if (lugar.getNombre() == null || lugar.getNombre().equals(""))
@@ -72,6 +102,11 @@ public class LugarLogic {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void validarId( Long id) throws BusinessLogicException
     {
         LugarEntity entity = persistence.find(id);

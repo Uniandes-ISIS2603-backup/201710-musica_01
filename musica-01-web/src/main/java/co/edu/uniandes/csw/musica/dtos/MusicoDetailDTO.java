@@ -9,6 +9,10 @@ import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @XmlRootElement
 public class MusicoDetailDTO extends MusicoDTO
 {
@@ -17,6 +21,10 @@ public class MusicoDetailDTO extends MusicoDTO
     private int requerimientoCapacidad;
     private List<FuncionEntity> funcionesMusico;
     
+    /**
+     *
+     * @param musico
+     */
     public MusicoDetailDTO(MusicoEntity musico) 
     {
         super(musico);
@@ -30,39 +38,74 @@ public class MusicoDetailDTO extends MusicoDTO
         }
     }
 
+    /**
+     *
+     */
     public MusicoDetailDTO() 
     {
         super();
     }
 
+    /**
+     *
+     * @return
+     */
     public List<FuncionEntity> getFuncionesMusico() {
         return funcionesMusico;
     }
 
+    /**
+     *
+     * @param funcionesMusico
+     */
     public void setFuncionesMusico(List<FuncionEntity> funcionesMusico) {
         this.funcionesMusico = funcionesMusico;
     }
     
-        public String getTrayectoria() {
+    /**
+     *
+     * @return
+     */
+    public String getTrayectoria() {
         return trayectoria;
     }
 
+    /**
+     *
+     * @param trayectoria
+     */
     public void setTrayectoria(String trayectoria) {
         this.trayectoria = trayectoria;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRequerimientoSonido() {
         return requerimientoSonido;
     }
 
+    /**
+     *
+     * @param requerimientoSonido
+     */
     public void setRequerimientoSonido(int requerimientoSonido) {
         this.requerimientoSonido = requerimientoSonido;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRequerimientoCapacidad() {
         return requerimientoCapacidad;
     }
 
+    /**
+     *
+     * @param requerimientoCapacidad
+     */
     public void setRequerimientoCapacidad(int requerimientoCapacidad) {
         this.requerimientoCapacidad = requerimientoCapacidad;
     }

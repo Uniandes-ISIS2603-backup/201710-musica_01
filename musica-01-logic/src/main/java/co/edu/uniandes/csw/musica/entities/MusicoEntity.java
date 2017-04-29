@@ -16,6 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @Entity
 public class MusicoEntity implements Serializable{
     
@@ -37,67 +41,128 @@ public class MusicoEntity implements Serializable{
     @PodamExclude
     private List<FuncionEntity> funcionesMusico;
 
+    /**
+     *
+     */
     public MusicoEntity() {
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTrayectoria() {
         return trayectoria;
     }
 
+    /**
+     *
+     * @param trayectoria
+     */
     public void setTrayectoria(String trayectoria) {
         this.trayectoria = trayectoria;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRequerimientoSonido() {
         return requerimientoSonido;
     }
 
+    /**
+     *
+     * @param requerimientoSonido
+     */
     public void setRequerimientoSonido(int requerimientoSonido) {
         this.requerimientoSonido = requerimientoSonido;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRequerimientoCapacidad() {
         return requerimientoCapacidad;
     }
 
+    /**
+     *
+     * @param requerimientoCapacidad
+     */
     public void setRequerimientoCapacidad(int requerimientoCapacidad) {
         this.requerimientoCapacidad = requerimientoCapacidad;
     }
 
+    /**
+     *
+     * @return
+     */
     public GeneroEntity getGeneroMusico() {
         return generoMusico;
     }
 
+    /**
+     *
+     * @param generoMusico
+     */
     public void setGeneroMusico(GeneroEntity generoMusico) {
         this.generoMusico = generoMusico;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<FuncionEntity> getFuncionesMusico() {
         return funcionesMusico;
     }
 
+    /**
+     *
+     * @param funcionesMusico
+     */
     public void setFuncionesMusico(List<FuncionEntity> funcionesMusico) {
         this.funcionesMusico = funcionesMusico;
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -105,6 +170,11 @@ public class MusicoEntity implements Serializable{
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

@@ -21,10 +21,17 @@ public class CiudadDetailDTO extends CiudadDTO {
    private List<LugarEntity> lugaresCiudad;
    private List<FestivalEntity> festivalesCiudad;
     
+    /**
+     *
+     */
     public CiudadDetailDTO(){
         super();
     }
 
+    /**
+     *
+     * @param entity
+     */
     public CiudadDetailDTO(CiudadEntity entity){
        super(entity);
        if(entity != null)
@@ -33,19 +40,43 @@ public class CiudadDetailDTO extends CiudadDTO {
            this.lugaresCiudad = entity.getLugaresCiudad();
        }
     }
+
+    /**
+     *
+     * @return
+     */
     public List<LugarEntity> getLugaresCiudad(){
         return lugaresCiudad;
     }
+
+    /**
+     *
+     * @param lugaresCiudad
+     */
     public void setLugaresCiudad(List<LugarEntity> lugaresCiudad){
         this.lugaresCiudad=lugaresCiudad;
     }
+
+    /**
+     *
+     * @return
+     */
     public List<FestivalEntity> getFestivalesCiudad(){
         return festivalesCiudad;
     }
+
+    /**
+     *
+     * @param festivalesCiudad
+     */
     public void setFestivalesCiudad(List<FestivalEntity> festivalesCiudad){
         this.festivalesCiudad=festivalesCiudad;
     }
     
+    /**
+     *
+     * @return
+     */
     @Override
     public CiudadEntity toEntity()
     {

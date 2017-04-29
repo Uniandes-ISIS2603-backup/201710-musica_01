@@ -18,6 +18,10 @@ public class CiudadDTO implements Serializable{
     private Long id;
     private String nombre;
     
+    /**
+     *
+     * @param ciudad
+     */
     public CiudadDTO(CiudadEntity ciudad) {
         if (ciudad != null) {
             this.id = ciudad.getId();
@@ -25,6 +29,10 @@ public class CiudadDTO implements Serializable{
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public CiudadEntity toEntity() {
         CiudadEntity ciudad = new CiudadEntity();
         ciudad.setId(this.id);
@@ -32,22 +40,41 @@ public class CiudadDTO implements Serializable{
         return ciudad;
     }
     
+    /**
+     *
+     */
     public CiudadDTO() {
         
     }
     
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

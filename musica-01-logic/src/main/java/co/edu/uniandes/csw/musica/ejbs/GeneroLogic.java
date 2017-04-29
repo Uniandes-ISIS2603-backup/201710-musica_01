@@ -11,6 +11,10 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @Stateless
 public class GeneroLogic
 {
@@ -18,34 +22,65 @@ public class GeneroLogic
     @Inject
     private GeneroPersistence persistence;
 
+    /**
+     *
+     * @param genero
+     * @return
+     * @throws BusinessLogicException
+     */
     public GeneroEntity createGenero(GeneroEntity genero) throws BusinessLogicException
     {
         validarNombre(genero);
         return persistence.create(genero);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<GeneroEntity> getGeneros ()
     {
         return persistence.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public GeneroEntity getGenero (Long id)
     {
         return persistence.find(id);
     }
 
+    /**
+     *
+     * @param entity
+     * @return
+     * @throws BusinessLogicException
+     */
     public GeneroEntity updateGenero(GeneroEntity entity) throws BusinessLogicException
     {
         validarNombre(entity);
         return persistence.update(entity);
     }
 
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void deleteGenero (Long id) throws BusinessLogicException
     {
         validarId(id);
         persistence.delete(id);
     }
 
+    /**
+     *
+     * @param genero
+     * @throws BusinessLogicException
+     */
     public void validarNombre (GeneroEntity genero) throws BusinessLogicException
     {
          if (genero.getNombre() == null || genero.getNombre().equals(""))
@@ -54,6 +89,11 @@ public class GeneroLogic
          }
     }
 
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void validarId( Long id) throws BusinessLogicException
     {
         GeneroEntity entity = persistence.find(id);

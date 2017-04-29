@@ -25,6 +25,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @Path("/generos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -55,6 +59,8 @@ public class GeneroResource
     
     /**
     * Obtiene el género con el Id dado por ruta
+     * @param id
+     * @return 
     */
     @GET
     @Path("{id: \\d+}")
@@ -68,6 +74,14 @@ public class GeneroResource
     /*
     * Crea un nuevo género.
     */
+
+    /**
+     *
+     * @param generoDTO
+     * @return
+     * @throws BusinessLogicException
+     */
+
     @POST
     public GeneroDTO addGenero(GeneroDTO generoDTO)throws BusinessLogicException
     {
@@ -80,6 +94,15 @@ public class GeneroResource
     /*
     * Crea un nuevo músico asociado a un género.
     */
+
+    /**
+     *
+     * @param id
+     * @param musicoDTO
+     * @return
+     * @throws BusinessLogicException
+     */
+
     @POST
     @Path("{id: \\d+}/musicos")
     public MusicoDTO addMusico(@PathParam("id") Long id, MusicoDTO musicoDTO)throws BusinessLogicException
@@ -95,6 +118,15 @@ public class GeneroResource
     /*
     * Actualiza el género con el id dado por parámetro
     */
+
+    /**
+     *
+     * @param id
+     * @param dto
+     * @return
+     * @throws BusinessLogicException
+     */
+
     @PUT
     @Path("{id: \\d+}")
     public GeneroDTO updateGenero(@PathParam("id") Long id, GeneroDTO dto) throws BusinessLogicException
@@ -108,6 +140,13 @@ public class GeneroResource
     /*
     * Elimina el género con el Id dado por parámetro en la ruta.
     */
+
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
+
     @DELETE
     @Path("{id: \\d+}")
     public void deleteGenero(@PathParam("id") Long id) throws BusinessLogicException 

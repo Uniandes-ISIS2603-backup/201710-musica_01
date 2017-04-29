@@ -9,6 +9,10 @@ import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @XmlRootElement
 
 public class MusicoDTO implements Serializable
@@ -19,6 +23,10 @@ public class MusicoDTO implements Serializable
 
     private GeneroEntity generoMusico;
     
+    /**
+     *
+     * @param musico
+     */
     public MusicoDTO(MusicoEntity musico)
     {
         if(musico !=null)
@@ -30,6 +38,10 @@ public class MusicoDTO implements Serializable
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public MusicoEntity toEntity()
     {
         MusicoEntity musico = new MusicoEntity();
@@ -40,30 +52,56 @@ public class MusicoDTO implements Serializable
         return musico;
     }
     
+    /**
+     *
+     */
     public MusicoDTO() {
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public GeneroEntity getGenero() {
         return generoMusico;
     }
 
+    /**
+     *
+     * @param genero
+     */
     public void setGenero(GeneroEntity genero) {
         this.generoMusico = genero;
     }

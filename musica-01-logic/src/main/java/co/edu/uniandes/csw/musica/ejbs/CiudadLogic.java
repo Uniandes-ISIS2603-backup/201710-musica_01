@@ -21,31 +21,61 @@ public class CiudadLogic {
      
     @Inject private CiudadPersistence persistence;
     
-    
+    /**
+     *
+     * @return
+     */
     public List<CiudadEntity> getCiudades(){
         return persistence.findAll();
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public CiudadEntity getCiudad(Long id){
         return persistence.find(id);
     }
    
+    /**
+     *
+     * @param entity
+     * @return
+     * @throws BusinessLogicException
+     */
     public CiudadEntity createCiudad(CiudadEntity entity) throws BusinessLogicException
     {
         validarCiudad(entity);
         return persistence.create(entity);
     }
     
+    /**
+     *
+     * @param entity
+     * @return
+     * @throws BusinessLogicException
+     */
     public CiudadEntity updateCiudad(CiudadEntity entity) throws BusinessLogicException{
         validarCiudad(entity);
         return persistence.update(entity);
     }
     
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void deleteCiudad(Long id) throws BusinessLogicException {
         validarId(id);
         persistence.delete(id);
     }
     
+    /**
+     *
+     * @param ciudad
+     * @throws BusinessLogicException
+     */
     public void validarCiudad(CiudadEntity ciudad) throws BusinessLogicException
     {
         if(ciudad.getNombre() == null || ciudad.getNombre().equals(""))
@@ -54,6 +84,11 @@ public class CiudadLogic {
         }
     }
             
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void validarId( Long id) throws BusinessLogicException
     {
         CiudadEntity entity = persistence.find(id);

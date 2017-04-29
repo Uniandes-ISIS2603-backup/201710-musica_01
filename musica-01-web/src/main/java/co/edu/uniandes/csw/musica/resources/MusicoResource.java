@@ -21,6 +21,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @Path("/musicos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -50,6 +54,8 @@ public class MusicoResource
     
     /**
     * Obtiene el músico con el Id dado por ruta
+     * @param id
+     * @return 
     */
     @GET
     @Path("{id: \\d+}")
@@ -63,6 +69,15 @@ public class MusicoResource
     /*
     * Actualiza el músico con el id dado por parámetro
     */
+
+    /**
+     *
+     * @param id
+     * @param dto
+     * @return
+     * @throws BusinessLogicException
+     */
+
     @PUT
     @Path("{id: \\d+}")
     public MusicoDTO updateMusico(@PathParam("id") Long id, MusicoDTO dto) throws BusinessLogicException
@@ -76,6 +91,13 @@ public class MusicoResource
     /*
     * Elimina el músico con el Id dado por parámetro en la ruta.
     */
+
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
+
     @DELETE
     @Path("{id: \\d+}")
     public void deleteMusico(@PathParam("id") Long id) throws BusinessLogicException 

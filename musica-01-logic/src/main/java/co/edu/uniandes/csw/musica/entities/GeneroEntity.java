@@ -16,6 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @Entity
 public class GeneroEntity implements Serializable{
     
@@ -32,43 +36,80 @@ public class GeneroEntity implements Serializable{
     @OneToMany(mappedBy = "generoMusico", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<MusicoEntity> musicosGenero;
 
+    /**
+     *
+     */
     public GeneroEntity() {
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<FestivalEntity> getFestivalesGenero() {
         return festivalesGenero;
     }
 
+    /**
+     *
+     * @param festivalesGenero
+     */
     public void setFestivalesGenero(List<FestivalEntity> festivalesGenero) {
         this.festivalesGenero = festivalesGenero;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MusicoEntity> getMusicosGenero() {
         return musicosGenero;
     }
 
+    /**
+     *
+     * @param musicosGenero
+     */
     public void setMusicosGenero(List<MusicoEntity> musicosGenero) {
         this.musicosGenero = musicosGenero;
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -76,6 +117,11 @@ public class GeneroEntity implements Serializable{
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

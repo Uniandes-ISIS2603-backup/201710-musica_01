@@ -23,6 +23,10 @@ public class LugarDTO implements Serializable{
     private Integer costoEconomico;
     private CiudadEntity ciudadLugar;
     
+    /**
+     *
+     * @param lugar
+     */
     public LugarDTO(LugarEntity lugar) {
         if (lugar != null) {
             this.id = lugar.getId();
@@ -34,6 +38,10 @@ public class LugarDTO implements Serializable{
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public LugarEntity toEntity() {
         LugarEntity lugar = new LugarEntity();
         lugar.setId(this.id);
@@ -45,54 +53,105 @@ public class LugarDTO implements Serializable{
         return lugar;
     }
     
+    /**
+     *
+     */
     public LugarDTO() {
         
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean getAbierto() {
         return abierto;
     }
 
+    /**
+     *
+     * @param abierto
+     */
     public void setAbierto(Boolean abierto) {
         this.abierto = abierto;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getCostoPreferencial() {
         return costoPreferencial;
     }
 
+    /**
+     *
+     * @param costoPreferencial
+     */
     public void setCostoPreferencial(Integer costoPreferencial) {
         this.costoPreferencial = costoPreferencial;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getCostoEconomico() {
         return costoEconomico;
     }
 
+    /**
+     *
+     * @param costoEconomico
+     */
     public void setCostoEconomico(Integer costoEconomico) {
         this.costoEconomico = costoEconomico;
     }
 
+    /**
+     *
+     * @return
+     */
     public CiudadEntity getCiudadLugar() {
         return ciudadLugar;
     }
 
+    /**
+     *
+     * @param ciudadLugar
+     */
     public void setCiudadLugar(CiudadEntity ciudadLugar) {
         this.ciudadLugar = ciudadLugar;
     }

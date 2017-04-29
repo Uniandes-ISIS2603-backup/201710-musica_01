@@ -10,12 +10,20 @@ import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ *
+ * @author jc.bustamante143
+ */
 @XmlRootElement
 public class GeneroDetailDTO extends GeneroDTO
 {
     private List<FestivalEntity> festivalesGenero;
     private List<MusicoEntity> musicosGenero;
     
+    /**
+     *
+     * @param genero
+     */
     public GeneroDetailDTO(GeneroEntity genero) {
         super(genero);
         
@@ -26,15 +34,26 @@ public class GeneroDetailDTO extends GeneroDTO
         }
     }
 
+    /**
+     *
+     */
     public GeneroDetailDTO() 
     {
         super();
     }
 
+    /**
+     *
+     * @return
+     */
     public List<MusicoEntity> getMusicosGenero() {
         return musicosGenero;
     }
 
+    /**
+     *
+     * @param musicosGenero
+     */
     public void setMusicosGenero(List<MusicoEntity> musicosGenero) {
         this.musicosGenero = musicosGenero;
     }
