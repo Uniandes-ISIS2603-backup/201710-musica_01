@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +18,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class FestivalEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PodamExclude
     private Long id;
 
     private String nombre;
@@ -34,15 +37,19 @@ public class FestivalEntity implements Serializable {
     private Date fechafin;
 
     @ManyToMany(mappedBy = "festivalesUsuario", cascade = CascadeType.ALL)
+    @PodamExclude
     private List<UsuarioEntity> adminsFestival;
 
     @ManyToMany(mappedBy = "festivalesGenero", cascade = CascadeType.ALL)
+    @PodamExclude
     private List<GeneroEntity> generos;
 
     @ManyToMany(mappedBy = "festivalesCiudad", cascade = CascadeType.ALL)
+    @PodamExclude
     private List<CiudadEntity> ciudades;
 
     @OneToMany(mappedBy = "festival", cascade = CascadeType.ALL, orphanRemoval = false)
+    @PodamExclude
     private List<FuncionEntity> funciones;
 
     public FestivalEntity(){
@@ -111,5 +118,39 @@ public class FestivalEntity implements Serializable {
 
     public void setFunciones(List<FuncionEntity> funciones) {
         this.funciones = funciones;
+    }
+    
+        /**
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    /**
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FestivalEntity other = (FestivalEntity) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 }
