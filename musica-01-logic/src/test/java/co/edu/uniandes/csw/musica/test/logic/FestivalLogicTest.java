@@ -110,8 +110,10 @@ public class FestivalLogicTest {
             FestivalEntity result = festivalLogic.createFestival(entity);
             Assert.assertNotNull(result);
             Assert.assertEquals(entity.getNombre(), result.getNombre());
-            Assert.assertEquals(entity.getFechaInicio(), result.getFechaInicio());
-            Assert.assertEquals(entity.getFechafin() , result.getFechafin() );
+            Assert.assertEquals(entity.getFechaInicio().getDay(), result.getFechaInicio().getDay());
+            Assert.assertEquals(entity.getFechaInicio().getMonth(), result.getFechaInicio().getMonth());
+            Assert.assertEquals(entity.getFechafin().getDay() , result.getFechafin().getDay() );
+            Assert.assertEquals(entity.getFechafin().getMonth() , result.getFechafin().getMonth() );
         } 
         catch (BusinessLogicException ex) 
         {
@@ -152,8 +154,10 @@ public class FestivalLogicTest {
         FestivalEntity resultEntity = festivalLogic.getFestival(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
-        Assert.assertEquals(entity.getFechaInicio(), resultEntity.getFechaInicio());
-        Assert.assertEquals(entity.getFechafin() , resultEntity.getFechafin() );
+        Assert.assertEquals(entity.getFechaInicio().getDay(), resultEntity.getFechaInicio().getDay());
+        Assert.assertEquals(entity.getFechaInicio().getMonth(), resultEntity.getFechaInicio().getMonth());
+        Assert.assertEquals(entity.getFechafin().getDay() , resultEntity.getFechafin().getDay() );
+        Assert.assertEquals(entity.getFechafin().getMonth() , resultEntity.getFechafin().getMonth() );
     }
 
     /**
@@ -197,8 +201,10 @@ public class FestivalLogicTest {
             FestivalEntity resp = em.find(FestivalEntity.class, entity.getId());
             
             Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
-            Assert.assertEquals(entity.getFechaInicio(), resp.getFechaInicio());
-            Assert.assertEquals(entity.getFechafin() , resp.getFechafin() );
+            Assert.assertEquals(entity.getFechaInicio().getDay(), resp.getFechaInicio().getDay());
+            Assert.assertEquals(entity.getFechaInicio().getMonth(), resp.getFechaInicio().getMonth());
+            Assert.assertEquals(entity.getFechafin().getDay() , resp.getFechafin().getDay() );
+            Assert.assertEquals(entity.getFechafin().getMonth() , resp.getFechafin().getMonth() );
             
         } 
         catch (BusinessLogicException ex) 
