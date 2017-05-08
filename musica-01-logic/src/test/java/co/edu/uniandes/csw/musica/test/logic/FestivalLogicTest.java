@@ -84,10 +84,10 @@ public class FestivalLogicTest {
     }
     
     private void clearData(){
-        em.createQuery("delete from FestivalEntitt").executeUpdate();
+        em.createQuery("delete from FestivalEntity").executeUpdate();
     }
     
-    private List<FestivalEntity> data = new ArrayList<FestivalEntity>;
+    private List<FestivalEntity> data = new ArrayList<FestivalEntity>();
     
     private void insertData(){
         for (int i = 0; i < 3; i++) {
