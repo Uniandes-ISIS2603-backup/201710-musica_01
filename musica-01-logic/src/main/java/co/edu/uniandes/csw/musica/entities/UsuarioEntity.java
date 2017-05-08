@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- * Clase que modela un usuario que puede ser cliente o administrador del
+ * Clase que modela el entity usuario que puede ser cliente o administrador del
  * sistema de conciertos.
  */
 @Entity
