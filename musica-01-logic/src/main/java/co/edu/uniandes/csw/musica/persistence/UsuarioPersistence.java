@@ -11,38 +11,32 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-
 @Stateless
 public class UsuarioPersistence {
-    
-    @PersistenceContext(unitName="musicaPU") 
+
+    @PersistenceContext(unitName = "musicaPU")
     protected EntityManager em;
-    
-    public UsuarioEntity find(Long id)    {
+
+    public UsuarioEntity find(Long id) {
         return em.find(UsuarioEntity.class, id);
     }
-    
-    public List<UsuarioEntity> findAll()    {
+
+    public List<UsuarioEntity> findAll() {
         TypedQuery<UsuarioEntity> q = em.createQuery("select u from UsuarioEntity u", UsuarioEntity.class);
         return q.getResultList();
     }
-    
+
     public UsuarioEntity create(UsuarioEntity entity) {
-      
         em.persist(entity);
-        
         return entity;
     }
 
     public UsuarioEntity update(UsuarioEntity entity) {
-       
         return em.merge(entity);
     }
 
     public void delete(Long id) {
-        
-    	UsuarioEntity entity = em.find(UsuarioEntity.class, id);
+        UsuarioEntity entity = em.find(UsuarioEntity.class, id);
         em.remove(entity);
     }
 }
-
