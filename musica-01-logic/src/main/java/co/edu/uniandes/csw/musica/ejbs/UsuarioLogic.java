@@ -24,13 +24,16 @@ public class UsuarioLogic {
     @Inject
     private UsuarioPersistence persistence;
     
+    public UsuarioLogic() {
+        
+    }
+    
     /**
      * Método que crea un UsuarioLogic.
      * @param user UsuarioEntity para crear el UsuarioLogic.
      * @return UaurioEntity creado.
      */
-    public UsuarioEntity createUsuario(UsuarioEntity user)
-    {
+    public UsuarioEntity createUsuario(UsuarioEntity user) {
         return persistence.create(user);
     }
     
@@ -38,8 +41,7 @@ public class UsuarioLogic {
      * Método que retorna todos los usuarios en la persistencia.
      * @return Lista de usuarios.
      */
-    public List<UsuarioEntity> getUsuarios ()
-    {
+    public List<UsuarioEntity> getUsuarios () {
         return persistence.findAll();
     }
     
@@ -48,8 +50,7 @@ public class UsuarioLogic {
      * @param id Id del usuario buscado.
      * @return Usuario buscado o null en caso de que no exista.
      */
-    public UsuarioEntity getUsuario (Long id)
-    {
+    public UsuarioEntity getUsuario (Long id) {
         return persistence.find(id);
     }
     
@@ -60,8 +61,7 @@ public class UsuarioLogic {
      * @throws BusinessLogicException Lanza excepcion en caso de que el usuario
      * no exista
      */
-    public UsuarioEntity updateUsuario(UsuarioEntity entity) throws BusinessLogicException 
-    {
+    public UsuarioEntity updateUsuario(UsuarioEntity entity) throws BusinessLogicException {
         validarUsuario(entity);
         return persistence.update(entity);
     }
@@ -72,8 +72,7 @@ public class UsuarioLogic {
      * @throws BusinessLogicException Lanza excepcion en caso de que el usuario
      * no exista
      */
-    public void deleteUsuario (Long id) throws BusinessLogicException
-    {
+    public void deleteUsuario (Long id) throws BusinessLogicException {
         validarId(id);
         persistence.delete(id);
     }
@@ -84,8 +83,7 @@ public class UsuarioLogic {
      * @throws BusinessLogicException Lanza excepcion en caso de que el id
      * no tenga un usuario asosciado.
      */
-    public void validarId( Long id) throws BusinessLogicException
-    {
+    public void validarId( Long id) throws BusinessLogicException {
         UsuarioEntity entity = persistence.find(id);
         if (entity == null)
         {
@@ -99,10 +97,8 @@ public class UsuarioLogic {
      * @throws BusinessLogicException Lanza excepcion en caso de que el usuario
      * no este correctamente construido.
      */
-    public void validarUsuario (UsuarioEntity usuario) throws BusinessLogicException
-    {
-        if(usuario.getNombre() == null || usuario.getNombre().equals(""))
-        {
+    public void validarUsuario (UsuarioEntity usuario) throws BusinessLogicException {
+        if(usuario.getNombre() == null || usuario.getNombre().equals("")) {
             throw new BusinessLogicException("El usuario debe tener un nombre");
         }
     }
