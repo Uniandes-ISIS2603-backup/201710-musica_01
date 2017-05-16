@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2017 jc.bustamante143.
+ * Copyright (c) 2017 la.herrera11.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 package co.edu.uniandes.csw.musica.resources;
@@ -56,7 +56,7 @@ public class BoletaResource {
     */
     @GET
     @Path("{id: \\d+}")
-    public BoletaDTO getBoleta(@PathParam("id") Long id) 
+    public BoletaDTO getBoleta(@PathParam("id") Long id) throws BusinessLogicException 
     {
         BoletaDTO ticket = new BoletaDTO(boletaLogic.getBoleta(id));
         if(ticket == null) throw new NotFoundException();

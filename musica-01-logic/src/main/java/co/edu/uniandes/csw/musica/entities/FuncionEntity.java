@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2017 jc.bustamante143.
+ * Copyright (c) 2017 la.herrera11.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 package co.edu.uniandes.csw.musica.entities;
@@ -19,6 +19,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
+/**
+ *
+ * @author la.herrera11
+ */
 @Entity 
 public class FuncionEntity implements Serializable  {
  @Id
@@ -38,82 +42,154 @@ public class FuncionEntity implements Serializable  {
  @PodamExclude 
  private Date fechafin;
  
-
-    
-    @ManyToOne
-    @PodamExclude
+ @ManyToOne
+ @PodamExclude
  private LugarEntity lugarFuncion;
     
-    @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL)
-    @PodamExclude
+ @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL)
+ @PodamExclude
  private List<BoletaEntity> boletas;
     
-    @ManyToMany
-    @PodamExclude
+ @ManyToMany
+ @PodamExclude
  private List<MusicoEntity> musicos;
     
-    @ManyToOne
-    @PodamExclude
+ @ManyToOne
+ @PodamExclude
  private FestivalEntity festival;
  
-public FuncionEntity(){
+    /**
+     *
+     */
+    public FuncionEntity(){
 	 
  }
 
-public Long getId() {
+    /**
+     *
+     * @return
+     */
+    public Long getId() {
         return id;
 }
-public void setId(Long id) {
+
+    /**
+     *
+     * @param id
+     */
+    public void setId(Long id) {
         this.id = id;
 }
 
- public void setFechaInicio(Date fechaInicio) {
+    /**
+     *
+     * @param fechaInicio
+     */
+    public void setFechaInicio(Date fechaInicio) {
 	this.fechaInicio = fechaInicio;
 }
- public Date getFechaInicio() {
+
+    /**
+     *
+     * @return
+     */
+    public Date getFechaInicio() {
 	return fechaInicio;
 }
 
- public void setFechafin(Date fechafin) {
+    /**
+     *
+     * @param fechafin
+     */
+    public void setFechafin(Date fechafin) {
 	this.fechafin = fechafin;
 }
- public Date getFechafin() {
+
+    /**
+     *
+     * @return
+     */
+    public Date getFechafin() {
 	return fechafin;
 }
 
- public boolean getAprobada() {
+    /**
+     *
+     * @return
+     */
+    public boolean getAprobada() {
 	return aprobada;
 }
- public void setAprobada(boolean aprobada) {
+
+    /**
+     *
+     * @param aprobada
+     */
+    public void setAprobada(boolean aprobada) {
 	this.aprobada = aprobada;
 }
  
-  public Double getCalificacion() {
+    /**
+     *
+     * @return
+     */
+    public Double getCalificacion() {
 	return calificacion;
 }
- public void setCalificacion(Double calificacion) {
+
+    /**
+     *
+     * @param calificacion
+     */
+    public void setCalificacion(Double calificacion) {
 	this.calificacion = calificacion;
 }
 
-public LugarEntity getLugar(){
+    /**
+     *
+     * @return
+     */
+    public LugarEntity getLugar(){
     return lugarFuncion;
  }
-public void setLugar(LugarEntity lugar) {    
+    
+    /**
+     *
+     * @param lugar
+     */
+    public void setLugar(LugarEntity lugar) {    
       this.lugarFuncion=lugar;
 }
 
- public List<BoletaEntity> getBoletas() {
+    /**
+     *
+     * @return
+     */
+    public List<BoletaEntity> getBoletas() {
 	return boletas;
 }
- public void setBoletas(List<BoletaEntity> Boletas) {
+
+    /**
+     *
+     * @param Boletas
+     */
+    public void setBoletas(List<BoletaEntity> Boletas) {
 	this.boletas= Boletas;
 }
  
- 
- public List<MusicoEntity> getMusicos() {
+    /**
+     *
+     * @return
+     */
+    public List<MusicoEntity> getMusicos() {
 	return musicos;
 }
- public void setMusicos(List<MusicoEntity> musicos) {
+
+    /**
+     *
+     * @param musicos
+     */
+    public void setMusicos(List<MusicoEntity> musicos) {
 	this.musicos= musicos;
 }
  

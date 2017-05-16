@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2017 jc.bustamante143.
+ * Copyright (c) 2017 la.herrera11.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 package co.edu.uniandes.csw.musica.ejbs;
@@ -11,41 +11,75 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-
+/**
+ *
+ * @author la.herrera11
+ */
 @Stateless
 public class FuncionLogic {
 
      @Inject
     private FuncionPersistence persistence;
 
+    /**
+     *
+     * @param funcion
+     * @return
+     * @throws BusinessLogicException
+     */
     public FuncionEntity createFuncion(FuncionEntity funcion)throws BusinessLogicException
     {
         validarFuncion(funcion);
         return persistence.create(funcion);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<FuncionEntity> getFunciones ()
     {
         return persistence.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public FuncionEntity getFuncion (Long id) 
     {
         return persistence.find(id);
     }
 
+    /**
+     *
+     * @param entity
+     * @return
+     * @throws BusinessLogicException
+     */
     public FuncionEntity updateFuncion(FuncionEntity entity) throws BusinessLogicException
     {
         validarFuncion(entity);
         return persistence.update(entity);
     }
 
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void deleteFuncion (Long id) throws BusinessLogicException
     {
         validarId(id);
         persistence.delete(id);
     }
 
+    /**
+     *
+     * @param id
+     * @throws BusinessLogicException
+     */
     public void validarId( Long id) throws BusinessLogicException
     {
         FuncionEntity entity = persistence.find(id);
@@ -55,6 +89,11 @@ public class FuncionLogic {
         }
     }
 
+    /**
+     *
+     * @param funcion
+     * @throws BusinessLogicException
+     */
     public void validarFuncion (FuncionEntity funcion) throws BusinessLogicException
     {
          if(funcion.getFechaInicio() == null || funcion.getFechafin() == null)
@@ -70,7 +109,5 @@ public class FuncionLogic {
         {
             throw new BusinessLogicException("La función debe tener un lugar asociado.");
         }*/
-
-       
     }
 }
