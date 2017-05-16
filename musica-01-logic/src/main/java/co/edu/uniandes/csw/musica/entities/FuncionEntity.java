@@ -17,26 +17,43 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity 
 public class FuncionEntity implements Serializable  {
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @PodamExclude
  private Long id;
- @Temporal(TemporalType.DATE) 
- private Date fechaInicio;
- @Temporal(TemporalType.DATE) 
- private Date fechafin;
+ @PodamExclude
  private boolean aprobada;
+ @PodamExclude
  private Double calificacion; 
+ 
+ @Temporal(TemporalType.DATE) 
+ @PodamExclude
+ private Date fechaInicio;
+ 
+ @Temporal(TemporalType.DATE)
+ @PodamExclude 
+ private Date fechafin;
+ 
+
     
     @ManyToOne
+    @PodamExclude
  private LugarEntity lugarFuncion;
+    
     @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL)
+    @PodamExclude
  private List<BoletaEntity> boletas;
+    
     @ManyToMany
+    @PodamExclude
  private List<MusicoEntity> musicos;
+    
     @ManyToOne
+    @PodamExclude
  private FestivalEntity festival;
  
 public FuncionEntity(){

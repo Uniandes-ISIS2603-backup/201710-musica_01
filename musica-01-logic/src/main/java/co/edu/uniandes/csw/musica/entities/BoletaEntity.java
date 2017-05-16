@@ -10,17 +10,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class BoletaEntity implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PodamExclude
     private Long id;
+        @Min(1)
+        @Max(100000) 
+        @PodamExclude
     private Integer precio;
         @ManyToOne
+        @PodamExclude
     private UsuarioEntity cliente;
         @ManyToOne
+        @PodamExclude
     private FuncionEntity funcion;
     
 

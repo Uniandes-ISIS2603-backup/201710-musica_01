@@ -7,16 +7,21 @@ package co.edu.uniandes.csw.musica.ejbs;
 import co.edu.uniandes.csw.musica.entities.BoletaEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.BoletaPersistence;
+import co.edu.uniandes.csw.musica.persistence.FuncionPersistence;
+import co.edu.uniandes.csw.musica.persistence.UsuarioPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
 public class BoletaLogic {
+    
     @Inject
     private BoletaPersistence persistence;
+    private FuncionPersistence funcionPersistence;
+    private UsuarioPersistence clientePersistence;
 
-    public BoletaEntity createBoleta(BoletaEntity boleta)throws BusinessLogicException
+    public BoletaEntity createBoleta(BoletaEntity boleta) throws BusinessLogicException
     {
         validarBoleta(boleta);
         return persistence.create(boleta);
@@ -27,8 +32,9 @@ public class BoletaLogic {
         return persistence.findAll();
     }
 
-    public BoletaEntity getBoleta (Long id)
+    public BoletaEntity getBoleta (Long id) throws BusinessLogicException
     {
+        validarId(id);
         return persistence.find(id);
     }
 
@@ -52,17 +58,22 @@ public class BoletaLogic {
          throw new BusinessLogicException ("El id debe ser válido.");
         }
     }
-
+    
     public void validarBoleta (BoletaEntity boleta) throws BusinessLogicException
     {
+        if(boleta.getFuncion() == null)
+        {
+            throw new BusinessLogicException("La boleta debe estar asociada a una función");
+        }
         if(boleta.getPrecio() <= 0)
         {
             throw new BusinessLogicException("El precio debe ser mayor a 0");
         }
-
-        /*if(boleta.getFuncion() == null)
+        if(boleta.getCliente() == null)
         {
-            throw new BusinessLogicException("La boleta debe estar asociada a una función");
-        }*/
+            throw new BusinessLogicException("La boleta debe estar asociada a un cliente");
+        }
     }
+
+   
 }

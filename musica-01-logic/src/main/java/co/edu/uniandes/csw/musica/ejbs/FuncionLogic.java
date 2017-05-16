@@ -29,7 +29,7 @@ public class FuncionLogic {
         return persistence.findAll();
     }
 
-    public FuncionEntity getFuncion (Long id)
+    public FuncionEntity getFuncion (Long id) 
     {
         return persistence.find(id);
     }
@@ -57,6 +57,10 @@ public class FuncionLogic {
 
     public void validarFuncion (FuncionEntity funcion) throws BusinessLogicException
     {
+         if(funcion.getFechaInicio() == null || funcion.getFechafin() == null)
+        {
+            throw new BusinessLogicException("La función debe tener fechas definidas.");
+        }
         if(funcion.getFechaInicio().after(funcion.getFechafin()))
         {
             throw new BusinessLogicException("La fecha de inicio debe ser antes de la fecha de fin.");
@@ -67,9 +71,6 @@ public class FuncionLogic {
             throw new BusinessLogicException("La función debe tener un lugar asociado.");
         }*/
 
-        if(funcion.getFechaInicio() == null || funcion.getFechafin() == null)
-        {
-            throw new BusinessLogicException("La función debe tener fechas definidas.");
-        }
+       
     }
 }
