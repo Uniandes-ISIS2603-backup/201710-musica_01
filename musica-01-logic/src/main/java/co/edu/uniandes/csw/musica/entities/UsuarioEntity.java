@@ -20,8 +20,8 @@ import uk.co.jemos.podam.common.PodamExclude;
  * sistema de conciertos.
  */
 @Entity
-public class UsuarioEntity implements Serializable
-{
+public class UsuarioEntity implements Serializable {
+
     /**
      * Numero del ID del usuario en la base de datos.
      */
@@ -29,23 +29,23 @@ public class UsuarioEntity implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @PodamExclude
     private Long id;
-    
+
     /**
      * Nombre del usuario.
      */
     private String nombre;
-    
+
     /**
      * Clave del usuario.
      */
     private String clave;
-    
+
     /**
-     * Boolean que indica si el usuario es administrador o cliente,
-     * si es true el usuario es administrador.
+     * Boolean que indica si el usuario es administrador o cliente, si es true
+     * el usuario es administrador.
      */
     private boolean esAdmin;
-    
+
     /**
      * Lista de festivales que maneja el administrador.
      */
@@ -56,18 +56,20 @@ public class UsuarioEntity implements Serializable
     /**
      * Lista de boletas que pertenecen al usuario.
      */
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     @PodamExclude
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<BoletaEntity> boletas;
 
     /**
      * Método constructor vacío.
      */
     public UsuarioEntity() {
+        
     }
 
     /**
      * Método para definir la clave del usuario.
+     *
      * @param clave Clave del usuario.
      */
     public void setClave(String clave) {
@@ -76,6 +78,7 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para conseguir la clave del usuario.
+     *
      * @return Clave del usuario.
      */
     public String getClave() {
@@ -84,6 +87,7 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para definir el id del usuario.
+     *
      * @param id Id del usuario.
      */
     public void setId(Long id) {
@@ -92,6 +96,7 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para conseguir el id del usuario.
+     *
      * @return Id del usuario.
      */
     public Long getId() {
@@ -100,6 +105,7 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para definir el nombre del usuario.
+     *
      * @param nombre Nombre del usuario.
      */
     public void setNombre(String nombre) {
@@ -108,6 +114,7 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para conseguir el nombre del usuario.
+     *
      * @return Nombre del usuario
      */
     public String getNombre() {
@@ -115,8 +122,9 @@ public class UsuarioEntity implements Serializable
     }
 
     /**
-     * Método para definir la lista de festivales de los que esta encargado
-     * el administrador.
+     * Método para definir la lista de festivales de los que esta encargado el
+     * administrador.
+     *
      * @param festivales Lista de festivales.
      */
     public void setFestivales(List<FestivalEntity> festivales) {
@@ -124,8 +132,9 @@ public class UsuarioEntity implements Serializable
     }
 
     /**
-     * Método para conseguir la lista de festivales de los que esta
-     * encargado el administrador.
+     * Método para conseguir la lista de festivales de los que esta encargado el
+     * administrador.
+     *
      * @return Lista de festivales.
      */
     public List<FestivalEntity> getFestivales() {
@@ -134,15 +143,17 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para conseguir la lista de boletas del usuario.
+     *
      * @return Lista de boletas.
      */
     public List<BoletaEntity> getBoletas() {
         return boletas;
     }
-    
+
     /**
      * Método para definir la lista de boletas del usuario.
-     * @param boletas Lista de boletas. 
+     *
+     * @param boletas Lista de boletas.
      */
     public void setBoletas(List<BoletaEntity> boletas) {
         this.boletas = boletas;
@@ -150,8 +161,9 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para definir si el usuario es administrador o no.
-     * @param esAdmin Boolean para determinar si el usuario es administrador
-     * o no.
+     *
+     * @param esAdmin Boolean para determinar si el usuario es administrador o
+     * no.
      */
     public void setEsAdmin(boolean esAdmin) {
         this.esAdmin = esAdmin;
@@ -159,9 +171,10 @@ public class UsuarioEntity implements Serializable
 
     /**
      * Método para determinar si un usuario es administrador o no.
+     *
      * @return True si el usario es administrador y false de lo contrario.
      */
-    public boolean getEsAdmin() {
+    public boolean isAdmin() {
         return esAdmin;
     }
 }
