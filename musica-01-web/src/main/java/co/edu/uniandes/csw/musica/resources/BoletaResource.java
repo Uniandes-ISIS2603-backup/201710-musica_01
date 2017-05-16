@@ -16,6 +16,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -69,7 +70,7 @@ public class BoletaResource {
     */
     @PUT
     @Path("{id: \\d+}")
-    public BoletaDTO updateGenero(@PathParam("id") Long id, BoletaDTO dto) throws BusinessLogicException
+    public BoletaDTO updateBoleta(@PathParam("id") Long id, BoletaDTO dto) throws BusinessLogicException
     {
         BoletaEntity entity = dto.toEntity();
         entity.setId(id);
@@ -82,9 +83,19 @@ public class BoletaResource {
     */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteGenero(@PathParam("id") Long id) throws BusinessLogicException 
+    public void deleteBoleta(@PathParam("id") Long id) throws BusinessLogicException 
     {
         boletaLogic.deleteBoleta(id);
     }
     
+    /**
+     *
+     * @param dto
+     * @return
+     * @throws BusinessLogicException
+     */
+    @POST
+    public BoletaDTO createBoleta(BoletaDTO dto) throws BusinessLogicException {
+        return new BoletaDTO(boletaLogic.createBoleta(dto.toEntity()));
+    }
 }
