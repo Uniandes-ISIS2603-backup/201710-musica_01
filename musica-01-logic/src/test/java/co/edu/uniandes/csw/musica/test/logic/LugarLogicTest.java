@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.test.logic;
 
 import co.edu.uniandes.csw.musica.ejbs.LugarLogic;
+import co.edu.uniandes.csw.musica.entities.CiudadEntity;
 import co.edu.uniandes.csw.musica.entities.LugarEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.LugarPersistence;
@@ -145,6 +146,8 @@ public class LugarLogicTest {
         {
             PodamFactory factory = new PodamFactoryImpl();
             LugarEntity entity = factory.manufacturePojo(LugarEntity.class);
+            CiudadEntity pojoEntity2 = factory.manufacturePojo(CiudadEntity.class);
+            entity.setCiudadLugar(pojoEntity2);
             LugarEntity result = lugarLogic.createLugar(entity);
             Assert.assertNotNull(result);
             Assert.assertEquals(entity.getNombre(), result.getNombre());
@@ -157,6 +160,7 @@ public class LugarLogicTest {
         catch (BusinessLogicException ex) 
         {
             Logger.getLogger(LugarLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -218,6 +222,7 @@ public class LugarLogicTest {
         catch (BusinessLogicException ex) 
         {
             Logger.getLogger(LugarLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -234,6 +239,8 @@ public class LugarLogicTest {
             LugarEntity entity = data.get(0);
             PodamFactory factory = new PodamFactoryImpl();
             LugarEntity pojoEntity = factory.manufacturePojo(LugarEntity.class);
+            CiudadEntity pojoEntity2 = factory.manufacturePojo(CiudadEntity.class);
+            pojoEntity.setCiudadLugar(pojoEntity2);
             pojoEntity.setId(entity.getId());
             
             lugarLogic.updateLugar(pojoEntity);
@@ -250,6 +257,7 @@ public class LugarLogicTest {
         catch (BusinessLogicException ex) 
         {
             Logger.getLogger(LugarLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 

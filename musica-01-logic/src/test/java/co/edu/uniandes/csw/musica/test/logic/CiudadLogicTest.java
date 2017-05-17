@@ -44,7 +44,7 @@ public class CiudadLogicTest {
      * @generated
      */
     @Deployment
-    public static WebArchive createDeployment() 
+    public static WebArchive createDeployment()
     {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
                 .addPackage(CiudadEntity.class.getPackage())
@@ -78,23 +78,23 @@ public class CiudadLogicTest {
      * @generated
      */
     @Before
-    public void configTest() 
+    public void configTest()
     {
-        try 
+        try
         {
             utx.begin();
             clearData();
             insertData();
             utx.commit();
-        } 
-        catch (Exception e) 
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
-            try 
+            try
             {
                 utx.rollback();
-            } 
-            catch (Exception e1) 
+            }
+            catch (Exception e1)
             {
                 e1.printStackTrace();
             }
@@ -121,9 +121,9 @@ public class CiudadLogicTest {
      *
      * @generated
      */
-    private void insertData() 
+    private void insertData()
     {
-        for (int i = 0; i < 3; i++) 
+        for (int i = 0; i < 3; i++)
         {
             PodamFactory factory = new PodamFactoryImpl();
             CiudadEntity entity = factory.manufacturePojo(CiudadEntity.class);
@@ -139,19 +139,20 @@ public class CiudadLogicTest {
      * @generated
      */
     @Test
-    public void createCiudadTest() 
+    public void createCiudadTest()
     {
-        try 
+        try
         {
             PodamFactory factory = new PodamFactoryImpl();
             CiudadEntity entity = factory.manufacturePojo(CiudadEntity.class);
             CiudadEntity result = ciudadLogic.createCiudad(entity);
             Assert.assertNotNull(result);
             Assert.assertEquals(result.getNombre(), entity.getNombre());
-        } 
-        catch (BusinessLogicException ex) 
+        }
+        catch (BusinessLogicException ex)
         {
             Logger.getLogger(CiudadLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -161,16 +162,16 @@ public class CiudadLogicTest {
      * @generated
      */
     @Test
-    public void getCiudadesTest() 
+    public void getCiudadesTest()
     {
         List<CiudadEntity> list = ciudadLogic.getCiudades();
         Assert.assertEquals(data.size(), list.size());
-        for (CiudadEntity entity : list) 
+        for (CiudadEntity entity : list)
         {
             boolean found = false;
-            for (CiudadEntity storedEntity : data) 
+            for (CiudadEntity storedEntity : data)
             {
-                if (entity.getId().equals(storedEntity.getId())) 
+                if (entity.getId().equals(storedEntity.getId()))
                 {
                     found = true;
                 }
@@ -185,7 +186,7 @@ public class CiudadLogicTest {
      * @generated
      */
     @Test
-    public void getCiudadTest() 
+    public void getCiudadTest()
     {
         CiudadEntity entity = data.get(0);
         CiudadEntity resultEntity = ciudadLogic.getCiudad(entity.getId());
@@ -199,18 +200,19 @@ public class CiudadLogicTest {
      * @generated
      */
     @Test
-    public void deleteCiudadTest() 
+    public void deleteCiudadTest()
     {
-        try 
+        try
         {
             CiudadEntity entity = data.get(0);
             ciudadLogic.deleteCiudad(entity.getId());
             CiudadEntity deleted = em.find(CiudadEntity.class, entity.getId());
             Assert.assertNull(deleted);
-        } 
-        catch (BusinessLogicException ex) 
+        }
+        catch (BusinessLogicException ex)
         {
             Logger.getLogger(CiudadLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -220,26 +222,26 @@ public class CiudadLogicTest {
      * @generated
      */
     @Test
-    public void updateCiudadTest() 
+    public void updateCiudadTest()
     {
-        try 
+        try
         {
             CiudadEntity entity = data.get(0);
             PodamFactory factory = new PodamFactoryImpl();
             CiudadEntity pojoEntity = factory.manufacturePojo(CiudadEntity.class);
             pojoEntity.setId(entity.getId());
-            
+
             ciudadLogic.updateCiudad(pojoEntity);
-            
+
             CiudadEntity resp = em.find(CiudadEntity.class, entity.getId());
-            
+
             Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
-        } 
-        catch (BusinessLogicException ex) 
+        }
+        catch (BusinessLogicException ex)
         {
             Logger.getLogger(CiudadLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
 }
-

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.test.logic;
 
 import co.edu.uniandes.csw.musica.ejbs.MusicoLogic;
+import co.edu.uniandes.csw.musica.entities.GeneroEntity;
 import co.edu.uniandes.csw.musica.entities.MusicoEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.MusicoPersistence;
@@ -145,6 +146,8 @@ public class MusicoLogicTest {
         {
             PodamFactory factory = new PodamFactoryImpl();
             MusicoEntity entity = factory.manufacturePojo(MusicoEntity.class);
+            GeneroEntity pojoEntity2 = factory.manufacturePojo(GeneroEntity.class);
+            entity.setGeneroMusico(pojoEntity2);
             MusicoEntity result = musicoLogic.createMusico(entity);
             Assert.assertNotNull(result);
             Assert.assertEquals(entity.getNombre(), result.getNombre());
@@ -155,6 +158,7 @@ public class MusicoLogicTest {
         catch (BusinessLogicException ex) 
         {
             Logger.getLogger(MusicoLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -214,6 +218,7 @@ public class MusicoLogicTest {
         catch (BusinessLogicException ex) 
         {
             Logger.getLogger(MusicoLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -230,6 +235,8 @@ public class MusicoLogicTest {
             MusicoEntity entity = data.get(0);
             PodamFactory factory = new PodamFactoryImpl();
             MusicoEntity pojoEntity = factory.manufacturePojo(MusicoEntity.class);
+            GeneroEntity pojoEntity2 = factory.manufacturePojo(GeneroEntity.class);
+            pojoEntity.setGeneroMusico(pojoEntity2);
             pojoEntity.setId(entity.getId());
             
             musicoLogic.updateMusico(pojoEntity);
@@ -244,6 +251,7 @@ public class MusicoLogicTest {
         catch (BusinessLogicException ex) 
         {
             Logger.getLogger(MusicoLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 

@@ -42,7 +42,7 @@ public class GeneroLogicTest {
      * @generated
      */
     @Deployment
-    public static WebArchive createDeployment() 
+    public static WebArchive createDeployment()
     {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
                 .addPackage(GeneroEntity.class.getPackage())
@@ -76,23 +76,23 @@ public class GeneroLogicTest {
      * @generated
      */
     @Before
-    public void configTest() 
+    public void configTest()
     {
-        try 
+        try
         {
             utx.begin();
             clearData();
             insertData();
             utx.commit();
-        } 
-        catch (Exception e) 
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
-            try 
+            try
             {
                 utx.rollback();
-            } 
-            catch (Exception e1) 
+            }
+            catch (Exception e1)
             {
                 e1.printStackTrace();
             }
@@ -119,9 +119,9 @@ public class GeneroLogicTest {
      *
      * @generated
      */
-    private void insertData() 
+    private void insertData()
     {
-        for (int i = 0; i < 3; i++) 
+        for (int i = 0; i < 3; i++)
         {
             PodamFactory factory = new PodamFactoryImpl();
             GeneroEntity entity = factory.manufacturePojo(GeneroEntity.class);
@@ -137,19 +137,20 @@ public class GeneroLogicTest {
      * @generated
      */
     @Test
-    public void createGeneroTest() 
+    public void createGeneroTest()
     {
-        try 
+        try
         {
             PodamFactory factory = new PodamFactoryImpl();
-            GeneroEntity entity = factory.manufacturePojo(GeneroEntity.class);
+            GeneroEntity entity = factory.manufacturePojo(GeneroEntity.class);;
             GeneroEntity result = generoLogic.createGenero(entity);
             Assert.assertNotNull(result);
             Assert.assertEquals(result.getNombre(), entity.getNombre());
-        } 
-        catch (BusinessLogicException ex) 
+        }
+        catch (BusinessLogicException ex)
         {
             Logger.getLogger(GeneroLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -159,7 +160,7 @@ public class GeneroLogicTest {
      * @generated
      */
     @Test
-    public void getGenerosTest() 
+    public void getGenerosTest()
     {
         List<GeneroEntity> list = generoLogic.getGeneros();
         Assert.assertEquals(data.size(), list.size());
@@ -180,7 +181,7 @@ public class GeneroLogicTest {
      * @generated
      */
     @Test
-    public void getGeneroTest() 
+    public void getGeneroTest()
     {
         GeneroEntity entity = data.get(0);
         GeneroEntity resultEntity = generoLogic.getGenero(entity.getId());
@@ -194,18 +195,19 @@ public class GeneroLogicTest {
      * @generated
      */
     @Test
-    public void deleteGeneroTest() 
+    public void deleteGeneroTest()
     {
-        try 
+        try
         {
             GeneroEntity entity = data.get(0);
             generoLogic.deleteGenero(entity.getId());
             GeneroEntity deleted = em.find(GeneroEntity.class, entity.getId());
             Assert.assertNull(deleted);
-        } 
-        catch (BusinessLogicException ex) 
+        }
+        catch (BusinessLogicException ex)
         {
             Logger.getLogger(GeneroLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
@@ -215,24 +217,25 @@ public class GeneroLogicTest {
      * @generated
      */
     @Test
-    public void updateGeneroTest() 
+    public void updateGeneroTest()
     {
-        try 
+        try
         {
             GeneroEntity entity = data.get(0);
             PodamFactory factory = new PodamFactoryImpl();
             GeneroEntity pojoEntity = factory.manufacturePojo(GeneroEntity.class);
             pojoEntity.setId(entity.getId());
-            
+
             generoLogic.updateGenero(pojoEntity);
-            
+
             GeneroEntity resp = em.find(GeneroEntity.class, entity.getId());
-            
+
             Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
-        } 
-        catch (BusinessLogicException ex) 
+        }
+        catch (BusinessLogicException ex)
         {
             Logger.getLogger(GeneroLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail("No debe llegar acá");
         }
     }
 
