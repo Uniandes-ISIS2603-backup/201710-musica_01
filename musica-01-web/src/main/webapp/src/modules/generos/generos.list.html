@@ -4,11 +4,17 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="genero in generosRecords">
-                    <td id="{{$index}}-name">  {{genero.nombre}}</td>
+                    <td id="{{$index}}-name">{{genero.nombre}}</td>
+                    <td>
+                        <button id="{{$index}}-view-btn" class="btn btn-default btn-sm" ui-sref="generoDetail({generoId: genero.id})"><span class="glyphicon glyphicon-eye-open"></span> View</button>
+                        <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="generoEdit({generoId: genero.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                        <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(genero.id)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

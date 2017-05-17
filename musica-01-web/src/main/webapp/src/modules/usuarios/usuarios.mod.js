@@ -1,10 +1,12 @@
-/* 
+/*
  * Copyright (c) 2017 jc.bustamante143.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 (function (ng) {
     var mod = ng.module("usuarioModule", ['ui.router']);
     mod.constant("usuariosContext", "api/usuarios");
+    mod.constant("festivalesContext", "api/festivales");
+    mod.constant("boletasContext", "api/boletas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/usuarios/';
             $urlRouterProvider.otherwise("/usuariosList");
@@ -31,6 +33,26 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'usuarios.list.html'
+                    }
+                }
+            }).state('usuarioCreate', {
+                url: '/create',
+                parent: 'usuarios',
+                views: {
+                    'usuarioView': {
+                        controller: 'usuariosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuarios.create.html'
+                    }
+                }
+            }).state('usuarioEdit', {
+                url: '/{usuarioId:int}/edit',
+                parent: 'usuarios',
+                views: {
+                    'usuarioView': {
+                        controller: 'usuariosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuarios.create.html'
                     }
                 }
             }).state('usuarioDetail', {

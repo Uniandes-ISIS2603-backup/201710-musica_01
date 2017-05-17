@@ -5,12 +5,18 @@
                 <tr>
                   <th>Fecha Inicio</th>
                   <th>Fecha Fin</th>
+                  <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="funcion in funcionesRecords">
                   <td id="{{$index}}-fI">  {{funcion.fechaInicio}}</td>
-                  <td id="{{$index}}-fF">  {{funcion.fechaFin}}</td>               
+                  <td id="{{$index}}-fF">  {{funcion.fechaFin}}</td>
+                  <td>
+                      <button id="{{$index}}-view-btn" class="btn btn-default btn-sm" ui-sref="funcionDetail({funcionId: funcion.id})"><span class="glyphicon glyphicon-eye-open"></span> View</button>
+                      <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="funcionEdit({funcionId: funcion.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                      <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(funcion.id)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+                  </td>
                 </tr>
             </tbody>
         </table>

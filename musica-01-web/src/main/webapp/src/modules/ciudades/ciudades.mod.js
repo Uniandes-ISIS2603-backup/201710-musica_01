@@ -1,10 +1,12 @@
-/* 
+/*
  * Copyright (c) 2017 jc.bustamante143.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 (function (ng) {
     var mod = ng.module("ciudadModule", ['ui.router']);
     mod.constant("ciudadesContext", "api/ciudades");
+    mod.constant("lugaresContext", "api/lugares");
+    mod.constant("festivalesContext", "api/festivales");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/ciudades/';
             $urlRouterProvider.otherwise("/ciudadesList");
@@ -31,6 +33,26 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'ciudades.list.html'
+                    }
+                }
+            }).state('ciudadCreate', {
+                url: '/create',
+                parent: 'ciudades',
+                views: {
+                    'ciudadView': {
+                        controller: 'ciudadesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'ciudades.create.html'
+                    }
+                }
+            }).state('ciudadEdit', {
+                url: '/{ciudadId:int}/edit',
+                parent: 'ciudades',
+                views: {
+                    'ciudadView': {
+                        controller: 'ciudadesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'ciudades.create.html'
                     }
                 }
             }).state('ciudadDetail', {

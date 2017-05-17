@@ -1,10 +1,12 @@
-/* 
+/*
  * Copyright (c) 2017 jc.bustamante143.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 (function (ng) {
     var mod = ng.module("musicoModule", ['ui.router']);
     mod.constant("musicosContext", "api/musicos");
+    mod.constant("generosContext", "api/generos");
+    mod.constant("funcionesContext", "api/funciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/musicos/';
             $urlRouterProvider.otherwise("/musicosList");
@@ -31,6 +33,26 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'musicos.list.html'
+                    }
+                }
+            }).state('musicoCreate', {
+                url: '/create',
+                parent: 'musicos',
+                views: {
+                    'musicoView': {
+                        controller: 'musicosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'musicos.create.html'
+                    }
+                }
+            }).state('musicoEdit', {
+                url: '/{musicoId:int}/edit',
+                parent: 'musicos',
+                views: {
+                    'musicoView': {
+                        controller: 'musicosCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'musicos.create.html'
                     }
                 }
             }).state('musicoDetail', {

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2017 jc.bustamante143.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
@@ -6,7 +6,7 @@
     var app = angular.module('mainApp', [
         // External dependencies
         'ui.router',
-        // Internal modules dependencies       
+        // Internal modules dependencies
         'musicoModule',
         'festivalModule',
         'boletaModule',

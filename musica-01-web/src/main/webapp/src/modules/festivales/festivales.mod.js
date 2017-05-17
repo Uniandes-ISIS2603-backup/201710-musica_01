@@ -1,49 +1,73 @@
-/* 
+/*
  * Copyright (c) 2017 jc.bustamante143.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 (function (ng) {
-    var mod = ng.module("festivalModule", ['ui.router']);
-    mod.constant("festivalesContext", "api/festivales");
+    var mod = ng.module("lugarModule", ['ui.router']);
+    mod.constant("lugaresContext", "api/lugares");
+    mod.constant("usuariosContext", "api/usuarios");
+    mod.constant("generosContext", "api/generos");
+    mod.constant("ciudadesContext", "api/ciudades");
+    mod.constant("funcionesContext", "api/funciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/festivales/';
-            $urlRouterProvider.otherwise("/festivalesList");
+            var basePath = 'src/modules/lugares/';
+            $urlRouterProvider.otherwise("/lugaresList");
             self = this;
-             $stateProvider.state('festivales', {
-                url: '/festivales',
+             $stateProvider.state('lugares', {
+                url: '/lugares',
                 abstract: true,
                 resolve: {
-                    festivales: ['$http', 'festivalesContext', function ($http, festivalesContext) {
-                            return $http.get(festivalesContext);
+                    lugares: ['$http', 'lugaresContext', function ($http, lugaresContext) {
+                            return $http.get(lugaresContext);
                         }]
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'festivales.html',
-                        controller: ['$scope', 'festivales', function ($scope, festivales) {
-                                $scope.festivalesRecords = festivales.data;
+                        templateUrl: basePath + 'lugares.html',
+                        controller: ['$scope', 'lugares', function ($scope, lugares) {
+                                $scope.lugaresRecords = lugares.data;
                             }]
                     }
                 }
-            }).state('festivalesList', {
+            }).state('lugaresList', {
                 url: '/list',
-                parent: 'festivales',
+                parent: 'lugares',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'festivales.list.html'
+                        templateUrl: basePath + 'lugares.list.html'
                     }
                 }
-            }).state('festivalDetail', {
-                url: '/{festivalId:int}/detail',
-                parent: 'festivales',
+            }).state('lugarCreate', {
+                url: '/create',
+                parent: 'lugares',
+                views: {
+                    'lugarView': {
+                        controller: 'lugaresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'lugares.create.html'
+                    }
+                }
+            }).state('lugarEdit', {
+                url: '/{lugarId:int}/edit',
+                parent: 'lugares',
+                views: {
+                    'lugarView': {
+                        controller: 'lugaresCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'lugares.create.html'
+                    }
+                }
+            }).state('lugarDetail', {
+                url: '/{lugarId:int}/detail',
+                parent: 'lugares',
                 param: {
-                    festivalId: null
+                    lugarId: null
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + 'festivales.detail.html',
+                        templateUrl: basePath + 'lugares.detail.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentFestival = $scope.festivalesRecords[$params.festivalId - 1];
+                                $scope.currentFestival = $scope.lugaresRecords[$params.lugarId - 1];
                             }]
                     }
                 }

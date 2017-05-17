@@ -1,11 +1,11 @@
-/* 
+/*
  * Copyright (c) 2017 jc.bustamante143.
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 (function (ng) {
     var mod = ng.module("musicoModule");
 
-    mod.controller("musicosCtrl", ['$scope', '$state', '$stateParams', '$http', 'musicosContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("musicosCtrl", ['$scope', '$state', '$stateParams', '$http', 'musicosContext', 'generosContext', 'funcionesContext', function ($scope, $state, $stateParams, $http, context, generosContext, funcionesContext) {
 
             // inicialmente el listado de musicos está vacio
             $scope.records = {};
@@ -13,6 +13,14 @@
             $http.get(context).then(function (response) {
                 $scope.records = response.data;
             }, responseError);
+
+            $http.get(generosContext).then(function (response) {
+                       $scope.generos = response.data;
+                   });
+
+           $http.get(funcionesContext).then(function (response) {
+                        $scope.funciones = response.data;
+                   });
 
             // el controlador recibió un musicoId ??
             // revisa los parámetros (ver el :musicoId en la definición de la ruta)
@@ -33,9 +41,13 @@
             {
                 // el registro actual debe estar vacio
                 $scope.currentRecord = {
-                    id: undefined /*Tipo Long. El valor se asigna en el backend*/,
-                    name: '' /*Tipo String*/,
-                    birthDate: ' '/*Tipo String to convert to date*/
+                  id: undefined /*Tipo Long. El valor se asigna en el backend*/,
+                  nombre: '',
+                  trayectoria: '' ,
+                  requerimientoSonido: '',
+                  requerimientoCapacidad: '',
+                  generoMusico: {},
+                  funcionesMusico: {}
                 };
 
                 $scope.alerts = [];
@@ -68,6 +80,13 @@
                             }, responseError);
                 }
                 ;
+            }
+
+            this.deleteRecord = function(id){
+                return $http.delete(context + "/"+ id)
+                        .then(function(){
+                            $state.reload();
+                },responseError);
             };
 
             // -----------------------------------------------------------------
