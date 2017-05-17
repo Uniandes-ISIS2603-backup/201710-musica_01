@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="musico in musicosRecords">
+                  <td id="{{$index}}-name"> {{musico.nombre}}</td>
+                  <td>
+                      <button id="{{$index}}-view-btn" class="btn btn-default btn-sm" ui-sref="musicoCDetail({musicoId: musico.id})"><span class="glyphicon glyphicon-eye-open"></span> View</button>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

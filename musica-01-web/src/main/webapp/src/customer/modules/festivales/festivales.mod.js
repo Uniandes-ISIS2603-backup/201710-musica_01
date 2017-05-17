@@ -3,15 +3,15 @@
  * Realizado por el grupo TumBoleta - Uniandes 2017.
  */
 (function (ng) {
-    var mod = ng.module("festivalModule", ['ui.router']);
+    var mod = ng.module("festivalCModule", ['ui.router']);
     mod.constant("festivalesContext", "api/festivales");
     mod.constant("usuariosContext", "api/usuarios");
     mod.constant("generosContext", "api/generos");
     mod.constant("ciudadesContext", "api/ciudades");
     mod.constant("funcionesContext", "api/funciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/festivales/';
-            $urlRouterProvider.otherwise("/festivalesList");
+            var basePath = 'src/customer/modules/festivales/';
+            $urlRouterProvider.otherwise("/festivalesCList");
             self = this;
              $stateProvider.state('festivales', {
                 url: '/festivales',
@@ -29,7 +29,7 @@
                             }]
                     }
                 }
-            }).state('festivalesList', {
+            }).state('festivalesCList', {
                 url: '/list',
                 parent: 'festivales',
                 views: {
@@ -37,27 +37,7 @@
                         templateUrl: basePath + 'festivales.list.html'
                     }
                 }
-            }).state('festivalCreate', {
-                url: '/create',
-                parent: 'festivales',
-                views: {
-                    'festivalView': {
-                        controller: 'festivalesCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'festivales.create.html'
-                    }
-                }
-            }).state('festivalEdit', {
-                url: '/{festivalId:int}/edit',
-                parent: 'festivales',
-                views: {
-                    'festivalView': {
-                        controller: 'festivalesCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'festivales.create.html'
-                    }
-                }
-            }).state('festivalDetail', {
+            }).state('festivalCDetail', {
                 url: '/{festivalId:int}/detail',
                 parent: 'festivales',
                 param: {

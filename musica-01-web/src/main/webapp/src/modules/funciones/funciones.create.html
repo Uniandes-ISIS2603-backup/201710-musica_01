@@ -2,47 +2,53 @@
     <form novalidate name="form" id="book-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
         <fieldset>
             <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
-            <!-- Name -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
-                <label for="name" class="col-md-2 control-label">Name</label>
-                <div class="col-md-10">
-                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
-                </div>
-            </div>
-            <!-- Description -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.description.$valid && form.description.$dirty, 'has-error': form.description.$invalid && (form.description.$dirty || form.$submitted)}" >
-                <label for="description" class="col-md-2 control-label">Description</label>
-                <div class="col-md-10">
-                    <input id="description" name="description" class="form-control" type="text" ng-model="currentRecord.description" ng-init="currentRecord.description" required />
-                </div>
-            </div>
-            <!-- Image -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.image.$valid && form.image.$dirty, 'has-error': form.image.$invalid && (form.image.$dirty || form.$submitted)}" >
-                <label for="image" class="col-md-2 control-label">Image</label>
-                <div class="col-md-10">
-                    <input id="image" name="image" class="form-control" type="text" ng-model="currentRecord.image" ng-init="currentRecord.image" required />
-                </div>
-            </div>
-            <!-- ISBN -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.isbn.$valid && form.isbn.$dirty, 'has-error': form.isbn.$invalid && (form.isbn.$dirty || form.$submitted)}" >
-                <label for="isbn" class="col-md-2 control-label">ISBN</label>
-                <div class="col-md-10">
-                    <input id="isbn" name="isbn" class="form-control" type="text" ng-model="currentRecord.isbn" ng-init="currentRecord.isbn" required />
-                </div>
-            </div>
-            <!-- Publishing Date -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.publishingdate.$valid && form.publishingdate.$dirty, 'has-error': form.publishingdate.$invalid && (form.publishingdate.$dirty || form.$submitted)}" >
 
-                <label for="PublishingDate" class="col-md-2 control-label">Publishing Date:</label>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.fechaInicio.$valid && form.fechaInicio.$dirty, 'has-error': form.fechaInicio.$invalid && (form.fechaInicio.$dirty || form.$submitted)}" >
+                <label for="fechaInicio" class="col-md-2 control-label">Fecha Inicio</label>
                 <div class="col-md-10">
-                    <date-picker name="publishingdate" model="currentRecord.publishingdate"></date-picker>
+                    <input id="fechaInicio" name="fechaInicio" class="form-control" type="text" ng-model="currentRecord.fechaInicio" ng-init="currentRecord.fechaInicio" required />
                 </div>
             </div>
-           <!-- Editorial -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.editorial.$valid && form.editorial.$dirty, 'has-error': form.editorial.$invalid && (form.editorial.$dirty || form.$submitted)}" >
-                <label for="editorial" class="col-md-2 control-label">Editorial</label>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.fechafin.$valid && form.fechafin.$dirty, 'has-error': form.fechafin.$invalid && (form.fechafin.$dirty || form.$submitted)}" >
+                <label for="fechafin" class="col-md-2 control-label">Fecha Fin</label>
                 <div class="col-md-10">
-                    <select id="editorial" name="editorial" ng-options="rc.name for rc in editorials track by rc.id" class="form-control" type="text" ng-model="currentRecord.editorial" ></select>
+                    <input id="fechafin" name="fechafin" class="form-control" type="text" ng-model="currentRecord.fechafin" ng-init="currentRecord.fechafin" required />
+                </div>
+            </div>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.aprobada.$valid && form.aprobada.$dirty, 'has-error': form.aprobada.$invalid && (form.aprobada.$dirty || form.$submitted)}" >
+                <label for="aprobada" class="col-md-2 control-label">Aprobada</label>
+                <div class="col-md-10">
+                    <input id="aprobada" name="aprobada" class="form-control" type="text" ng-model="currentRecord.aprobada" ng-init="currentRecord.aprobada" required />
+                </div>
+            </div>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.calificacion.$valid && form.calificacion.$dirty, 'has-error': form.calificacion.$invalid && (form.calificacion.$dirty || form.$submitted)}" >
+                <label for="calificacion" class="col-md-2 control-label">Calificación</label>
+                <div class="col-md-10">
+                    <input id="calificacion" name="calificacion" class="form-control" type="text" ng-model="currentRecord.calificacion" ng-init="currentRecord.calificacion" required />
+                </div>
+            </div>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.lugarFuncion.$valid && form.lugarFuncion.$dirty, 'has-error': form.lugarFuncion.$invalid && (form.lugarFuncion.$dirty || form.$submitted)}" >
+                <label for="lugarFuncion" class="col-md-2 control-label">Lugar</label>
+                <div class="col-md-10">
+                    <select id="lugarFuncion" name="lugarFuncion" ng-options="rc.nombre for rc in lugares track by rc.id" class="form-control" type="text" ng-model="currentRecord.lugarFuncion" ></select>
+                </div>
+            </div>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.boleta.$valid && form.boleta.$dirty, 'has-error': form.boleta.$invalid && (form.boleta.$dirty || form.$submitted)}" >
+                <label for="boleta" class="col-md-2 control-label">Boleta</label>
+                <div class="col-md-10">
+                    <select id="boleta" name="boleta" ng-options="rc.id for rc in boletas track by rc.id" class="form-control" type="text" ng-model="currentRecord.boleta" ></select>
+                </div>
+            </div>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.musicos.$valid && form.musicos.$dirty, 'has-error': form.musicos.$invalid && (form.musicos.$dirty || form.$submitted)}" >
+                <label for="musicos" class="col-md-2 control-label">Músico</label>
+                <div class="col-md-10">
+                    <select id="musicos" name="musicos" ng-options="rc.nombre for rc in musicos track by rc.id" class="form-control" type="text" ng-model="currentRecord.musicos" ></select>
+                </div>
+            </div>
+            <div class="form-group col-md-6" ng-class="{'has-success': form.festival.$valid && form.festival.$dirty, 'has-error': form.festival.$invalid && (form.festival.$dirty || form.$submitted)}" >
+                <label for="festival" class="col-md-2 control-label">Festival</label>
+                <div class="col-md-10">
+                    <select id="festival" name="festival" ng-options="rc.nombre for rc in festivales track by rc.id" class="form-control" type="text" ng-model="currentRecord.festival" ></select>
                 </div>
             </div>
 

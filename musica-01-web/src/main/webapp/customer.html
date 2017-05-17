@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="mainApp">
+<html ng-app="customerApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,23 +15,13 @@
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
         <!-- Músicos -->
-        <script src="src/modules/musicos/musicos.mod.js" type="text/javascript"></script>
-        <script src="src/modules/musicos/musicos.ctrl.js" type="text/javascript"></script>
+        <script src="src/customer/modules/musicos/musicos.mod.js" type="text/javascript"></script>
         <!-- Festivales -->
-        <script src="src/modules/festivales/festivales.mod.js" type="text/javascript"></script>
-        <!-- Boletas -->
-        <script src="src/modules/boletas/boletas.mod.js" type="text/javascript"></script>
-        <!-- Funciones -->
-        <script src="src/modules/funciones/funciones.mod.js" type="text/javascript"></script>
+        <script src="src/customer/modules/festivales/festivales.mod.js" type="text/javascript"></script>
         <!-- Ciudades -->
-        <script src="src/modules/ciudades/ciudades.mod.js" type="text/javascript"></script>
-        <!-- Género -->
-        <script src="src/modules/generos/generos.mod.js" type="text/javascript"></script>
-        <!-- Lugares -->
-        <script src="src/modules/lugares/lugares.mod.js" type="text/javascript"></script>
-        <!-- Usuarios -->
-        <script src="src/modules/usuarios/usuarios.mod.js" type="text/javascript"></script>
-        <script src="src/app.js" type="text/javascript"></script>
+        <script src="src/customer/modules/ciudades/ciudades.mod.js" type="text/javascript"></script>
+
+        <script src="src/appCustomer.js" type="text/javascript"></script>
 
     </head>
 
@@ -66,15 +56,15 @@
       </div>
 
       <div>
-        Párrafo ....
+      <br><br> Usted se encuentra en la página de cliente. Puede consultar los festivales, músicos y ciudades disponibles. No respondemos por sus compras después de realizadas exitosamente. Gracias por su visitas <br><br>
       </div>
 
         <div class="row">
             <div class="col-sm-12">
                 <ul class="nav nav-tabs">
-                    <li role="navigation"><a ui-sref="musicosList">Músicos</a></li>
-                    <li role="presentation"><a ui-sref="festivalesList">Festivales</a></li>
-                    <li role="presentation"><a ui-sref="ciudadesList">Ciudades</a></li>
+                    <li role="navigation"><a ui-sref="musicosCList">Músicos</a></li>
+                    <li role="presentation"><a ui-sref="festivalesCList">Festivales</a></li>
+                    <li role="presentation"><a ui-sref="ciudadesCList">Ciudades</a></li>
                 </ul>
             </div>
         </div>

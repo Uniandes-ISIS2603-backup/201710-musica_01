@@ -2,49 +2,41 @@
     <form novalidate name="form" id="book-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
         <fieldset>
             <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
-            <!-- Name -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
-                <label for="name" class="col-md-2 control-label">Name</label>
+            <!-- Nombre -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && (form.nombre.$dirty || form.$submitted)}" >
+                <label for="nombre" class="col-md-2 control-label">Nombre</label>
                 <div class="col-md-10">
-                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                    <input id="nombre" name="nombre" class="form-control" type="text" ng-model="currentRecord.nombre" ng-init="currentRecord.nombre" required />
                 </div>
             </div>
-            <!-- Description -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.description.$valid && form.description.$dirty, 'has-error': form.description.$invalid && (form.description.$dirty || form.$submitted)}" >
-                <label for="description" class="col-md-2 control-label">Description</label>
+            <!-- Clave -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.clave.$valid && form.clave.$dirty, 'has-error': form.clave.$invalid && (form.clave.$dirty || form.$submitted)}" >
+                <label for="clave" class="col-md-2 control-label">Clave</label>
                 <div class="col-md-10">
-                    <input id="description" name="description" class="form-control" type="text" ng-model="currentRecord.description" ng-init="currentRecord.description" required />
+                    <input id="clave" name="clave" class="form-control" type="text" ng-model="currentRecord.clave" ng-init="currentRecord.clave" required />
                 </div>
             </div>
-            <!-- Image -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.image.$valid && form.image.$dirty, 'has-error': form.image.$invalid && (form.image.$dirty || form.$submitted)}" >
-                <label for="image" class="col-md-2 control-label">Image</label>
+            <!-- Administrador? -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.esAdmin.$valid && form.esAdmin.$dirty, 'has-error': form.esAdmin.$invalid && (form.esAdmin.$dirty || form.$submitted)}" >
+                <label for="esAdmin" class="col-md-2 control-label">Administrador?</label>
                 <div class="col-md-10">
-                    <input id="image" name="image" class="form-control" type="text" ng-model="currentRecord.image" ng-init="currentRecord.image" required />
+                    <input id="esAdmin" name="esAdmin" class="form-control" type="text" ng-model="currentRecord.esAdmin" ng-init="currentRecord.esAdmin" required />
                 </div>
             </div>
-            <!-- ISBN -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.isbn.$valid && form.isbn.$dirty, 'has-error': form.isbn.$invalid && (form.isbn.$dirty || form.$submitted)}" >
-                <label for="isbn" class="col-md-2 control-label">ISBN</label>
+           <!-- Festival -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.festivalesUsuario.$valid && form.festivalesUsuario.$dirty, 'has-error': form.festivalesUsuario.$invalid && (form.festivalesUsuario.$dirty || form.$submitted)}" >
+                <label for="festivalesUsuario" class="col-md-2 control-label">Festival</label>
                 <div class="col-md-10">
-                    <input id="isbn" name="isbn" class="form-control" type="text" ng-model="currentRecord.isbn" ng-init="currentRecord.isbn" required />
+                    <select id="festivalesUsuario" name="festivalesUsuario" ng-options="rc.name for rc in festivales track by rc.id" class="form-control" type="text" ng-model="currentRecord.festivalesUsuario" ></select>
                 </div>
             </div>
-            <!-- Publishing Date -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.publishingdate.$valid && form.publishingdate.$dirty, 'has-error': form.publishingdate.$invalid && (form.publishingdate.$dirty || form.$submitted)}" >
-
-                <label for="PublishingDate" class="col-md-2 control-label">Publishing Date:</label>
-                <div class="col-md-10">
-                    <date-picker name="publishingdate" model="currentRecord.publishingdate"></date-picker>
-                </div>
-            </div>
-           <!-- Editorial -->
-            <div class="form-group col-md-6" ng-class="{'has-success': form.editorial.$valid && form.editorial.$dirty, 'has-error': form.editorial.$invalid && (form.editorial.$dirty || form.$submitted)}" >
-                <label for="editorial" class="col-md-2 control-label">Editorial</label>
-                <div class="col-md-10">
-                    <select id="editorial" name="editorial" ng-options="rc.name for rc in editorials track by rc.id" class="form-control" type="text" ng-model="currentRecord.editorial" ></select>
-                </div>
-            </div>
+            <!-- Boleta -->
+             <div class="form-group col-md-6" ng-class="{'has-success': form.boletas.$valid && form.boletas.$dirty, 'has-error': form.boletas.$invalid && (form.boletas.$dirty || form.$submitted)}" >
+                 <label for="boletas" class="col-md-2 control-label">Boleta</label>
+                 <div class="col-md-10">
+                     <select id="boletas" name="boletas" ng-options="rc.name for rc in boletas track by rc.id" class="form-control" type="text" ng-model="currentRecord.boletas" ></select>
+                 </div>
+             </div>
 
              </fieldset>
             <div class="form-group col-md-12">
