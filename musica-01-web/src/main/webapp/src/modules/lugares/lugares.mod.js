@@ -6,7 +6,7 @@
     var mod = ng.module("lugarModule", ['ui.router']);
     mod.constant("lugaresContext", "api/lugares");
     mod.constant("ciudadesContext", "api/ciudades");
-    mod.constant("funcionesContext", "api/funciones");    
+    mod.constant("funcionesContext", "api/funciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/lugares/';
             $urlRouterProvider.otherwise("/lugaresList");
@@ -32,7 +32,9 @@
                 parent: 'lugares',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'lugares.list.html'
+                      controller: 'lugaresCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'lugares.list.html'
                     }
                 }
             }).state('lugarCreate', {

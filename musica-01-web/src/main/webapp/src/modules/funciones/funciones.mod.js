@@ -34,7 +34,9 @@
                 parent: 'funciones',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'funciones.list.html'
+                      controller: 'funcionesCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'funciones.list.html'
                     }
                 }
             }).state('funcionCreate', {

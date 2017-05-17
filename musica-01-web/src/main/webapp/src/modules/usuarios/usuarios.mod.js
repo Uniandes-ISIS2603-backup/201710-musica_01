@@ -32,7 +32,9 @@
                 parent: 'usuarios',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'usuarios.list.html'
+                      controller: 'usuariosCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'usuarios.list.html'
                     }
                 }
             }).state('usuarioCreate', {

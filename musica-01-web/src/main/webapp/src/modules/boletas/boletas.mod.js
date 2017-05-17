@@ -32,7 +32,9 @@
                 parent: 'boletas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'boletas.list.html'
+                      controller: 'boletasCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'boletas.list.html'
                     }
                 }
             }).state('boletaCreate', {

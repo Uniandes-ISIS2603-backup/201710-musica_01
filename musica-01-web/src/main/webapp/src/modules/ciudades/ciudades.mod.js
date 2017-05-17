@@ -32,7 +32,9 @@
                 parent: 'ciudades',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'ciudades.list.html'
+                      controller: 'ciudadesCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'ciudades.list.html'
                     }
                 }
             }).state('ciudadCreate', {

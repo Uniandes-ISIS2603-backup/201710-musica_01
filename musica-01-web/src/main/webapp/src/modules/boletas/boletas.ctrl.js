@@ -5,7 +5,8 @@
 (function (ng) {
     var mod = ng.module("boletaModule");
 
-    mod.controller("boletasCtrl", ['$scope', '$state', '$stateParams', '$http', 'boletasContext','usuariosContext','funcionesContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("boletasCtrl", ['$scope', '$state', '$stateParams', '$http', 'boletasContext', 'usuariosContext', 'funcionesContext', function ($scope, $state, $stateParams, $http, context, usuariosContext, funcionesContext) 
+        {
 
             // inicialmente el listado de boletas está vacio
             $scope.records = {};
@@ -44,7 +45,7 @@
                   id: undefined /*Tipo Long. El valor se asigna en el backend*/,
                   precio: '' /*Tipo String*/,
                   cliente: {} ,
-                  funcion: {} 
+                  funcion: {}
                 };
 
                 $scope.alerts = [];

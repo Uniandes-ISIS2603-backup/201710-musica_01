@@ -34,7 +34,9 @@
                 parent: 'festivales',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'festivales.list.html'
+                      controller: 'festivalesCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'festivales.list.html'
                     }
                 }
             }).state('festivalCreate', {

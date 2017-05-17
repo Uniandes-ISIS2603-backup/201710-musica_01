@@ -32,7 +32,9 @@
                 parent: 'generos',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'generos.list.html'
+                      controller: 'generosCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'generos.list.html'
                     }
                 }
             }).state('generoCreate', {

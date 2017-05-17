@@ -32,7 +32,9 @@
                 parent: 'musicos',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'musicos.list.html'
+                      controller: 'musicosCtrl',
+                      controllerAs: 'ctrl',
+                      templateUrl: basePath + 'musicos.list.html'
                     }
                 }
             }).state('musicoCreate', {
