@@ -12,11 +12,11 @@
         <div class="col-md-6">
             <dl>
                 <dt>Trayectoria</dt>
-                <dd>Aqui va la trayectoria</dd>
+                <dd>{{currentMusico.trayectoria}}</dd>
 
                 <hr>
-                <dt>Volver</dt>
-                <dd>Boton volver</dd>
+                <dt>Género</dt>
+                <dd>{{currentMusico.generoMusico.nombre}}</dd>
 
             </dl>
         </div>
@@ -25,6 +25,36 @@
                 <!img class="img-responsive" ng-src="{{currentAuthor.image}}"/> Aquí van los discos.
             </div>
         </div>
+    </div>
+  </div>
+
+  <br><br><br>
+  Funciones:<br>
+  <div class="panel-body">
+    <div class="row">
+
+        <div class="col-md-12">
+            <dl>
+                <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="f in currentMusico.funcionesMusico">
+                    <td >{{f.id}}</td>
+                    <td >{{f.fechaInicio}}</td>
+                    <td >{{f.fechafin}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+            </dl>
+        </div>
+
     </div>
   </div>
   <br><br><br>

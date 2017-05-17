@@ -14,13 +14,66 @@
                 <dt>Descripción</dt>
                 <dd>Aqui va la descripcion</dd>
 
-                <hr>
-                <dt>Volver</dt>
-                <dd>Boton volver</dd>
-
             </dl>
         </div>
     </div>
   </div>
-  <br><br><br>
+    <br><br><br>
+    Lugares:<br>
+    <div class="panel-body">
+      <div class="row">
+
+          <div class="col-md-12">
+              <dl>
+                  <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="f in currentCiudad.lugaresCiudad">
+                      <td >{{f.id}}</td>
+                      <td >{{f.nombre}}</td>
+                  </tr>
+              </tbody>
+          </table>
+
+              </dl>
+          </div>
+
+      </div>
+    </div>
+    <br><br><br>
+
+
+      <br><br><br>
+      Festivales:<br>
+      <div class="panel-body">
+        <div class="row">
+
+            <div class="col-md-12">
+                <dl>
+                    <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="f in currentCiudad.festivalesCiudad">
+                        <td >{{f.id}}</td>
+                        <td >{{f.nombre}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                </dl>
+            </div>
+
+        </div>
+      </div>
+      <br><br><br>
 </div>
