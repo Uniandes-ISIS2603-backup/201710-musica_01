@@ -4,8 +4,12 @@
  */
 package co.edu.uniandes.csw.musica.ejbs;
 
+import co.edu.uniandes.csw.musica.entities.BoletaEntity;
+import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.entities.UsuarioEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.musica.persistence.BoletaPersistence;
+import co.edu.uniandes.csw.musica.persistence.FestivalPersistence;
 import co.edu.uniandes.csw.musica.persistence.UsuarioPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -19,10 +23,22 @@ import javax.inject.Inject;
 public class UsuarioLogic {
 
     /**
-     * Persistencia del usuario.
+     * Persistencia de usuarios.
      */
     @Inject
-    private UsuarioPersistence persistence;
+    private UsuarioPersistence usuarioPersistence;
+    
+    /**
+     * Persistencia de boletas.
+     */
+    @Inject
+    private BoletaPersistence boletaPersistence;
+    
+    /**
+     * Persistencia de festivales.
+     */
+    @Inject
+    private FestivalPersistence festivalPersistence;
 
     public UsuarioLogic() {
 
@@ -34,8 +50,9 @@ public class UsuarioLogic {
      * @param user UsuarioEntity para crear el UsuarioLogic.
      * @return UaurioEntity creado.
      */
-    public UsuarioEntity createUsuario(UsuarioEntity user) {
-        return persistence.create(user);
+    public UsuarioEntity createUsuario(UsuarioEntity user) throws BusinessLogicException {
+        validarUsuario(user);
+        return usuarioPersistence.create(user);
     }
 
     /**
@@ -44,7 +61,7 @@ public class UsuarioLogic {
      * @return Lista de usuarios.
      */
     public List<UsuarioEntity> getUsuarios() {
-        return persistence.findAll();
+        return usuarioPersistence.findAll();
     }
 
     /**
@@ -54,7 +71,7 @@ public class UsuarioLogic {
      * @return Usuario buscado o null en caso de que no exista.
      */
     public UsuarioEntity getUsuario(Long id) {
-        return persistence.find(id);
+        return usuarioPersistence.find(id);
     }
 
     /**
@@ -67,7 +84,7 @@ public class UsuarioLogic {
      */
     public UsuarioEntity updateUsuario(UsuarioEntity entity) throws BusinessLogicException {
         validarUsuario(entity);
-        return persistence.update(entity);
+        return usuarioPersistence.update(entity);
     }
 
     /**
@@ -79,7 +96,7 @@ public class UsuarioLogic {
      */
     public void deleteUsuario(Long id) throws BusinessLogicException {
         validarId(id);
-        persistence.delete(id);
+        usuarioPersistence.delete(id);
     }
 
     /**
@@ -90,7 +107,7 @@ public class UsuarioLogic {
      * tenga un usuario asosciado.
      */
     public void validarId(Long id) throws BusinessLogicException {
-        UsuarioEntity entity = persistence.find(id);
+        UsuarioEntity entity = usuarioPersistence.find(id);
         if (entity == null) {
             throw new BusinessLogicException("El id debe ser válido.");
         }
@@ -105,8 +122,28 @@ public class UsuarioLogic {
      */
     public void validarUsuario(UsuarioEntity usuario) throws BusinessLogicException {
         if (usuario.getNombre() == null || usuario.getNombre().equals("")) {
-            throw new BusinessLogicException("El usuario debe tener un nombre");
+            throw new BusinessLogicException("El usuario debe tener un nombre.");
+        }
+        if (usuario.getClave() == null || usuario.getClave().equals("")) {
+            throw new BusinessLogicException("El usuario debe tener una clave.");
+        }
+        if (!usuario.isAdmin() && !usuario.getFestivales().isEmpty()) {
+            throw new BusinessLogicException("Un usuario que no es admin no "
+                    + "puede manejar festivales.");
+        }
+        for (BoletaEntity boleta : usuario.getBoletas()) {
+            BoletaEntity result = boletaPersistence.find(boleta.getId());
+            if (result == null) {
+                throw new BusinessLogicException("Las boletas del usuario deben "
+                        + "existir.");
+            }
+        }
+        for (FestivalEntity festival : usuario.getFestivales()) {
+            FestivalEntity result = festivalPersistence.find(festival.getId());
+            if (result == null) {
+                throw new BusinessLogicException("Los festivales del usuario "
+                        + "deben existir.");
+            }
         }
     }
-
 }
